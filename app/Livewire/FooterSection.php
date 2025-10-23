@@ -1,33 +1,54 @@
-<?php 
+<?php
+
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\SocialLink;
 use App\Models\FooterInfo;
 use App\Models\FooterCta;
+use App\Models\SocialLink;
+use App\Events\FooterUpdated;
 
 class FooterSection extends Component
 {
-    public $socialLinks = [];
     public $footerInfo;
-    public $ctas = [];
+    public $footerCta;
+    public $socialLinks;
 
-    protected $listeners = ['socialLinkUpdated' => '$refresh', 'footerInfoUpdated' => '$refresh', 'footerCtaUpdated' => '$refresh'];
+    protected $listeners = ['footerUpdated' => 'loadFooterData'];
 
     public function mount()
     {
-        $this->loadData();
+        $this->loadFooterData();
     }
 
-    public function loadData()
+    public function loadFooterData()
     {
-        $this->socialLinks = SocialLink::where('is_active', true)->get();
         $this->footerInfo = FooterInfo::first();
-        $this->ctas = FooterCta::where('is_active', true)->get();
+        $this->footerCta = FooterCta::first();
+        $this->socialLinks = SocialLink::where('is_active', true)
+            ->orderBy('order')
+            ->get();
+    }
+
+    public function getListeners()
+    {
+        return array_merge(
+            $this->listeners,
+            ['echo:footer,FooterUpdated' => 'refreshFooter']
+        );
+    }
+
+    public function refreshFooter()
+    {
+        $this->loadFooterData();
     }
 
     public function render()
     {
-        return view('livewire.footer-section');
+        return view('livewire.footer-section', [
+            'footerInfo' => $this->footerInfo,
+            'footerCta' => $this->footerCta,
+            'socialLinks' => $this->socialLinks,
+        ]);
     }
 }

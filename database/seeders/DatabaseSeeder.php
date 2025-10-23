@@ -31,19 +31,13 @@ class DatabaseSeeder extends Seeder
             ResourceItemSeeder::class,
             GallerySeeder::class,
             PartnerSeeder::class,
-            SocialLinkSeeder::class,
-            // ArticleSeeder::class,
-            AboutSectionSeeder::class,
             DirectiveSeeder::class,
             ResourceItemSeeder::class,
             ActivitySeeder::class,
             BeneficiarySeeder::class,
-
             PartnerSeeder::class,
             HeroSectionSeeder::class,
-            // SocialLinkSeeder::class,
-            WhyUsFeatureSeeder::class,
-            // SiteContactSeeder::class
+            FooterSeeder::class
         ]);
     }
 }

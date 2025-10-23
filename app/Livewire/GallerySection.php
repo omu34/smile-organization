@@ -1,5 +1,5 @@
 <?php
-
+// app/Livewire/GallerySection.php
 namespace App\Livewire;
 
 use App\Models\Gallery;
@@ -8,27 +8,65 @@ use Livewire\WithPagination;
 
 class GallerySection extends Component
 {
-    use WithPagination;
-
     public $search = '';
-    public $categoryFilter = null;
+    public $categoryFilter = '';
+    public $selectedGalleryId = null;
+    public $galleryIds = [];
 
-    protected $listeners = ['galleryUpdated' => '$refresh'];
+    public function updated($property)
+    {
+        if (in_array($property, ['search', 'categoryFilter'])) {
+            $this->selectedGalleryId = null;
+        }
+    }
+
+    public function showModal($galleryId)
+    {
+        $this->selectedGalleryId = $galleryId;
+    }
+
+    public function closeModal()
+    {
+        $this->selectedGalleryId = null;
+    }
+
+    public function nextImage()
+    {
+        if (!$this->selectedGalleryId) return;
+
+        $index = array_search($this->selectedGalleryId, $this->galleryIds);
+        if ($index !== false && $index < count($this->galleryIds) - 1) {
+            $this->selectedGalleryId = $this->galleryIds[$index + 1];
+        }
+    }
+
+    public function prevImage()
+    {
+        if (!$this->selectedGalleryId) return;
+
+        $index = array_search($this->selectedGalleryId, $this->galleryIds);
+        if ($index !== false && $index > 0) {
+            $this->selectedGalleryId = $this->galleryIds[$index - 1];
+        }
+    }
 
     public function render()
     {
-        $query = Gallery::query();
+        $query = Gallery::query()
+            ->when($this->search, fn($q) => $q->where('title', 'like', "%{$this->search}%"))
+            ->when($this->categoryFilter, fn($q) => $q->where('category', $this->categoryFilter))
+            ->orderBy('created_at', 'desc');
 
-        if ($this->categoryFilter) {
-            $query->where('category', $this->categoryFilter);
-        }
+        $galleries = $query->get();
+        $this->galleryIds = $galleries->pluck('id')->toArray();
 
-        if ($this->search) {
-            $query->where('title', 'like', "%{$this->search}%");
-        }
+        $groupedGalleries = $galleries->groupBy('category');
+        $categories = Gallery::select('category')->distinct()->pluck('category');
 
-        return view('livewire.gallery-section', [
-            'galleries' => $query->latest()->paginate(9),
-        ]);
+        $selectedGallery = $this->selectedGalleryId
+            ? Gallery::find($this->selectedGalleryId)
+            : null;
+
+        return view('livewire.gallery-section', compact('groupedGalleries', 'categories', 'selectedGallery'));
     }
 }

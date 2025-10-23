@@ -21,7 +21,11 @@ class ImpactVideosResource extends Resource
     protected static string | \UnitEnum | null $navigationGroup = 'Hero';
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-video-camera';
 
-    protected static ?string $recordTitleAttribute = 'ImpactVideos';
+    // ✅ These control the displayed names
+    protected static ?string $modelLabel = 'Impact Video';
+    protected static ?string $pluralModelLabel = 'Impact Videos';
+    protected static ?string $recordTitleAttribute = 'title'; // assuming your Video model has a title column
+
 
 
     public static function form(Schema $schema): Schema

@@ -15,16 +15,17 @@ class ActivityForm
         return $schema
             ->components([
                 TextInput::make('title')->required()->maxLength(150),
-            FileUpload::make('image')
-                ->image()
-                ->directory('activities')
-                ->visibility('public')
-                ->imagePreviewHeight('150'),
-            Textarea::make('description')->rows(4)->required(),
-            TextInput::make('button_text')->default('Detail'),
-            TextInput::make('button_link')->nullable()->label('Optional Button Link'),
-            Toggle::make('is_visible')->default(true)->label('Visible'),
-            TextInput::make('order')->numeric()->default(0)->label('Display Order'),
+                FileUpload::make('image')
+                    ->image()
+                    ->directory('activities')
+                    ->disk('public') // ✅ important
+                    ->visibility('public')
+                    ->imagePreviewHeight('150'),
+                Textarea::make('description')->rows(4)->required(),
+                TextInput::make('button_text')->default('Detail'),
+                TextInput::make('button_link')->nullable()->label('Optional Button Link'),
+                Toggle::make('is_visible')->default(true)->label('Visible'),
+                TextInput::make('order')->numeric()->default(0)->label('Display Order'),
             ]);
     }
 }

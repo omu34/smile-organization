@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('image_path');
             $table->string('category')->nullable();
+            $table->string('image_path');
+            $table->text('description')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });

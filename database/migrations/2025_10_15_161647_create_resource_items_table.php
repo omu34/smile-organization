@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resource_items', function (Blueprint $table) {
+         Schema::create('resource_items', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('image_path')->nullable();
             $table->text('description')->nullable();
             $table->text('extra_description')->nullable();
-            $table->integer('position')->default(0);
+            $table->string('image_path')->nullable();
+            $table->string('video_path')->nullable();
             $table->enum('alignment', ['left', 'right'])->default('left');
             $table->boolean('is_published')->default(true);
-            $table->timestamp('published_at')->nullable();
+            $table->integer('position')->default(0);
             $table->timestamps();
         });
     }

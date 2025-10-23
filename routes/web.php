@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\AboutPage;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
@@ -7,6 +8,12 @@ use Livewire\Volt\Volt;
 // Route::get('/', function () {
 //     return view('welcome');
 // })->name('home');
+// Route::get('/about', AboutPage::class)->name('about');
+
+
+Route::get('/about', function () {
+    return view('about-page');
+})->name('about');
 
 Route::get('/', function () {
     return view('pages.home');

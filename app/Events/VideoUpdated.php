@@ -11,11 +11,15 @@ class VideoUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct() {}
+    public string $videoUrl;
+
+    public function __construct(string $videoUrl)
+    {
+        $this->videoUrl = $videoUrl;
+    }
 
     public function broadcastOn()
     {
-        // public channel – consider private channel if sensitive
         return ['videos'];
     }
 

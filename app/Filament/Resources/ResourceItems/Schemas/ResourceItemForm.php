@@ -18,23 +18,33 @@ class ResourceItemForm
     {
         return $schema
             ->components([
+                TextInput::make('title')->label('Main Title'),
+                Textarea::make('description')->label('Main Description'),
                 TextInput::make('title')
-                ->live(onBlur: true)
-                ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state)))
-                ->required(),
-            TextInput::make('slug')->required(),
-            FileUpload::make('image_path')
-                ->directory('resources')
-                ->image()
-                ->maxSize(2048),
-            Textarea::make('description')->rows(3)->required(),
-            Textarea::make('extra_description')->rows(4),
-            Select::make('alignment')
-                ->options(['left' => 'Left', 'right' => 'Right'])
-                ->default('left'),
-            TextInput::make('position')->numeric()->default(0),
-            Toggle::make('is_published')->default(true),
-            DatePicker::make('published_at')->default(now()),
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state)))
+                    ->required(),
+                TextInput::make('slug')->required(),
+                FileUpload::make('image_path')
+                    ->image()
+                    ->directory('resources')
+                    ->disk('public') // ✅ important
+                    ->visibility('public')
+                    ->imagePreviewHeight('150'),
+                FileUpload::make('video_path')
+                    ->image()
+                    ->directory('resources')
+                    ->disk('public') // ✅ important
+                    ->visibility('public')
+                    ->imagePreviewHeight('150'),
+                Textarea::make('description')->rows(3)->required(),
+                Textarea::make('extra_description')->rows(4),
+                Select::make('alignment')
+                    ->options(['left' => 'Left', 'right' => 'Right'])
+                    ->default('left'),
+                TextInput::make('position')->numeric()->default(0),
+                Toggle::make('is_published')->default(true),
+                DatePicker::make('published_at')->default(now()),
             ]);
     }
 }

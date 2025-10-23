@@ -8,6 +8,7 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Table;
 
 class ResourceItemsTable
@@ -16,14 +17,23 @@ class ResourceItemsTable
     {
         return $table
             ->columns([
-               ImageColumn::make('image_path')->square(),
-            TextColumn::make('title')->sortable()->searchable(),
-            TextColumn::make('alignment')->sortable(),
-            TextColumn::make('position')->sortable(),
-            IconColumn::make('is_published')->boolean(),
-            TextColumn::make('published_at')->date()->sortable(),
-        ])
-        ->defaultSort('position', 'asc')
+               ImageColumn::make('image_path')
+                    ->square()
+                    ->label('Image'),
+
+
+                    TextColumn::make('video_path')
+    ->label('Video')
+    ->limit(30)
+    ->tooltip(fn ($state) => $state),
+
+
+                 ImageColumn::make('image_path')->square(),
+            TextColumn::make('platform_name'),
+            TextColumn::make('url')->limit(30),
+            IconColumn::make('is_active')->boolean(),
+            ])
+            ->defaultSort('position', 'asc')
             ->filters([
                 //
             ])

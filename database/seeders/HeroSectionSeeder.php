@@ -18,7 +18,8 @@ class HeroSectionSeeder extends Seeder
             'founder_name' => 'CarolJoseph Emoyo',
             'highlight_text' => 'Make others Smile',
             'highlight_link' => 'https://smile-for-neurodiversity.netlify.app/',
-            'video_path' => 'videos/affeceted-help.mp4',
+            'video_path' => 'storage/images/affeceted-help.mp4',
+            'video_url' => 'https://smile-for-neurodiversity.netlify.app/',
             'background_opacity' => '0.7',
         ]);
     }

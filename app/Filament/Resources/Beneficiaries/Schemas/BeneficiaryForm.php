@@ -23,9 +23,11 @@ class BeneficiaryForm
                     ->maxLength(255),
                 TextInput::make('slug')->required(),
                 FileUpload::make('image_path')
-                    ->directory('beneficiaries')
                     ->image()
-                    ->maxSize(2048),
+                    ->directory('beneficiaries')
+                    ->disk('public') // ✅ important
+                    ->visibility('public')
+                    ->imagePreviewHeight('150'),
                 Textarea::make('description')->rows(4)->required(),
                 DatePicker::make('published_at')->default(now()),
                 Toggle::make('is_published')->label('Published')->default(true),

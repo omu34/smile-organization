@@ -1,50 +1,36 @@
 <?php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\ResourceItem;
-use Illuminate\Support\Str;
 
 class ResourceItemSeeder extends Seeder
 {
     public function run(): void
     {
-        $items = [
+        ResourceItem::truncate();
+
+        ResourceItem::insert([
             [
-                'title' => 'Tri-Cycles',
-                'description' => 'SFN is dedicated to empowering individuals with disabilities by providing essential resources, including wheelchairs...',
-                'extra_description' => 'SFN provides wheelchairs as part of its commitment to enhancing mobility and independence...',
-                'image_path' => 'images/resource1.jpg',
+                'title' => 'Educational Materials',
+                'description' => 'We provide curated materials to help parents and caregivers support children’s growth.',
+                'extra_description' => 'Resources include e-books, guides, and videos.',
+                'image_path' => 'resources/sample1.jpg',
+                'video_path' => null, // <-- Add this
                 'alignment' => 'left',
                 'position' => 1,
-                'published_at' => now(),
+                'is_published' => true,
             ],
             [
-                'title' => 'Diapers',
-                'description' => 'SFN recognizes the unique challenges faced by caregivers of children with disabilities...',
-                'extra_description' => 'This support contributes to improved hygiene, health, and quality of life...',
-                'image_path' => 'images/diaperss.jpg',
+                'title' => 'Recreational Activities',
+                'description' => 'Fun, inclusive events that foster development and connection.',
+                'extra_description' => null,
+                'image_path' => null, // <-- Add this
+                'video_path' => 'resources/sample-video.mp4',
                 'alignment' => 'right',
                 'position' => 2,
-                'published_at' => now(),
+                'is_published' => true,
             ],
-            [
-                'title' => 'White Cane, Malacca Cane, Wheel Chairs',
-                'description' => 'SFN is committed to enhancing the lives of people with visual impairments...',
-                'extra_description' => 'By equipping individuals with these resources, we aim to create a more inclusive society...',
-                'image_path' => 'images/resource.jpg',
-                'alignment' => 'left',
-                'position' => 3,
-                'published_at' => now(),
-            ],
-        ];
-
-        foreach ($items as $item) {
-            ResourceItem::updateOrCreate(
-                ['slug' => Str::slug($item['title'])],
-                $item
-            );
-        }
+        ]);
     }
 }

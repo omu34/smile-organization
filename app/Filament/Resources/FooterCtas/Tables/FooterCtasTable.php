@@ -15,11 +15,9 @@ class FooterCtasTable
     {
         return $table
             ->columns([
-                TextColumn::make('platform_name')->sortable()->searchable(),
-                TextColumn::make('url')->limit(30),
-                IconColumn::make('is_active')->boolean(),
-                TextColumn::make('order')->sortable(),
-                TextColumn::make('created_at')->dateTime(),
+               TextColumn::make('title'),
+           TextColumn::make('button_text'),
+                
             ])
             ->reorderable('order')
             ->filters([

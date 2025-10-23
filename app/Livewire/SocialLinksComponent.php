@@ -1,9 +1,10 @@
 <?php
 
+// app/Livewire/SocialLinksComponent.php
 namespace App\Livewire;
 
-use App\Models\SocialLink;
 use Livewire\Component;
+use App\Models\SocialLink;
 
 class SocialLinksComponent extends Component
 {
@@ -16,7 +17,9 @@ class SocialLinksComponent extends Component
 
     public function loadLinks()
     {
-        $this->links = SocialLink::where('is_active', true)->orderBy('order')->get();
+        $this->links = SocialLink::where('is_active', true)
+            ->orderBy('order')
+            ->get();
     }
 
     public function render()
@@ -26,3 +29,4 @@ class SocialLinksComponent extends Component
         ]);
     }
 }
+

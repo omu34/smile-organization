@@ -8,4 +8,10 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateGallery extends CreateRecord
 {
     protected static string $resource = GalleryResource::class;
+
+    protected function afterSave(): void
+{
+    $this->dispatch('galleryUpdated'); // Livewire v3 way
+}
+
 }

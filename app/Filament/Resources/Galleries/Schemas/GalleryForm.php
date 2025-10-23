@@ -3,10 +3,12 @@
 namespace App\Filament\Resources\Galleries\Schemas;
 
 use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class GalleryForm
@@ -15,40 +17,22 @@ class GalleryForm
     {
         return $schema
             ->components([
-                TextInput::make('title')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('Title'),
+                Section::make('Gallery Details')
+                    ->schema([
+                        TextInput::make('title')
+                            ->required()
+                            ->maxLength(255),
 
-                Textarea::make('description')
-                    ->rows(5)
-                    ->required()
-                    ->label('Description'),
+                        TextInput::make('category')
+                            ->placeholder('e.g. Nature, Events, Architecture'),
 
-                Select::make('icon')
-                    ->label('Heroicon')
-                    ->options([
-                        'heroicon-o-home-modern' => 'Mission',
-                        'heroicon-o-book-open' => 'Objectives',
-                        'heroicon-o-eye' => 'Vision',
-                        'heroicon-o-globe-alt' => 'Global',
-                        'heroicon-o-heart' => 'Humanitarian',
-                        'heroicon-o-hand-raised' => 'Advocacy',
-                    ])
-                    ->searchable(),
-
-                ColorPicker::make('color')
-                    ->default('#6366F1')
-                    ->label('Icon Color'),
-
-                Toggle::make('is_active')
-                    ->default(true)
-                    ->label('Active'),
-
-                TextInput::make('order')
-                    ->numeric()
-                    ->default(0)
-                    ->label('Order'),
+                        FileUpload::make('image')
+                    ->image()
+                    ->directory('galleries')
+                    ->disk('public') // ✅ important
+                    ->visibility('public')
+                    ->imagePreviewHeight('150'),
+                    ]),
             ]);
     }
 }

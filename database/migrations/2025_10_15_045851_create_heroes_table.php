@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('founder_name')->nullable();
             $table->string('highlight_text')->nullable();
             $table->string('highlight_link')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->string('video_path')->nullable(); // path to mp4
+            $table->string('video_url')->nullable();
             $table->string('background_opacity')->default('0.7');
             $table->timestamps();
         });

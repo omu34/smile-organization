@@ -10,41 +10,42 @@ class NavigationSeeder extends Seeder
 {
     public function run(): void
     {
-        $gettingStarted = NavigationMenu::firstOrCreate(
-            ['slug' => 'getting-started'],
-            ['name' => 'Getting Started', 'order' => 1, 'is_active' => true]
+        $menu = NavigationMenu::updateOrCreate(
+            ['slug' => 'main'],
+            ['name' => 'Main Menu', 'is_active' => true, 'order' => 1]
         );
 
-        // Top-level items with nested children example
-        $vision = NavigationItem::firstOrCreate(
-            ['navigation_menu_id' => $gettingStarted->id, 'label' => 'Vision', 'section_id' => 'section4'],
-            ['description' => 'Advocating for the needs and rights of children with neurological conditions.', 'order' => 1]
+        // Top-level items
+        $home = NavigationItem::updateOrCreate(
+            ['navigation_menu_id' => $menu->id, 'title' => 'Home'],
+            ['url' => '/', 'order' => 1, 'is_active' => true]
         );
 
-        $impact = NavigationItem::firstOrCreate(
-            ['navigation_menu_id' => $gettingStarted->id, 'label' => 'Impact', 'section_id' => 'section2'],
-            ['description' => 'Positive community advocacy.', 'order' => 2]
+        $about = NavigationItem::updateOrCreate(
+            ['navigation_menu_id' => $menu->id, 'title' => 'About'],
+            // we set slug to use route helper later, or set url to '/about'
+            ['slug' => 'about', 'url' => '/about', 'order' => 2, 'is_active' => true]
         );
 
-        // Learn more menu with a nested multi-level example
-        $learnMore = NavigationMenu::firstOrCreate(['slug'=>'learn-more'], ['name'=>'Learn More','order'=>2,'is_active'=>true]);
-
-        $partners = NavigationItem::firstOrCreate(
-            ['navigation_menu_id' => $learnMore->id, 'label' => 'Partners'],
-            ['description' => 'How our partners support us', 'section_id' => 'section5', 'order' => 1]
+        $services = NavigationItem::updateOrCreate(
+            ['navigation_menu_id' => $menu->id, 'title' => 'Services'],
+            ['order' => 3, 'is_active' => true]
         );
 
-        // child items for Partners
-        NavigationItem::firstOrCreate(
-            ['navigation_menu_id' => $learnMore->id, 'parent_id' => $partners->id, 'label' => 'Partner Stories'],
-            ['description' => 'Testimonials and case studies', 'href' => '/partners/stories', 'order' => 1]
+        // Add children to Services
+        NavigationItem::updateOrCreate(
+            ['navigation_menu_id' => $menu->id, 'title' => 'Consulting'],
+            ['parent_id' => $services->id, 'url' => '/services/consulting', 'order' => 1, 'is_active' => true]
         );
 
-        NavigationItem::firstOrCreate(
-            ['navigation_menu_id' => $learnMore->id, 'label' => 'Resources'],
-            ['description' => 'Educational materials', 'section_id' => 'section3', 'order' => 2]
+        NavigationItem::updateOrCreate(
+            ['navigation_menu_id' => $menu->id, 'title' => 'Development'],
+            ['parent_id' => $services->id, 'url' => '/services/development', 'order' => 2, 'is_active' => true]
         );
 
-        NavigationMenu::firstOrCreate(['slug'=>'about-us'], ['name'=>'About Us','order'=>3,'is_active'=>true]);
+        NavigationItem::updateOrCreate(
+            ['navigation_menu_id' => $menu->id, 'title' => 'Contact'],
+            ['url' => '/contact', 'order' => 4, 'is_active' => true]
+        );
     }
 }

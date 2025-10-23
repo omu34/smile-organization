@@ -25,23 +25,41 @@
     <meta name="twitter:title" content="{{ $title ?? config('app.name') }}" />
     <meta name="twitter:description" content="{{ $description ?? 'Welcome to ' . config('app.name') }}" />
     <meta name="twitter:image" content="{{ $ogImage ?? asset('images/og-default.jpg') }}" />
-
     {{-- ✅ Styles --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
 
-<body class="min-h-screen flex flex-col antialiased bg-gray-50 text-gray-900">
-    <div class="flex-grow">
-        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<body class="min-h-screen flex flex-col antialiased  ">
+    <div class="flex-grow ">
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-6  ">
+            {{-- shadow-md shadow-emerald-200 hover:shadow-lg --}}
             @yield('content')
         </main>
     </div>
     {{-- ✅ Scripts --}}
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        window.Echo.channel('videos')
+            .listen('.VideoUpdated', (e) => {
+                const video = document.getElementById('hero-video');
+                if (video) {
+                    const source = video.querySelector('source');
+                    source.src = e.videoUrl;
+                    video.load();
+                    video.play();
+                }
+            });
+    </script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script>
+    document.addEventListener('livewire:navigated', () => {
+        AOS.init();
+    });
+</script>
 </body>
 
 </html>

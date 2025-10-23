@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -15,11 +16,11 @@ class SocialLinksTable
     {
         return $table
             ->columns([
-                 TextColumn::make('platform_name')->sortable()->searchable(),
-                TextColumn::make('url')->limit(30),
-                IconColumn::make('is_active')->boolean(),
-                TextColumn::make('order')->sortable(),
-                TextColumn::make('created_at')->dateTime(),
+                 ImageColumn::make('image_path')->square(),
+            TextColumn::make('platform_name'),
+            TextColumn::make('url')->limit(30),
+            IconColumn::make('is_active')->boolean(),
+            TextColumn::make('order')->sortable(),
             ])
             ->reorderable('order')
             ->filters([

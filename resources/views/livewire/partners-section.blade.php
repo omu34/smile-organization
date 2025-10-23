@@ -1,6 +1,6 @@
 <section class="py-10 mx-auto max-w-7xl" id="partners">
     <div class="text-center mb-10">
-        <h1 class="text-pink-800 font-semibold text-3xl lg:text-4xl">
+        <h1 class="text-pink-800 font-semibold text-3xl">
             Smile for Neuro-Diversity Partners
         </h1>
     </div>
@@ -9,7 +9,7 @@
         @foreach($partners as $partner)
             <div data-aos="flip-left" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
                 <a href="{{ $partner->website_url }}" target="_blank">
-                    <img src="{{ asset('storage/'.$partner->logo) }}" 
+                    <img src="{{ asset('storage/'.$partner->logo) }}"
                          class="rounded-full h-24 w-24 mx-auto mb-4 object-cover" alt="{{ $partner->name }}">
                     <h3 class="text-center text-pink-700 font-semibold text-lg mb-2">{{ $partner->name }}</h3>
                 </a>

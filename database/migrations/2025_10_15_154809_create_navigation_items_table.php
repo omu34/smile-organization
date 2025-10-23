@@ -4,30 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
+return new class extends Migration {
     public function up(): void
     {
-         Schema::create('navigation_items', function (Blueprint $table) {
+        Schema::create('navigation_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('navigation_menu_id')->constrained('navigation_menus')->cascadeOnDelete();
+            $table->string('title');
+            $table->string('slug')->nullable(); // route slug or anchor
+            $table->string('url')->nullable();   // absolute/relative URL if provided
             $table->foreignId('parent_id')->nullable()->constrained('navigation_items')->nullOnDelete();
-            $table->string('label');
-            $table->text('description')->nullable();
-            $table->string('href')->nullable();         // internal route or external URL
-            $table->string('section_id')->nullable();   // fragment id for single page scrolling
+            $table->string('label')->nullable()->after('name');
             $table->integer('order')->default(0);
             $table->boolean('is_active')->default(true);
+            $table->string('target')->nullable()->comment('_self or _blank');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('navigation_items');

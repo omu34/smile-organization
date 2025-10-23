@@ -5,6 +5,7 @@ namespace App\Filament\Resources\FooterCtas;
 use App\Filament\Resources\FooterCtas\Pages\CreateFooterCta;
 use App\Filament\Resources\FooterCtas\Pages\EditFooterCta;
 use App\Filament\Resources\FooterCtas\Pages\ListFooterCtas;
+use App\Filament\Resources\FooterCtas\Pages\ManageFooterCtas;
 use App\Filament\Resources\FooterCtas\Schemas\FooterCtaForm;
 use App\Filament\Resources\FooterCtas\Tables\FooterCtasTable;
 use App\Models\FooterCta;
@@ -19,7 +20,7 @@ class FooterCtaResource extends Resource
     protected static ?string $model = FooterCta::class;
 
      protected static string | \UnitEnum | null $navigationGroup = 'Socials';
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-play-circle';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-megaphone';
 // heroicon-o-play-circle
     protected static ?string $recordTitleAttribute = 'SociaLinks';
 
@@ -43,7 +44,8 @@ class FooterCtaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListFooterCtas::route('/'),
+            // 'index' => ListFooterCtas::route('/'),
+            'index' => ManageFooterCtas::route('/'),
             'create' => CreateFooterCta::route('/create'),
             'edit' => EditFooterCta::route('/{record}/edit'),
         ];

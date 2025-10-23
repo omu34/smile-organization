@@ -17,6 +17,7 @@ class Hero extends Model
         'founder_name',
         'highlight_text',
         'highlight_link',
+        'video_url',
         'video_path',
         'background_opacity',
     ];

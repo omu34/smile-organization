@@ -17,11 +17,16 @@ class ImpactVideosForm
             ->components([
                 TextInput::make('title')->required()->maxLength(150),
                 DatePicker::make('published_at')->label('Published Date'),
+
                 FileUpload::make('video_path')
                     ->directory('impact-videos')
+                    ->disk('public')
                     ->visibility('public')
-                    ->label('Upload Video (or provide URL)')
-                    ->helperText('You may upload a .mp4 file or provide an external link below.'),
+                    ->acceptedFileTypes(['video/mp4', 'video/avi', 'video/mov'])
+                    ->maxSize(51200) // in KB = 50MB
+                    ->label('Impact Video')
+                    ->previewable(false), // (optional) disables broken preview boxes
+
                 TextInput::make('button_link')->nullable()->label('External Video URL'),
                 Textarea::make('description')->rows(4),
                 TextInput::make('button_text')->default('Watch')->label('Button Text'),

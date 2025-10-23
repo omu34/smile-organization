@@ -2,22 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Events\FooterUpdated;
 
 class SocialLink extends Model
 {
-    use HasFactory;
-     protected $fillable = [
+    protected $fillable = [
         'platform_name',
-        'icon',
         'url',
-        'color',
+        'image_path',
         'is_active',
         'order',
     ];
 
-    protected $casts = [
-        'is_active' => 'boolean',
-    ];
+    protected static function booted(): void
+    {
+        static::saved(fn () => event(new FooterUpdated()));
+        static::deleted(fn () => event(new FooterUpdated()));
+    }
 }

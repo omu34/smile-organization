@@ -14,13 +14,18 @@ class PartnerForm
     {
         return $schema
             ->components([
-               TextInput::make('name')->required()->maxLength(255),
-            FileUpload::make('logo')->directory('partners')->image()->required(),
-            Textarea::make('testimonial')->rows(3),
-            TextInput::make('rating')->numeric()->default(5)->minValue(1)->maxValue(5),
-            TextInput::make('reviews_count')->numeric()->default(0),
-            TextInput::make('website_url')->url()->nullable(),
-            Toggle::make('is_featured')->default(true),
+                TextInput::make('name')->required()->maxLength(255),
+                FileUpload::make('logo')
+                    ->image()
+                    ->directory('partner-logos')
+                    ->disk('public') // ✅ important
+                    ->visibility('public')
+                    ->imagePreviewHeight('150'),
+                Textarea::make('testimonial')->rows(3),
+                TextInput::make('rating')->numeric()->default(5)->minValue(1)->maxValue(5),
+                TextInput::make('reviews_count')->numeric()->default(0),
+                TextInput::make('website_url')->url()->nullable(),
+                Toggle::make('is_featured')->default(true),
             ]);
     }
 }

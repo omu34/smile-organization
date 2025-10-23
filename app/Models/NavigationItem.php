@@ -2,42 +2,35 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class NavigationItem extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'navigation_menu_id',
-        'parent_id',
+        'title',
+        'slug',
+        'url',
         'label',
-        'description',
-        'href',
-        'section_id',
+        'parent_id',
         'order',
         'is_active',
+        'target',
     ];
 
-    protected static function booted()
-    {
-        static::saved(fn() => Cache::forget('navigation_menus_active'));
-        static::deleted(fn() => Cache::forget('navigation_menus_active'));
-    }
-
-    public function menu()
+    public function menu(): BelongsTo
     {
         return $this->belongsTo(NavigationMenu::class, 'navigation_menu_id');
     }
 
-    public function parent()
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_id');
     }
 
-    public function children()
+    public function children(): HasMany
     {
         return $this->hasMany(self::class, 'parent_id')->orderBy('order');
     }

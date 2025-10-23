@@ -10,14 +10,13 @@ class ResourceItem extends Model
     use HasFactory;
     protected $fillable = [
         'title',
-        'slug',
         'description',
         'extra_description',
         'image_path',
-        'position', // determines ordering
-        'alignment', // 'left' or 'right' (image position)
+        'video_path',
+        'alignment',
         'is_published',
-        'published_at',
+        'position',
     ];
 
     protected $casts = [

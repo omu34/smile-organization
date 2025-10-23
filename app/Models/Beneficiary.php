@@ -29,4 +29,16 @@ class Beneficiary extends Model
     {
         static::saved(fn() => broadcast(new \App\Events\BeneficiaryUpdated));
     }
+
+    public function getImageUrlAttribute(): ?string
+{
+    $path = $this->getAttribute('image_path');
+
+    if (! $path) {
+        return null;
+    }
+
+    return asset('storage/' . $path);
+}
+
 }
