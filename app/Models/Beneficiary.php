@@ -31,14 +31,13 @@ class Beneficiary extends Model
     }
 
     public function getImageUrlAttribute(): ?string
-{
-    $path = $this->getAttribute('image_path');
+    {
+        $path = $this->getAttribute('image_path');
 
-    if (! $path) {
-        return null;
+        if (! $path) {
+            return null;
+        }
+
+        return asset('storage/' . $path);
     }
-
-    return asset('storage/' . $path);
-}
-
 }

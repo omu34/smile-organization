@@ -17,21 +17,39 @@ class GalleryForm
     {
         return $schema
             ->components([
-                Section::make('Gallery Details')
+               Section::make('Gallery Details')
                     ->schema([
                         TextInput::make('title')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->live(onBlur: true), // For auto-slug update
 
-                        TextInput::make('category')
-                            ->placeholder('e.g. Nature, Events, Architecture'),
+                        // Slug field (auto-filled from title)
+                        TextInput::make('slug')
+                            ->label('Slug')
+                            ->disabled()
+                            ->dehydrated()
+                            ->helperText('Automatically generated from the title.'),
 
-                        FileUpload::make('image')
-                    ->image()
-                    ->directory('galleries')
-                    ->disk('public') // ✅ important
-                    ->visibility('public')
-                    ->imagePreviewHeight('150'),
+                        // Category dropdown
+                        Select::make('category')
+                            ->label('Category')
+                            ->options([
+                                'Empowerment' => 'Empowerment',
+                                'Art & Education' => 'Art & Education',
+                                'Community' => 'Community',
+                            ])
+                            ->required(),
+
+                        // Image upload
+                        FileUpload::make('image_path')
+                            ->label('Gallery Image')
+                            ->image()
+                            ->directory('galleries')
+                            ->disk('public')
+                            ->visibility('public')
+                            ->imagePreviewHeight('150')
+                            ->required(),
                     ]),
             ]);
     }

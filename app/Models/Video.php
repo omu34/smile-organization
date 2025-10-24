@@ -37,4 +37,13 @@ protected static function booted()
 }
 
 
+public function getImageUrlAttribute(): string
+{
+    return $this->video_path
+        ? asset('storage/' . $this->video_path)
+        : asset('videos/placeholder.mp4'); // fallback
+}
+
+
+
 }

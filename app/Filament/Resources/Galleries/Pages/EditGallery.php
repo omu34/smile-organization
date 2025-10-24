@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Galleries\Pages;
 
+use App\Events\GalleryUpdated;
 use App\Filament\Resources\Galleries\GalleryResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
@@ -19,8 +20,9 @@ class EditGallery extends EditRecord
     }
 
     protected function afterSave(): void
-{
-    $this->dispatch('galleryUpdated'); // Livewire v3 way
-}
+    {
+        // Broadcast to all other connected clients via Reverb
+        broadcast(new GalleryUpdated())->toOthers();
+    }
 
 }

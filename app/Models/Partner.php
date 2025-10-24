@@ -22,4 +22,13 @@ class Partner extends Model
     protected $casts = [
         'is_featured' => 'boolean',
     ];
+
+
+    public function getImageUrlAttribute(): string
+{
+    return $this->logo
+        ? asset('storage/' . $this->logo)
+        : asset('logos/placeholder.jpg'); // fallback
+}
+
 }

@@ -23,6 +23,12 @@ class Directive extends Model
         'is_active' => 'boolean',
     ];
 
+public function getImageUrlAttribute(): string
+{
+    return $this->icon
+        ? asset('storage/' . $this->icon)
+        : asset('images/placeholder.jpg'); // fallback
+}
 
-    
+
 }

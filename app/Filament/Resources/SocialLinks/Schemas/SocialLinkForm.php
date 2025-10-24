@@ -15,10 +15,10 @@ class SocialLinkForm
             ->components([
                 TextInput::make('platform_name')->required(),
                 TextInput::make('url')->url()->required(),
-                FileUpload::make('image')
+                FileUpload::make('image_path')
                     ->image()
                     ->directory('socials')
-                    ->disk('public') // ✅ important
+                    ->disk('public') 
                     ->visibility('public')
                     ->imagePreviewHeight('150'),
                 Toggle::make('is_active')->default(true),

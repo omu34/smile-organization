@@ -19,4 +19,12 @@ class Activity extends Model
         'order',
         'is_visible',
     ];
+
+    public function getImageUrlAttribute(): string
+{
+    return $this->image
+        ? asset('storage/' . $this->image)
+        : asset('images/placeholder.jpg'); // fallback
+}
+
 }

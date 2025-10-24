@@ -22,6 +22,10 @@ class HeroSectionResource extends Resource
     protected static string | \UnitEnum | null $navigationGroup = 'Hero';
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-s-sparkles';
 
+    // ✅ These control the displayed names
+    protected static ?string $modelLabel = 'Hero Section';
+    protected static ?string $pluralModelLabel = 'Hero Section';
+
     protected static ?string $recordTitleAttribute = 'NavItem';
 
     public static function form(Schema $schema): Schema

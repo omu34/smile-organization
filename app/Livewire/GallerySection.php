@@ -1,10 +1,10 @@
 <?php
-// app/Livewire/GallerySection.php
+
 namespace App\Livewire;
 
-use App\Models\Gallery;
+use Livewire\Attributes\On;
 use Livewire\Component;
-use Livewire\WithPagination;
+use App\Models\Gallery;
 
 class GallerySection extends Component
 {
@@ -12,6 +12,12 @@ class GallerySection extends Component
     public $categoryFilter = '';
     public $selectedGalleryId = null;
     public $galleryIds = [];
+
+    #[On('echo:gallery,GalleryUpdated')]  // listens to Reverb event
+    public function refreshGallery()
+    {
+        $this->dispatch('$refresh');
+    }
 
     public function updated($property)
     {
@@ -23,11 +29,15 @@ class GallerySection extends Component
     public function showModal($galleryId)
     {
         $this->selectedGalleryId = $galleryId;
+        $this->dispatch('show-modal');
     }
+
+
 
     public function closeModal()
     {
         $this->selectedGalleryId = null;
+        $this->dispatch('close-modal');
     }
 
     public function nextImage()
@@ -67,6 +77,10 @@ class GallerySection extends Component
             ? Gallery::find($this->selectedGalleryId)
             : null;
 
-        return view('livewire.gallery-section', compact('groupedGalleries', 'categories', 'selectedGallery'));
+        return view('livewire.gallery-section', [
+            'groupedGalleries' => $groupedGalleries,
+            'categories' => $categories,
+            'selectedGallery' => $selectedGallery,
+        ]);
     }
 }

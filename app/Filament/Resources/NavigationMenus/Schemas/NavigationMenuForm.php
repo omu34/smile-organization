@@ -14,9 +14,9 @@ class NavigationMenuForm
         return $schema
             ->components([
                 TextInput::make('name')->required(),
-            TextInput::make('slug')->required()->unique(NavigationMenu::class, 'slug', ignoreRecord:true),
-            TextInput::make('order')->numeric()->default(0),
-            Toggle::make('is_active')->default(true),
+                TextInput::make('slug')->required()->unique(NavigationMenu::class, 'slug', ignoreRecord: true),
+                TextInput::make('order')->numeric()->default(0),
+                Toggle::make('is_active')->default(true),
             ]);
     }
 }

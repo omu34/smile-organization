@@ -28,4 +28,12 @@ class ResourceItem extends Model
     {
         static::saved(fn() => broadcast(new \App\Events\ResourceUpdated));
     }
+
+    public function getImageUrlAttribute(): string
+{
+    return $this->image_path
+        ? asset('storage/' . $this->image_path)
+        : asset('resouces/placeholder.jpg'); // fallback
+}
+
 }

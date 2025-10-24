@@ -21,5 +21,14 @@ class Hero extends Model
         'video_path',
         'background_opacity',
     ];
+
+
+    public function getImageUrlAttribute(): string
+{
+    return $this->video_path
+        ? asset('storage/' . $this->video_path)
+        : asset('videos/placeholder.jpg'); // fallback
+}
+
 }
 

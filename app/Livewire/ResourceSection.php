@@ -16,7 +16,7 @@ class ResourceSection extends Component
 
     public function mount()
     {
-        $section = PageSection::where('section', 'resources')->first();
+        // $section = PageSection::where('section', 'resources')->first();
 
         $this->mainTitle = $section->title ?? 'Our Resources';
         $this->mainDescription = $section->description ?? 'Default description here...';

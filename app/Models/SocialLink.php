@@ -20,4 +20,12 @@ class SocialLink extends Model
         static::saved(fn () => event(new FooterUpdated()));
         static::deleted(fn () => event(new FooterUpdated()));
     }
+
+    public function getImageUrlAttribute(): string
+{
+    return $this->image_path
+        ? asset('storage/' . $this->image_path)
+        : asset('socials/placeholder.jpg'); // fallback
+}
+
 }
