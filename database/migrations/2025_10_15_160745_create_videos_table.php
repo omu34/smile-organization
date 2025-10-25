@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->date('published_at')->nullable();
             $table->string('video_path')->nullable(); // Local file or external URL
+             $table->string('image_path')->nullable();
             $table->text('description')->nullable();
             $table->string('button_text')->nullable()->default('Watch');
             $table->string('button_link')->nullable();

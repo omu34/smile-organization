@@ -25,8 +25,12 @@ class ImpactVideosForm
                     ->acceptedFileTypes(['video/mp4', 'video/avi', 'video/mov'])
                     ->maxSize(51200) // in KB = 50MB
                     ->label('Impact Video')
-                    ->previewable(false), // (optional) disables broken preview boxes
-
+                    ->previewable(false) // (optional) disables broken preview boxes
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if ($state) {
+                            $set('video_path', $state);
+                        }
+                    }),
                 TextInput::make('button_link')->nullable()->label('External Video URL'),
                 Textarea::make('description')->rows(4),
                 TextInput::make('button_text')->default('Watch')->label('Button Text'),

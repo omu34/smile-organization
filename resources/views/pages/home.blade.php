@@ -7,7 +7,7 @@
         <livewire:directives-section />
         <livewire:activities-section />
         <livewire:resource-section />
-        <livewire:impact-video /> <!-- from earlier step -->
+        <livewire:impact-video /> 
         <livewire:partners-section />
         <livewire:gallery-section />
         <livewire:beneficiary-section />
