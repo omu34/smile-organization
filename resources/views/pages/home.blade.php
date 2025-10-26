@@ -2,12 +2,13 @@
 
 @section('content')
     <div class="">
-        <livewire:hero-section />
+        <livewire:slider-show slug="pages.home" />
+        {{-- <livewire:hero-section /> --}}
         <livewire:dynamic-navbar />
         <livewire:directives-section />
         <livewire:activities-section />
         <livewire:resource-section />
-        <livewire:impact-video /> 
+        <livewire:impact-video />
         <livewire:partners-section />
         <livewire:gallery-section />
         <livewire:beneficiary-section />

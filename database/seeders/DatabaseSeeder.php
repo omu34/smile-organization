@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminUserSeeder::class,
             NavigationSeeder::class,
+            SliderSeeder::class,
             ImpactVideoSeeder::class,
             ResourceItemSeeder::class,
             GallerySeeder::class,
