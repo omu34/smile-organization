@@ -18,7 +18,7 @@ class ResourceItemResource extends Resource
 {
     protected static ?string $model = ResourceItem::class;
 
-    protected static string | \UnitEnum | null $navigationGroup = 'Resources';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content Management';
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-s-chat-bubble-left-ellipsis';
 
     protected static ?string $recordTitleAttribute = 'Resources';

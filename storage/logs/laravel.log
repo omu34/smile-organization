@@ -3485,3 +3485,57 @@ LINE 1: select * from \"navigation_menus\" where \"is_active\" = $1 orde...
         "media": []
     }
 }  
+[2025-10-27 09:06:47] local.INFO: Broadcasting [ArticleUpdated] on channels [articles] with payload:
+{
+    "article": {
+        "id": 1,
+        "title": "About Our Organization",
+        "slug": "about-our-organization",
+        "excerpt": null,
+        "body": "<p>We are a Kenyan organization registered in 2020, dedicated to supporting persons with disabilities through empowerment, innovation, and inclusion. Our mission is to bridge opportunities and enhance dignity through practical programs and partnerships.<\/p>",
+        "is_featured": false,
+        "reading_time_minutes": null,
+        "position": 0,
+        "is_published": true,
+        "created_at": "2025-10-27T08:49:13.000000Z",
+        "updated_at": "2025-10-27T09:06:47.000000Z",
+        "media": [
+            {
+                "id": 1,
+                "article_id": 1,
+                "type": "image",
+                "file_path": "aboutus\/hero.jpg",
+                "youtube_id": null,
+                "youtube_url": null,
+                "position": 0,
+                "is_primary": true,
+                "created_at": "2025-10-27T08:49:13.000000Z",
+                "updated_at": "2025-10-27T08:49:13.000000Z"
+            },
+            {
+                "id": 2,
+                "article_id": 1,
+                "type": "youtube",
+                "file_path": null,
+                "youtube_id": "dQw4w9WgXcQ",
+                "youtube_url": null,
+                "position": 0,
+                "is_primary": false,
+                "created_at": "2025-10-27T08:49:13.000000Z",
+                "updated_at": "2025-10-27T08:49:13.000000Z"
+            },
+            {
+                "id": 3,
+                "article_id": 1,
+                "type": "video_local",
+                "file_path": "aboutus\/story.mp4",
+                "youtube_id": null,
+                "youtube_url": null,
+                "position": 0,
+                "is_primary": false,
+                "created_at": "2025-10-27T08:49:14.000000Z",
+                "updated_at": "2025-10-27T08:49:14.000000Z"
+            }
+        ]
+    }
+}  

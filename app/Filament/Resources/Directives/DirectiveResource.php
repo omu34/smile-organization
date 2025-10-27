@@ -18,7 +18,7 @@ class DirectiveResource extends Resource
 {
     protected static ?string $model = Directive::class;
 
-    protected static string | \UnitEnum | null $navigationGroup = 'Site Settings';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content Management';
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-light-bulb';
 
     protected static ?string $recordTitleAttribute = 'Directive';

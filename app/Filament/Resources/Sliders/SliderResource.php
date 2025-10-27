@@ -19,7 +19,7 @@ class SliderResource extends Resource
 {
     protected static ?string $model = Slider::class;
 
-    protected static string | \UnitEnum | null $navigationGroup = 'Hero';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content Management';
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-s-sparkles';
 
     protected static ?string $recordTitleAttribute = 'Smile';

@@ -18,7 +18,7 @@ class VisitUsResource extends Resource
 {
     protected static ?string $model = VisitUs::class;
 
-    protected static string | \UnitEnum | null $navigationGroup = 'Contact Us';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content Management';
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-phone';
 

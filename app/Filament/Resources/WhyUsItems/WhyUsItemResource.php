@@ -17,7 +17,7 @@ use Filament\Tables\Table;
 class WhyUsItemResource extends Resource
 {
     protected static ?string $model = WhyUsItem::class;
-    protected static string | \UnitEnum | null $navigationGroup = 'Choose Us';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content Management';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
