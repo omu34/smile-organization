@@ -656,3 +656,77 @@ LINE 1: select * from \"navigation_menus\" where \"is_active\" = $1 orde...
         "media": []
     }
 }  
+[2025-10-27 22:33:00] local.INFO: Broadcasting [ArticleUpdated] on channels [articles] with payload:
+{
+    "article": {
+        "title": "About Our Organization",
+        "body": "We are a Kenyan organization registered in 2020, dedicated to supporting persons with disabilities through empowerment, innovation, and inclusion. Our mission is to bridge opportunities and enhance dignity through practical programs and partnerships.",
+        "is_published": true,
+        "slug": "about-our-organization",
+        "updated_at": "2025-10-27T22:33:00.000000Z",
+        "created_at": "2025-10-27T22:33:00.000000Z",
+        "id": 1,
+        "media": []
+    }
+}  
+[2025-10-27 22:33:00] local.INFO: Broadcasting [ArticleUpdated] on channels [articles] with payload:
+{
+    "article": {
+        "title": "Understanding Neurodiversity: Beyond the Labels",
+        "excerpt": "Exploring strengths and perspectives of neurodivergent individuals.",
+        "body": "Longer article content... (put your rich html or markdown here).",
+        "is_featured": true,
+        "reading_time_minutes": 6,
+        "position": 1,
+        "slug": "understanding-neurodiversity-beyond-the-labels",
+        "updated_at": "2025-10-27T22:33:00.000000Z",
+        "created_at": "2025-10-27T22:33:00.000000Z",
+        "id": 2,
+        "media": []
+    }
+}  
+[2025-10-27 22:33:00] local.INFO: Broadcasting [ArticleUpdated] on channels [articles] with payload:
+{
+    "article": {
+        "title": "Empowering Neurodivergent Individuals in the Workplace",
+        "excerpt": "Practical tips for employers & supports for neurodivergent employees.",
+        "body": "Longer article content...",
+        "is_featured": true,
+        "reading_time_minutes": 4,
+        "position": 2,
+        "slug": "empowering-neurodivergent-individuals-in-the-workplace",
+        "updated_at": "2025-10-27T22:33:00.000000Z",
+        "created_at": "2025-10-27T22:33:00.000000Z",
+        "id": 3,
+        "media": []
+    }
+}  
+[2025-10-27 22:33:00] local.INFO: Broadcasting [ArticleUpdated] on channels [articles] with payload:
+{
+    "article": {
+        "title": "Building a Collaborative Community for Neurodiversity",
+        "excerpt": "Partnerships between families, educators and organisations.",
+        "body": "Longer article content...",
+        "is_featured": true,
+        "reading_time_minutes": 11,
+        "position": 3,
+        "slug": "building-a-collaborative-community-for-neurodiversity",
+        "updated_at": "2025-10-27T22:33:00.000000Z",
+        "created_at": "2025-10-27T22:33:00.000000Z",
+        "id": 4,
+        "media": []
+    }
+}  
+[2025-10-27 22:33:00] local.INFO: Broadcasting [ArticleUpdated] on channels [articles] with payload:
+{
+    "article": {
+        "title": "About Our Organization",
+        "body": "We are a Kenyan organization registered in 2020, dedicated to supporting persons with disabilities through empowerment, innovation, and inclusion. Our mission is to bridge opportunities and enhance dignity through practical programs and partnerships.",
+        "is_published": true,
+        "slug": "about-our-organization-1",
+        "updated_at": "2025-10-27T22:33:00.000000Z",
+        "created_at": "2025-10-27T22:33:00.000000Z",
+        "id": 5,
+        "media": []
+    }
+}  

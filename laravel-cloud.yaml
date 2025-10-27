@@ -85,3 +85,5 @@ release:
 #     # Run migrations (safe mode)
 #     - php artisan fix:cache-paths
 #     - php artisan migrate --force
+    # - php artisan db:seed --force
+    # - php artisan storage:link
