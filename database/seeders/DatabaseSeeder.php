@@ -17,15 +17,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Smile',
-        //     'email' => 'smile@gmail.com',
-        //     'phone' => '+254 724-555-020',
-        //     'password' => Hash::make('smile123'), // ⚠️ replace with env('ADMIN_PASSWORD') in production
-        // ]);
+        User::factory()->create([
+            'name' => 'Smile',
+            'email' => 'smile@gmail.com',
+            'phone' => '+254 724-555-020',
+            'password' => Hash::make('smile123'), // ⚠️ replace with env('ADMIN_PASSWORD') in production
+        ]);
 
         $this->call([
-            AdminUserSeeder::class,
+            // AdminUserSeeder::class,
             NavigationSeeder::class,
             SliderSeeder::class,
             ResourceItemSeeder::class,
