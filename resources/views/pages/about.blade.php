@@ -1,7 +1,7 @@
 @extends('components.layouts.about-layout')
 
 @section('content')
-<livewire:slider-show slug="about-page-slider" />
+    <livewire:slider-show slug="about-page-slider" />
     <div class="mx-auto max-w-7xl px-5">
         <livewire:dynamic-navbar />
         <livewire:about-section />

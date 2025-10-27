@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<?php
+    <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
