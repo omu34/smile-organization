@@ -18,7 +18,7 @@ class GalleryResource extends Resource
 {
     protected static ?string $model = Gallery::class;
 
-    protected static string | \UnitEnum | null $navigationGroup = 'Site Settings';
+    protected static string | \UnitEnum | null $navigationGroup = 'Media';
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-s-photo';
 
     protected static ?string $recordTitleAttribute = 'Gallery';

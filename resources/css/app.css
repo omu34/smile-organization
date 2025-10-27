@@ -1,16 +1,44 @@
+/* ========================================
+   1. Tailwind + Vendor Imports
+   ======================================== */
+
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
+
+/* ========================================
+   2. Template Sources
+   ======================================== */
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
 @source '../../vendor/livewire/flux/stubs/**/*.blade.php';
 
+/* ========================================
+   3. Custom Variants
+   ======================================== */
+
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+/* ========================================
+   4. Font: Outfit
+   ======================================== */
 
+@font-face {
+    font-family: 'Outfit';
+    src: url('../fonts/Outfit-VariableFont_wght.ttf') format('truetype-variations'), url('../fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* ========================================
+   5. Theme & Color Customization
+   ======================================== */
+
+@theme {
+    --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
     --color-zinc-200: #e5e5e5;
@@ -22,11 +50,17 @@
     --color-zinc-800: #262626;
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
-
+    --color-primary: #1762A5;
+    --color-primary-hover: #13508a;
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
 }
+
+
+/* ========================================
+   6. Dark Mode Overrides
+   ======================================== */
 
 @layer theme {
     .dark {
@@ -36,23 +70,38 @@
     }
 }
 
-@layer base {
 
+/* ========================================
+   7. Base Layer Styles
+   ======================================== */
+
+@layer base {
+    body {
+        font-family: var(--font-sans);
+        font-size: medium;
+        font-weight: 500;
+    }
     *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
+     ::after,
+     ::before,
+     ::backdrop,
+     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
     }
 }
 
-[data-flux-field]:not(ui-radio, ui-checkbox) {
+
+/* ========================================
+   8. Flux Form Customizations
+   ======================================== */
+
+[data-flux-field]:not(ui-radio,
+ui-checkbox) {
     @apply grid gap-2;
 }
 
 [data-flux-label] {
-    @apply  !mb-0 !leading-tight;
+    @apply !mb-0 !leading-tight;
 }
 
 input:focus[data-flux-control],
@@ -61,6 +110,6 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
 
-/* \[:where(&)\]:size-4 {
-    @apply size-4;
-} */
+[data-flux-error] {
+    @apply mt-1 text-sm text-red-600;
+}

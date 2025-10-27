@@ -19,7 +19,7 @@
                                 class="w-full h-64 md:h-80 object-cover rounded-xl shadow-md transition-transform transform hover:scale-105">
                             </div>
                             <div>
-                                <span class="bg-primary mb-5 inline-block rounded py-1 px-4 text-xs font-semibold text-pink-800">
+                                <span class=" mb-5 inline-block rounded py-1 px-4 text-xs font-semibold text-black">
                                     {{ $item->published_at?->format('M d, Y') }}
                                 </span>
                                 <h3>
@@ -28,7 +28,7 @@
                                         {{ $item->title }}
                                     </a>
                                 </h3>
-                                <p class="text-base text-gray-700">
+                                <p class="text-base text-black">
                                     {{ $item->description }}
                                 </p>
                             </div>

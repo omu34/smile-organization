@@ -1,13 +1,15 @@
-<footer class="bg-gray-900 text-white py-12 px-6 md:px-16">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+<footer class="bg-white text-black py-12 px-6 md:px-16 shadow-md shadow-emerald-200">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
         {{-- Footer Info Section --}}
-        <div>
+        <div class="space-y-4 text-center sm:text-left">
             @if ($footerInfo)
-                <h2 class="text-xl font-semibold mb-4">{{ $footerInfo->title ?? 'About Us' }}</h2>
-                <p class="text-gray-400 leading-relaxed">{{ $footerInfo->description ?? '' }}</p>
+                <h2 class="text-xl font-bold">{{ $footerInfo->title ?? 'About Us' }}</h2>
+                <p class="leading-relaxed text-gray-700">
+                    {{ $footerInfo->description ?? '' }}
+                </p>
 
-                <div class="mt-4 space-y-1 text-gray-400">
+                <div class="mt-4 space-y-2 text-gray-700">
                     @if ($footerInfo->address)
                         <p><strong>Address:</strong> {{ $footerInfo->address }}</p>
                     @endif
@@ -19,57 +21,59 @@
                     @endif
                 </div>
             @else
-                <p class="text-gray-500">Footer info not available.</p>
+                <p>Footer info not available.</p>
             @endif
         </div>
 
         {{-- Call To Action Section --}}
-        <div class="flex flex-col justify-center items-center bg-gray-800 rounded-xl p-6 text-center">
+        <div class="bg-black text-white rounded-xl p-6 text-center flex flex-col items-center justify-center">
             @if ($footerCta)
                 <h3 class="text-lg font-semibold mb-2">{{ $footerCta->title ?? 'Stay Connected' }}</h3>
-                <p class="text-gray-400 mb-4">{{ $footerCta->subtitle ?? 'Join our newsletter for updates.' }}</p>
+                <p class="mb-4 text-gray-300">{{ $footerCta->subtitle ?? 'Join our newsletter for updates.' }}</p>
 
                 @if ($footerCta->button_text && $footerCta->button_link)
                     <a href="{{ $footerCta->button_link }}"
-                       class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
+                       class="bg-white text-black px-6 py-2 rounded-lg font-medium hover:bg-gray-700 hover:text-white transition duration-200">
                         {{ $footerCta->button_text }}
                     </a>
                 @endif
             @else
-                <p class="text-gray-500">CTA not configured.</p>
+                <p>CTA not configured.</p>
             @endif
         </div>
 
         {{-- Social Links Section --}}
-        <div>
-            <h2 class="text-xl font-semibold mb-4">Follow Us</h2>
-            <div wire:poll.30s="loadFooterData" class="flex space-x-4">
+        <div class="space-y-4 text-center sm:text-left">
+            <h2 class="text-xl font-semibold">Follow Us</h2>
+            <div wire:poll.30s="loadFooterData"
+                 class="flex flex-wrap justify-center sm:justify-start gap-4">
                 @forelse ($socialLinks as $link)
                     <a href="{{ $link->url }}"
                        target="_blank"
                        title="{{ $link->platform_name }}"
-                       class="hover:opacity-80 transition-transform transform hover:scale-110">
+                       class="transition-transform hover:scale-110">
                         @if ($link->image_path)
-                            {{-- <img src="{{ asset('storage/' . $link->image_path) }}"
-                                 alt="{{ $link->platform_name }}" --}}
-                                 <img src="{{ asset('storage/' . $link->image_path) }}" alt="{{ $link->title }}"
+                            <img src="{{ asset('storage/' . $link->image_path) }}"
+                                 alt="{{ $link->platform_name }}"
                                  class="w-8 h-8 object-contain rounded-md">
                         @else
-                            <div class="w-8 h-8 bg-gray-700 rounded-md flex items-center justify-center">
-                                <span class="text-xs text-gray-400">{{ substr($link->platform_name, 0, 1) }}</span>
+                            <div class="w-8 h-8 bg-black rounded-md flex items-center justify-center">
+                                <span class="text-xs text-white font-semibold">
+                                    {{ strtoupper(substr($link->platform_name, 0, 1)) }}
+                                </span>
                             </div>
                         @endif
                     </a>
                 @empty
-                    <p class="text-gray-400">No social links available.</p>
+                    <p>No social links available.</p>
                 @endforelse
             </div>
         </div>
-
     </div>
 
     {{-- Footer Bottom --}}
-    <div class="text-center mt-12 text-gray-500 border-t border-gray-700 pt-6">
+    <div class="text-center mt-12 text-sm text-gray-700 border-t border-gray-300 pt-6">
         <p>&copy; {{ date('Y') }} {{ $footerInfo->company_name ?? 'Your Company' }}. All rights reserved.</p>
     </div>
 </footer>
+

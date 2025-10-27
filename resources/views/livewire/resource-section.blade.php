@@ -28,7 +28,7 @@
 
                         {{-- Text --}}
                         <div class="w-full md:w-1/2 bg-white text-left">
-                            <h2 class="text-2xl font-semibold text-pink-500 mb-3">{{ $resource->title }}</h2>
+                            <h2 class="text-2xl font-semibold text-black mb-3">{{ $resource->title }}</h2>
                             <p class="text-gray-700 leading-relaxed">{{ $resource->description }}</p>
 
                             @if ($resource->extra_description)

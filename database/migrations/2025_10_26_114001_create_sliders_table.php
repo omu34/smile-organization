@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('slug')->unique()->after('name');
             $table->string('page_slug')->nullable()->unique(); // 👈 used in Slider::forPage()
             $table->boolean('is_active')->default(true);
             $table->timestamps();

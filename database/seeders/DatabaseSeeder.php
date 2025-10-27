@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\ImpactVideo;
+
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
             AdminUserSeeder::class,
             NavigationSeeder::class,
             SliderSeeder::class,
-            ImpactVideoSeeder::class,
             ResourceItemSeeder::class,
             GallerySeeder::class,
             PartnerSeeder::class,
@@ -37,8 +36,14 @@ class DatabaseSeeder extends Seeder
             ActivitySeeder::class,
             BeneficiarySeeder::class,
             PartnerSeeder::class,
-            HeroSectionSeeder::class,
-            FooterSeeder::class
+            FooterSeeder::class,
+            AboutSeeder::class,
+            ArticleSeeder::class,
+            FeaturedArticleSeeder::class,
+            VisitUsSeeder::class,
+            ContactInfoSeeder::class,
+            WhyUsItemSeeder::class,
+            AboutSeeder::class,
         ]);
     }
 }

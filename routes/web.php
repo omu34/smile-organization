@@ -1,23 +1,24 @@
 <?php
 
-use App\Livewire\AboutPage;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+use App\Models\Article;
 use Livewire\Volt\Volt;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('home');
-// Route::get('/about', AboutPage::class)->name('about');
-
-
-Route::get('/about', function () {
-    return view('about-page');
-})->name('about');
 
 Route::get('/', function () {
     return view('pages.home');
 })->name('pages.home');
+
+Route::get('/about', function () {
+    return view('pages.about');
+})->name('pages.about');
+
+Route::get('/articles/{slug}', function ($slug) {
+    $article = Article::where('slug', $slug)->with('media')->firstOrFail();
+    return view('articles.show', compact('article'));
+})->name('articles.show');
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

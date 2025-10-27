@@ -10,42 +10,93 @@ class NavigationSeeder extends Seeder
 {
     public function run(): void
     {
+        // Create or update main navigation menu
         $menu = NavigationMenu::updateOrCreate(
             ['slug' => 'main'],
             ['name' => 'Main Menu', 'is_active' => true, 'order' => 1]
         );
 
-        // Top-level items
+        // 🏠 Home
         $home = NavigationItem::updateOrCreate(
             ['navigation_menu_id' => $menu->id, 'title' => 'Home'],
-            ['url' => '/', 'order' => 1, 'is_active' => true]
+            [
+                'slug' => 'home',
+                'url' => '/',
+                'label' => 'Go to homepage',
+                'target' => '_self',
+                'order' => 1,
+                'is_active' => true,
+                'parent_id' => null,
+            ]
         );
 
+        // ℹ️ About
         $about = NavigationItem::updateOrCreate(
             ['navigation_menu_id' => $menu->id, 'title' => 'About'],
-            // we set slug to use route helper later, or set url to '/about'
-            ['slug' => 'about', 'url' => '/about', 'order' => 2, 'is_active' => true]
+            [
+                'slug' => 'about',
+                'url' => '/about',
+                'label' => 'Learn more about us',
+                'target' => '_self',
+                'order' => 2,
+                'is_active' => true,
+                'parent_id' => null,
+            ]
         );
 
+        // ⚙️ Services
         $services = NavigationItem::updateOrCreate(
             ['navigation_menu_id' => $menu->id, 'title' => 'Services'],
-            ['order' => 3, 'is_active' => true]
+            [
+                'slug' => 'services',
+                'url' => '/services',
+                'label' => 'Our services',
+                'target' => '_self',
+                'order' => 3,
+                'is_active' => true,
+                'parent_id' => null,
+            ]
         );
 
-        // Add children to Services
+        // 🧩 Sub-items under Services
         NavigationItem::updateOrCreate(
             ['navigation_menu_id' => $menu->id, 'title' => 'Consulting'],
-            ['parent_id' => $services->id, 'url' => '/services/consulting', 'order' => 1, 'is_active' => true]
+            [
+                'slug' => 'consulting',
+                'url' => '/services/consulting',
+                'label' => 'Consulting services',
+                'target' => '_self',
+                'order' => 1,
+                'is_active' => true,
+                'parent_id' => $services->id,
+            ]
         );
 
         NavigationItem::updateOrCreate(
             ['navigation_menu_id' => $menu->id, 'title' => 'Development'],
-            ['parent_id' => $services->id, 'url' => '/services/development', 'order' => 2, 'is_active' => true]
+            [
+                'slug' => 'development',
+                'url' => '/services/development',
+                'label' => 'Development projects',
+                'target' => '_self',
+                'order' => 2,
+                'is_active' => true,
+                'parent_id' => $services->id,
+            ]
         );
 
+        // ✉️ Contact
         NavigationItem::updateOrCreate(
             ['navigation_menu_id' => $menu->id, 'title' => 'Contact'],
-            ['url' => '/contact', 'order' => 4, 'is_active' => true]
+            [
+                'slug' => 'contact',
+                'url' => '/contact',
+                'label' => 'Reach out to us',
+                'target' => '_self',
+                'order' => 4,
+                'is_active' => true,
+                'parent_id' => null,
+            ]
         );
     }
 }

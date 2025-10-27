@@ -1,0 +1,23 @@
+<section class="text-gray-700 body-font pt-10">
+    <div class="max-w-7xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+        <div class="flex justify-center text-3xl font-bold text-[#000000] text-center mb-8">
+            <h1>Why <span class="">Us?</span></h1>
+        </div>
+
+        <div class="container py-12 mx-auto">
+            <div id="whyUsGrid" class="flex flex-wrap text-center md:text-left justify-center">
+                @foreach ($whyUsItems as $item)
+                    <div class="p-4 md:w-1/4 sm:w-1/2">
+                        <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                            <div class="flex justify-center">
+                                <img src="{{ asset('storage/' . $item->image_url) }}" class="w-32 mb-3" alt="{{ $item->title }}">
+                            </div>
+                            <h2 class="title-font font-regular text-xl text-black">{{ $item->title }}</h2>
+                            <p class="mt-4 text-black text-md">{{ $item->description }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
