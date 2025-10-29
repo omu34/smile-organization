@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 return [
-'auth' => [
-    'guard' => 'web', // or 'admin' if you use a custom one
-    'pages' => [
-        // 'login' => \Filament\Pages\Auth\login::class,
+    'auth' => [
+        'guard' => 'web',
+        'check' => function ($user) {
+            return $user && $user->email === 'emoyocarol@gmail.com';
+        },
     ],
-],
 
 ];

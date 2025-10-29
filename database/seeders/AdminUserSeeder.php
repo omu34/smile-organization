@@ -14,9 +14,9 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         $admin = [
-            'email' => 'smile@gmail.com',
+            'email' => 'emoyocarol@gmail.com',
             'name'  => 'Smile',
-            'phone' => '+254 724-555-020',
+            'phone' => '+254 715-830-347',
         ];
 
         User::updateOrCreate(
@@ -24,7 +24,7 @@ class AdminUserSeeder extends Seeder
             [
                 'name'              => $admin['name'],
                 'phone'             => $admin['phone'],
-                'password'          => Hash::make('smile123'), // ⚠️ replace with env('ADMIN_PASSWORD') in production
+                'password'          => Hash::make('password'), // ⚠️ replace with env('ADMIN_PASSWORD') in production
                 'avatar'            => null,
                 'email_verified_at' => now(),
             ]

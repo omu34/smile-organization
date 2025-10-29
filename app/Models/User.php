@@ -24,7 +24,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'profile_photo', 'phone', 'avatar',
+        'name',
+        'email',
+        'password',
+        'profile_photo',
+        'phone',
+        'avatar',
         'email_verified_at',
     ];
 
@@ -61,21 +66,24 @@ class User extends Authenticatable
         return Str::of($this->name)
             ->explode(' ')
             ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
+            ->map(fn($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
 
     /**
      * Determine if the user can access the Filament admin panel.
      */
-   
-
-public function canAccessPanel(Panel $panel): bool
-{
-    return true; // Allow all users (for now)
-}
 
 
+    // public function canAccessPanel(Panel $panel): bool
+    // {
+    //     return true; // Allow all users (for now)
+    // }
 
 
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Only allow users with the email 'emoyocarol@gmail.com' to access the admin panel
+        return $this->email === 'emoyocarol@gmail.com';
+    }
 }
