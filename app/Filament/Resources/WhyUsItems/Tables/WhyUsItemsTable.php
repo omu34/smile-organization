@@ -17,7 +17,10 @@ class WhyUsItemsTable
             ->columns([
                 TextColumn::make('title')
                     ->searchable(),
-                ImageColumn::make('image_url'),
+                ImageColumn::make('full_image_url')
+                    ->label('Image')
+                    ->circular() // or use ->square()
+                    ->size(50), // adjust thumbnail size
                 TextColumn::make('order')
                     ->numeric()
                     ->sortable(),

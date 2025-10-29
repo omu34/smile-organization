@@ -64,4 +64,6 @@ class Article extends Model
     {
         return $this->hasOne(Media::class)->where('is_primary', true);
     }
+
+    
 }

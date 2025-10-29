@@ -16,7 +16,10 @@ class ActivitiesTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image')->square(),
+                ImageColumn::make('full_image')
+                    ->label('Image')
+                    ->circular() // or use ->square()
+                    ->size(50), // adjust thumbnail size
                 TextColumn::make('title')->sortable()->searchable(),
                 IconColumn::make('is_visible')->boolean(),
                 TextColumn::make('order')->sortable(),

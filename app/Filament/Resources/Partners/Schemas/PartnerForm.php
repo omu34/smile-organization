@@ -15,7 +15,7 @@ class PartnerForm
         return $schema
             ->components([
                 TextInput::make('name')->required()->maxLength(255),
-                FileUpload::make('logo')
+                FileUpload::make('logo_path')
                     ->image()
                     ->directory('partner-logos')
                     ->disk('public') // ✅ important

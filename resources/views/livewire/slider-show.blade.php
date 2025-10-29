@@ -3,13 +3,9 @@
         <div class="swiper mySwiper  rounded-md overflow-hidden h-auto md:h-[400px]">
             <div class="swiper-wrapper">
                 @foreach ($slider->slides as $slide)
-                    <div class="swiper-slide  bg-cover bg-center relative flex items-center justify-center rounded-md"
-                        style="background-image: url('{{ Str::startsWith($slide->image_url, ['http', '/storage'])
-                            ? $slide->image_url
-                            : asset('storage/' . $slide->image_url) }}')">
-
+                    <div class="swiper-slide opacity-25  bg-cover bg-center relative flex items-center justify-center rounded-md" style="background-image: url('{{ $slide->full_image_url }}')">
                         {{-- Overlay --}}
-                        <div class="absolute inset-0 bg-black rounded-md "></div>
+                        <div class="absolute inset-0 bg-black/70 rounded-md "></div>
 
                         {{-- Content Card --}}
                         <div

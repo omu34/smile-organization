@@ -1,7 +1,7 @@
 <div class="pt-20 pb-10" x-data="{ open: false }" x-on:show-modal.window="open = true"
     x-on:close-modal.window="open = false">
 
-    <div class="max-w-7xl mx-auto px-5">
+    <div class=" mx-auto px-5">
          <div class="max-w-6xl  mx-auto text-center">
                 <h2 class="text-3xl font-bold mb-6">Our Gallery</h2>
                 {{-- <div> --}}
@@ -35,10 +35,10 @@
                     @foreach ($images as $gallery)
                         <div wire:click="showModal({{ $gallery->id }})"
                             class="transition-transform transform hover:scale-105 cursor-pointer relative group">
-                             <img src="{{ asset('storage/' . $gallery->image_path) }}" alt="{{ $gallery->title }}"
+                             <img src="{{ $gallery->full_image_path }}" alt="{{ $gallery->title }}"
                                 class="w-full h-64 md:h-80 object-cover rounded-xl shadow-md transition-transform transform hover:scale-105">
                             <div
-                                class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 flex justify-center items-center text-white text-lg font-semibold transition">
+                                class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 flex justify-center items-center text-white text-lg font-semibold transition">
                                 View
                             </div>
                             <h3 class="mt-2 text-gray-900 font-semibold">{{ $gallery->title }}</h3>

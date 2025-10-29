@@ -1,6 +1,6 @@
 <div>
     <section class="py-8">
-        <div class="max-w-7xl mx-auto px-4">
+        <div class=". mx-auto px-4">
             <div class="mb-6">
                 <h2 class="text-3xl font-bold text-red-700">Featured <span class="text-indigo-900">Articles</span></h2>
             </div>

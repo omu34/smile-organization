@@ -16,7 +16,10 @@ class PartnersTable
     {
         return $table
             ->columns([
-                ImageColumn::make('logo')->square(),
+            ImageColumn::make('full_logo')
+                    ->label('Logo')
+                    ->circular() // or use ->square()
+                    ->size(50), // adjust thumbnail size
             TextColumn::make('name')->searchable()->sortable(),
             TextColumn::make('rating')->sortable(),
             TextColumn::make('reviews_count')->sortable(),

@@ -1,6 +1,5 @@
-<div>
 <div id="aboutus" class="bg-white">
-    <div class="max-w-7xl mx-auto py-16">
+    <div class="     mx-auto py-16">
         <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-4 md:px-0">
             <div class="max-w-lg">
                 <h2 class="text-3xl font-bold text-black mb-6">About <span class="">Us</span></h2>
@@ -20,11 +19,12 @@
             <div class="mt-12 md:mt-0 flex items-center justify-center">
                 @if ($article && $article->primaryMedia)
                     @php($m = $article->primaryMedia)
-                    @if($m->type === 'image' && $m->file_path)
-                        <img src="{{ asset('storage/' . $m->file_path) }}" alt="{{ $article->title }}" class="object-cover rounded-lg shadow-md max-h-64 w-full" />
+                     @if ($m->type === 'image' && $m->file_path)
+                        <img src="{{ $m->full_image_url }}" alt="{{ $article->title }}"
+                            class="object-cover rounded-lg shadow-md max-h-64 w-full" />
                     @elseif($m->type === 'video_local' && $m->file_path)
                         <video controls class="rounded-lg shadow-md max-h-64 w-full">
-                            <source src="{{ asset('storage/' . $m->file_path) }}" type="video/mp4">
+                            <source src="{{ $m->full_image_url }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     @elseif($m->type === 'youtube' && $m->youtube_id)
@@ -38,4 +38,3 @@
     </div>
 </div>
 
-</div>

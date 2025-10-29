@@ -1,4 +1,4 @@
-<div class="py-12 max-w-6xl mx-auto">
+<div class="py-12  mx-auto">
     <div class="">
         <h2 class="text-3xl font-bold text-[#000000] mb-8 text-center">Featured <span class="">Articles</span></h2>
 
@@ -6,13 +6,13 @@
             @foreach ($articles as $article)
                 <div class="bg-white shadow rounded-lg overflow-hidden">
                     @if ($article->media_type === 'image')
-                        <img src="{{ asset('storage/' . $article->media_url) }}" class="w-full h-48 object-cover">
+                        <img src="{{ asset('storage/' . $article->media_url) }}" class="w-full h-56 object-cover">
                     @elseif ($article->media_type === 'video')
-                        <video controls class="w-full h-48 object-cover">
+                        <video controls class="w-full h-56 object-cover">
                             <source src="{{ asset('storage/' . $article->media_url) }}" type="video/mp4">
                         </video>
                     @elseif ($article->media_type === 'youtube')
-                        <iframe class="w-full h-48" src="https://www.youtube.com/embed/{{ $article->youtube_id }}" allowfullscreen></iframe>
+                        <iframe class="w-full h-56" src="https://www.youtube.com/embed/{{ $article->youtube_id }}" allowfullscreen></iframe>
                     @endif
 
                     <div class="p-4">

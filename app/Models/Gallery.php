@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -21,15 +22,17 @@ class Gallery extends Model
         'is_featured',
     ];
 
-    public function getImageUrlAttribute(): ?string
+    protected $appends = ['full_image_path'];
+    public function getFullImageUrlAttribute(): string
     {
-        $path = $this->getAttribute('image_path');
-
-        if (! $path) {
-            return null;
+        // Check if image_path is already a full URL (e.g., http://) or starts with /storage
+        if (Str::startsWith($this->image_path, ['http', '/storage'])) {
+            return $this->image_path;
         }
 
-        return asset('storage/' . $path);
+        // Otherwise, assume it's a relative path from the 'public' disk
+        // and generate a URL to it using the asset helper (avoid calling Filesystem::url()).
+        return asset('storage/' . ltrim($this->image_path, '/'));
     }
 
     // Spatie Slug configuration

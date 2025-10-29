@@ -17,21 +17,22 @@ class ResourceItemsTable
     {
         return $table
             ->columns([
-               ImageColumn::make('image_path')
-                    ->square()
-                    ->label('Image'),
+                ImageColumn::make('full_image_path')
+                    ->label('Image')
+                    ->circular() // or use ->square()
+                    ->size(50), // adjust thumbnail size
 
 
-                    TextColumn::make('video_path')
-    ->label('Video')
-    ->limit(30)
-    ->tooltip(fn ($state) => $state),
+                TextColumn::make('video_path')
+                    ->label('Video')
+                    ->limit(30)
+                    ->tooltip(fn($state) => $state),
 
 
-                 ImageColumn::make('image_path')->square(),
-            TextColumn::make('platform_name'),
-            TextColumn::make('url')->limit(30),
-            IconColumn::make('is_active')->boolean(),
+                ImageColumn::make('image_path')->square(),
+                TextColumn::make('platform_name'),
+                TextColumn::make('url')->limit(30),
+                IconColumn::make('is_active')->boolean(),
             ])
             ->defaultSort('position', 'asc')
             ->filters([

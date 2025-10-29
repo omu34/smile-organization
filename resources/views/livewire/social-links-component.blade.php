@@ -4,7 +4,7 @@
            target="_blank"
            title="{{ $link->platform_name }}"
            class="hover:opacity-80 transition-transform transform hover:scale-110">
-            <img src="{{ asset('storage/' . $link->image_path) }}"
+            <img src="{{ $link->full_image_path }}"
                  alt="{{ $link->platform_name }}"
                  class="w-8 h-8 object-contain rounded-md">
         </a>

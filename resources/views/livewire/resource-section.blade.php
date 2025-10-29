@@ -1,5 +1,5 @@
 <div data-aos="fade-up" data-aos-duration="1000">
-    <section class="pt-20 pb-5 mx-auto max-w-7xl" id="our-resources">
+    <section class="pt-20 pb-5 mx-auto " id="our-resources">
         <div class="w-full px-4">
             <div class="max-w-6xl  mx-auto text-center">
                 <h2 class="text-3xl font-bold mb-6">Our Resources</h2>
@@ -22,7 +22,7 @@
                         {{-- Image --}}
                         <div data-aos="{{ $resource->alignment === 'left' ? 'flip-left' : 'flip-right' }}"
                             class="w-full md:w-1/2 flex-shrink-0">
-                            <img src="{{ asset('storage/' . $resource->image_path) }}" alt="{{ $resource->title }}"
+                            <img src="{{ $resource->full_image_path }}" alt="{{ $resource->title }}"
                                 class="w-full h-64 md:h-80 object-cover rounded-xl shadow-md transition-transform transform hover:scale-105">
                         </div>
 

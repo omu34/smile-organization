@@ -1,6 +1,6 @@
 <div>
    <section class="bg-white">
-    <div class="max-w-7xl mx-auto py-8 lg:py-20" data-aos="fade-up" data-aos-duration="1000">
+    <div class=" mx-auto py-8 lg:py-20" data-aos="fade-up" data-aos-duration="1000">
         <div class="max-w-2xl lg:max-w-4xl mx-auto text-center">
             <h2 class="text-3xl font-extrabold text-[#000000]" id="contactUs">
                 Visit Our <span class="">Location</span>

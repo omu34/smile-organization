@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
             ContactInfoSeeder::class,
             WhyUsItemSeeder::class,
             AboutSeeder::class,
+            NavigationLogoHeaderSeeder::class,
         ]);
     }
 }

@@ -14,7 +14,7 @@ class FooterSeeder extends Seeder
     {
         FooterInfo::create([
             'company_name' => 'Your Company',
-            'title' => 'About Us',
+            'title' => 'images/smile-white-logo.jpg',
             'description' => 'We are dedicated to providing quality products and services that meet your needs.',
             'address' => '1234 Elm Street, Nairobi, Kenya',
             'phone' => '+254 700 123 456',

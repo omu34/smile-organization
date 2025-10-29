@@ -16,10 +16,18 @@ class BeneficiariesTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image_path')->circular(),
-               TextColumn::make('title')->searchable()->sortable(),
-               TextColumn::make('published_at')->date()->sortable(),
-               IconColumn::make('is_published')->boolean(),
+                // ✅ Display the image thumbnail
+                ImageColumn::make('full_image_path')
+                    ->label('Image')
+                    ->circular() // or use ->square()
+                    ->size(50), // adjust thumbnail size
+
+                TextColumn::make('title')->searchable()->sortable(),
+                TextColumn::make('slug')->toggleable(),
+                TextColumn::make('published_at')->date(),
+                IconColumn::make('is_published')
+                    ->boolean()
+                    ->label('Published'),
             ])
             ->defaultSort('published_at', 'desc')
             ->filters([

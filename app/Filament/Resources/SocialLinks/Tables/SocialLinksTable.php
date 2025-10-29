@@ -16,7 +16,10 @@ class SocialLinksTable
     {
         return $table
             ->columns([
-                 ImageColumn::make('image_path')->square(),
+            ImageColumn::make('full_image_path')
+                    ->label('Image')
+                    ->circular() // or use ->square()
+                    ->size(50), // adjust thumbnail size
             TextColumn::make('platform_name'),
             TextColumn::make('url')->limit(30),
             IconColumn::make('is_active')->boolean(),

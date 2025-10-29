@@ -17,6 +17,11 @@ class FeaturedArticlesTable
     {
         return $table
             ->columns([
+
+                ImageColumn::make('full_image_path')
+                    ->label('Image')
+                    ->circular() // or use ->square()
+                    ->size(50), // adjust thumbnail size
                 ImageColumn::make('thumbnail_url')->label('Thumbnail')->square(),
                 TextColumn::make('title')->searchable()->sortable(),
                 BadgeColumn::make('media_type')->colors([

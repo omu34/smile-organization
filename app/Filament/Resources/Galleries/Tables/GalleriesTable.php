@@ -15,7 +15,10 @@ class GalleriesTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image_path')->label('Image')->square(),
+                ImageColumn::make('full_image_path')
+                    ->label('Image')
+                    ->circular() // or use ->square()
+                    ->size(50), // adjust thumbnail size
                 TextColumn::make('title')->searchable()->sortable(),
                 TextColumn::make('category')->sortable(),
                 TextColumn::make('created_at')->date(),

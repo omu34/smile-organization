@@ -1,10 +1,12 @@
 <footer class="bg-white text-black py-12 px-6 md:px-16 shadow-md shadow-emerald-200">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+    <div class=" mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
         {{-- Footer Info Section --}}
         <div class="space-y-4 text-center sm:text-left">
             @if ($footerInfo)
-                <h2 class="text-xl font-bold">{{ $footerInfo->title ?? 'About Us' }}</h2>
+
+            <livewire:navigation-logo-header-component />
+                {{-- <h2 class="text-xl font-bold">{{ $footerInfo->title ?? 'About Us' }}</h2> --}}
                 <p class="leading-relaxed text-gray-700">
                     {{ $footerInfo->description ?? '' }}
                 </p>

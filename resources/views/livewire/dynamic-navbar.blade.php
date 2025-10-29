@@ -1,12 +1,13 @@
 <div class="sticky top-0 z-50 bg-white border-b" x-data="{ mobileOpen: false, openMenu: null }">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             {{-- Left: Logo --}}
             <div class="flex-shrink-0">
-                <a href="{{ url('/') }}">
-                    <img src="{{ asset('images/smile-logo.jpg') }}" alt="Logo"
-                        class="h-10 w-10 rounded-full object-cover">
-                </a>
+                <livewire:navigation-logo-header-component />
+                {{-- <a href="{{ url('/') }}">
+                    <img src="{{ asset('images/smile-white-logo.jpg') }}" alt="Logo"
+                        class="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover">
+                </a> --}}
             </div>
 
             {{-- Center: Desktop menu --}}
