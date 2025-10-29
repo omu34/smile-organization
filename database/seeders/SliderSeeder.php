@@ -29,7 +29,7 @@ class SliderSeeder extends Seeder
             [
                 'title' => 'Welcome to Our Organization',
                 'description' => 'Making impact through innovation and service.',
-                'image_url' => 'slides/welcome.jpg',
+                'image_url' => 'imagess/akakamega-county.jpg',
                 'button_text' => 'Learn More',
                 'button_link' => '/about',
                 'position' => 1,
@@ -37,7 +37,7 @@ class SliderSeeder extends Seeder
             [
                 'title' => 'Join Our Mission',
                 'description' => 'Together we build a better future.',
-                'image_url' => 'slides/mission.jpg',
+                'image_url' => 'imagess/asubcounty.jpg',
                 'button_text' => 'Join Us',
                 'button_link' => '/contact',
                 'position' => 2,
@@ -45,7 +45,7 @@ class SliderSeeder extends Seeder
             [
                 'title' => 'Empowering Communities',
                 'description' => 'Driven by purpose, guided by compassion.',
-                'image_url' => 'slides/community.jpg',
+                'image_url' => 'imagess/family.webp',
                 'button_text' => 'Get Involved',
                 'button_link' => '/programs',
                 'position' => 3,
@@ -68,7 +68,7 @@ class SliderSeeder extends Seeder
             [
                 'title' => 'Who We Are',
                 'description' => 'A team of passionate individuals dedicated to making an impact.',
-                'image_url' => 'slides/about-team.jpg',
+                'image_url' => 'imagess/aelder.jpg',
                 'button_text' => 'Meet the Team',
                 'button_link' => '/team',
                 'position' => 1,
@@ -76,7 +76,7 @@ class SliderSeeder extends Seeder
             [
                 'title' => 'Our Story',
                 'description' => 'From humble beginnings to a movement that transforms lives.',
-                'image_url' => 'slides/about-story.jpg',
+                'image_url' => 'imagess/afunction.jpg',
                 'button_text' => 'Read Our Story',
                 'button_link' => '/about/story',
                 'position' => 2,
@@ -84,7 +84,7 @@ class SliderSeeder extends Seeder
             [
                 'title' => 'Our Values',
                 'description' => 'Integrity, service, and innovation at the heart of everything we do.',
-                'image_url' => 'slides/about-values.jpg',
+                'image_url' => 'imagess/agirleducation.jpg',
                 'button_text' => 'Discover More',
                 'button_link' => '/values',
                 'position' => 3,

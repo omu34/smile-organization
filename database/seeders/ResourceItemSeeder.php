@@ -16,7 +16,7 @@ class ResourceItemSeeder extends Seeder
                 'slug' => 'educational-materials',
                 'description' => 'We provide curated materials to help parents and caregivers support children’s growth.',
                 'extra_description' => 'Resources include e-books, guides, and videos.',
-                'image_path' => 'resources/sample1.jpg',
+                'image_path' => 'imagess/resource.jpg',
                 'video_path' => null, // <-- Add this
                 'alignment' => 'left',
                 'position' => 1,
@@ -28,9 +28,21 @@ class ResourceItemSeeder extends Seeder
                 'slug' => 'recreational-activities',
                 'description' => 'Fun, inclusive events that foster development and connection.',
                 'extra_description' => null,
-                'image_path' => null, // <-- Add this
-                'video_path' => 'resources/sample-video.mp4',
+                'image_path' => 'imagess/bomet.jpg', // <-- Add this
+                'video_path' => 'imagess/bomet.jpg',
                 'alignment' => 'right',
+                'position' => 2,
+                'is_published' => true,
+                'published_at' => now(),
+            ],
+            [
+                'title' => 'Activities',
+                'slug' => 'activities',
+                'description' => 'Fun, inclusive events that foster development and connection.',
+                'extra_description' => null,
+                'image_path' => 'imagess/girls.jpg', // <-- Add this
+                'video_path' => 'imagess/girls.jpg',
+                'alignment' => 'left',
                 'position' => 2,
                 'is_published' => true,
                 'published_at' => now(),

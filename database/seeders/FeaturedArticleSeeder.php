@@ -15,7 +15,7 @@ class FeaturedArticleSeeder extends Seeder
             'slug' => Str::slug('Understanding Neurodiversity: Beyond the Labels'),
             'excerpt' => 'Exploring the concept of neurodiversity and the strengths it brings.',
             'media_type' => 'image',
-            'media_url' => 'slides/diaperss.jpg',
+            'media_url' => 'imagess/diaperss.jpg',
             'is_published' => true,
         ]);
 
@@ -33,7 +33,7 @@ class FeaturedArticleSeeder extends Seeder
             'slug' => Str::slug('Building a Collaborative Community for Neurodiversity'),
             'excerpt' => 'The importance of collaboration in supporting neurodivergent individuals.',
             'media_type' => 'video',
-            'media_url' => 'videos/community.mp4',
+            'media_url' => 'imagesss/resource2.mp4',
             'is_published' => true,
         ]);
     }

@@ -13,12 +13,12 @@ class FooterSeeder extends Seeder
     public function run(): void
     {
         FooterInfo::create([
-            'company_name' => 'Your Company',
-            'title' => 'images/smile-white-logo.jpg',
+            'company_name' => 'Smile For NeuroDiversity',
+            'title' => 'imagess/smile-white-logo.jpg',
             'description' => 'We are dedicated to providing quality products and services that meet your needs.',
             'address' => '1234 Elm Street, Nairobi, Kenya',
-            'phone' => '+254 700 123 456',
-            'email' => 'info@yourcompany.com',
+            'phone' => '+254 715 830 347',
+            'email' => 'smile4neurod@gmail.com',
         ]);
 
         FooterCta::create([
@@ -32,21 +32,21 @@ class FooterSeeder extends Seeder
             [
                 'platform_name' => 'Facebook',
                 'url' => 'https://facebook.com',
-                'image_path' => 'social-icons/facebook.png',
+                'image_path' => 'imagess/fb.png',
                 'is_active' => true,
                 'order' => 1,
             ],
             [
                 'platform_name' => 'Instagram',
                 'url' => 'https://instagram.com',
-                'image_path' => 'social-icons/instagram.png',
+                'image_path' => 'imagess/ai1.jpg',
                 'is_active' => true,
                 'order' => 2,
             ],
             [
                 'platform_name' => 'Twitter',
                 'url' => 'https://twitter.com',
-                'image_path' => 'social-icons/twitter.png',
+                'image_path' => 'imagess/x-logo.png',
                 'is_active' => true,
                 'order' => 3,
             ],

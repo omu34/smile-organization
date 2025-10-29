@@ -17,7 +17,7 @@ class NavigationLogoHeaderSeeder extends Seeder
             NavigationLogoHeader::updateOrCreate(
                 // ['shop_id' => $shop->id],
                 [
-                    'logo_path' => 'logos/smile-white-logo.jpg',
+                    'logo_path' => 'imagess/smile-logo (1).jpg',
                     'link' => url('/'),
                 ]
             );

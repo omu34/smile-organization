@@ -12,26 +12,26 @@ class ActivitySeeder extends Seeder
         $activities = [
             [
                 'title' => 'Smile with us',
-                'image' => 'images/smile-logo.jpg',
+                'image' => 'imagess/smile-logo.jpg',
                 'description' => 'Make sure when you smile make others smile too.',
                 'order' => 1,
             ],
             [
                 'title' => 'From this',
-                'image' => 'images/beneficiary.jpg',
+                'image' => 'imagess/beneficiary.jpg',
                 'description' => 'Tight life in villages but Smile for Neuro-Diversity makes sure it reaches you.',
                 'order' => 2,
             ],
             [
                 'title' => 'To this',
-                'image' => 'images/abenefeciary.jpg',
+                'image' => 'imagess/abenefeciary.jpg',
                 'description' => 'Was really a tough journey and this is how Smile transformed me.',
                 'order' => 3,
             ],
         ];
 
         foreach ($activities as $activity) {
-            Activity::create($activity);
+            Activity::updateOrCreate($activity);
         }
     }
 }

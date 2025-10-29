@@ -64,7 +64,7 @@
                     ✕
                 </button>
 
-                <img src="{{ Storage::url($selectedGallery->image_path) }}" alt="{{ $selectedGallery->title }}"
+                <img src="{{ Storage::url($selectedGallery->full_image_path) }}" alt="{{ $selectedGallery->title }}"
                     class="w-full object-contain max-h-[80vh]">
 
                 <div class="p-4 text-center">

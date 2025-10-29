@@ -17,7 +17,7 @@ class AboutSeeder extends Seeder
 
         $article->media()->create([
             'type' => 'image',
-            'file_path' => 'aboutus/hero.jpg',
+            'file_path' => 'imagess/hero.jpg',
             'is_primary' => true,
         ]);
 
@@ -28,7 +28,7 @@ class AboutSeeder extends Seeder
             ],
             [
                 'type' => 'video_local',
-                'file_path' => 'aboutus/story.mp4',
+                'file_path' => 'imagess/home.mp4',
             ],
         ]);
     }

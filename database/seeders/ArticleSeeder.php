@@ -24,7 +24,7 @@ class ArticleSeeder extends Seeder
         $a->media()->createMany([
             [
                 'type' => 'image',
-                'file_path' => 'articles/diaperss.jpg',
+                'file_path' => 'imagess/diaperss.jpg',
                 'is_primary' => true,
                 'position' => 1,
             ],
@@ -42,13 +42,13 @@ class ArticleSeeder extends Seeder
         $b->media()->createMany([
             [
                 'type' => 'video_local',
-                'file_path' => 'articles/sample-video.mp4',
+                'file_path' => 'imagess/resource2.mp4',
                 'is_primary' => true,
                 'position' => 1,
             ],
             [
                 'type' => 'image',
-                'file_path' => 'articles/smile16.jpg',
+                'file_path' => 'imagess/smiless.jpg',
                 'is_primary' => false,
                 'position' => 2,
             ],
@@ -66,13 +66,13 @@ class ArticleSeeder extends Seeder
         $c->media()->createMany([
             [
                 'type' => 'youtube',
-                'youtube_url' => 'https://youtu.be/VIDEO_ID_EXAMPLE',
+                'youtube_url' => 'https://www.youtube.com/watch?v=6IMbvmG5rDA',
                 'is_primary' => true,
                 'position' => 1,
             ],
             [
                 'type' => 'image',
-                'file_path' => 'articles/smile17.jpg',
+                'file_path' => 'images/smile17.jpg',
                 'position' => 2,
             ],
         ]);

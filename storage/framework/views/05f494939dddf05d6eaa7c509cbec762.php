@@ -5,12 +5,14 @@
                 <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $slider->slides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="swiper-slide opacity-25  bg-cover bg-center relative flex items-center justify-center rounded-md" style="background-image: url('<?php echo e($slide->full_image_url); ?>')">
                         
-                        <div class="absolute inset-0 bg-black/70 rounded-md "></div>
+                        <div class="absolute inset-0 bg-black/40 rounded-md "></div>
 
                         
                         <div
-                            class="relative justify-content-center items-center z-10 bg-transparent md:mt-20 backdrop-blur-md p-4 md:p-6 rounded-md text-center text-white max-w-lg mx-auto shadow-xl">
-                            <h2 class="text-xl md:text-2xl font-semibold mb-2 leading-tight drop-shadow-lg">
+                            class="relative justify-content-center items-center z-10  md:mt-20  p-4 md:p-6 rounded-md text-center text-white max-w-lg mx-auto shadow-xl">
+                            <h2 class="text-xl md:text-2xl font-semibold mb-2 ">
+
+                                
                                 <?php echo e($slide->title); ?>
 
                             </h2>

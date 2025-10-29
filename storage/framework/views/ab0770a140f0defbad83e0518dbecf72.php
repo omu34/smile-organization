@@ -65,7 +65,7 @@
                     ✕
                 </button>
 
-                <img src="<?php echo e(Storage::url($selectedGallery->image_path)); ?>" alt="<?php echo e($selectedGallery->title); ?>"
+                <img src="<?php echo e(Storage::url($selectedGallery->full_image_path)); ?>" alt="<?php echo e($selectedGallery->title); ?>"
                     class="w-full object-contain max-h-[80vh]">
 
                 <div class="p-4 text-center">
