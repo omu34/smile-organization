@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -67,11 +68,13 @@ class User extends Authenticatable
     /**
      * Determine if the user can access the Filament admin panel.
      */
-    public function canAccessPanel(Panel $panel): bool
-    {
-        // Allow only the seeded admin
-        return $this->email === 'smile@gmail.com';
-    }
+   
+
+public function canAccessPanel(Panel $panel): bool
+{
+    return true; // Allow all users (for now)
+}
+
 
 
 
