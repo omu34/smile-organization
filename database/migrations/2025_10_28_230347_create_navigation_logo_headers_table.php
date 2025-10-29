@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('navigation_logo_headers', function (Blueprint $table) {
             $table->id();
-            $table->string('logo'); // Stores the path to the logo image
+            $table->string('logo_path'); // Stores the path to the logo image
             $table->string('link')->nullable()->default('/'); // Stores the URL the logo points to
             $table->timestamps();
         });

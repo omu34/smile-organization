@@ -1,46 +1,74 @@
 <?php
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class NavigationLogoHeader extends Model
 {
-     use HasFactory;
-    protected $fillable = [
-        'logo',
-        'link',
+    use HasFactory;
 
+    protected $fillable = [
+        'logo_path',
+        'link',
+    ];
+
+    protected $appends = [
+        'full_logo_url',
+        'full_link_url',
     ];
 
     /**
-     * Get the URL for the logo.
+     * Accessor: Get the full logo URL.
      */
-    protected function getLogoUrlAttribute(): ?string // 💡 use nullable string for safety
+    public function getFullLogoUrlAttribute(): ?string
     {
-        // Return null if the 'logo' attribute is empty, to prevent errors.
-        if (empty($this->attributes['logo'])) {
+        $logo = $this->logo_path;
+
+        if (!$logo) {
             return null;
         }
 
-        return Storage::url($this->attributes['logo']);
+        // Already a valid URL or public path
+        if (Str::startsWith($logo, ['http://', 'https://', '/storage'])) {
+            return $logo;
+        }
+
+        // Build full URL from storage
+        return asset('storage/' . ltrim($logo, '/'));
     }
 
     /**
-     * Mutator to ensure the link has a valid protocol prefix.
+     * Accessor: Get the full link URL.
      */
-    protected function setLinkAttribute(string $value): void
+    public function getFullLinkUrlAttribute(): ?string
     {
-        if (!Str::startsWith($value, ['http://', 'https://'])) {
+        $link = $this->link;
+
+        if (!$link) {
+            return null;
+        }
+
+        // Already valid
+        if (Str::startsWith($link, ['http://', 'https://'])) {
+            return $link;
+        }
+
+        // Internal path
+        return url($link);
+    }
+
+    /**
+     * Mutator: Ensure valid protocol for link.
+     */
+    public function setLinkAttribute($value): void
+    {
+        if (!empty($value) && !Str::startsWith($value, ['http://', 'https://'])) {
             $this->attributes['link'] = 'https://' . $value;
         } else {
             $this->attributes['link'] = $value;
         }
     }
-
-
-
 }

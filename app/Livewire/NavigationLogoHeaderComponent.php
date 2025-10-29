@@ -7,16 +7,18 @@ use App\Models\NavigationLogoHeader;
 
 class NavigationLogoHeaderComponent extends Component
 {
-    public $logo;
-    public $link;
+    public ?string $logo = null;
+    public ?string $link = null;
 
     public function mount(): void
     {
+        // Fetch the first record
         $record = NavigationLogoHeader::first();
 
+        // Use the accessor methods from your model
         if ($record) {
-            $this->logo = $record->logo_url ?? $record->logo;
-            $this->link = $record->link;
+            $this->logo = $record->full_logo_url;
+            $this->link = $record->full_link_url;
         }
     }
 
@@ -25,3 +27,4 @@ class NavigationLogoHeaderComponent extends Component
         return view('livewire.navigation-logo-header-component');
     }
 }
+

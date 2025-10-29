@@ -19,10 +19,10 @@ class NavigationLogoHeaderResource extends Resource
     protected static ?string $model = NavigationLogoHeader::class;
 
     protected static string | \UnitEnum | null $navigationGroup = 'Site Navigation';
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-bars-3';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cog-6-tooth';
 
-    protected static ?string $recordTitleAttribute = 'Smile';
-    protected static ?string $label = 'Navigation Menu';
+    protected static ?string $recordTitleAttribute = 'NavLogos';
+    protected static ?string $label = 'Navigation Logo';
 
     public static function form(Schema $schema): Schema
     {

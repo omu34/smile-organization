@@ -11,15 +11,12 @@ class NavigationLogoHeaderForm
     public static function configure(Schema $schema): Schema
     {
         return $schema->components([
-            FileUpload::make('logo')
-                ->disk('public')
-                ->directory('logos')
-                ->image()
-                ->maxSize(60)
-                ->imagePreviewHeight('30')
-                ->loadingIndicatorPosition('left')
-                ->panelLayout('compact')
-                ->required(fn($record) => $record === null),
+            FileUpload::make('image_path')
+                    ->image()
+                    ->directory('socials')
+                    ->disk('public') 
+                    ->visibility('public')
+                    ->imagePreviewHeight('150'),
 
             TextInput::make('link')
                 ->label('Logo URL')
