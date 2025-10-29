@@ -84,7 +84,7 @@ class SliderSeeder extends Seeder
             [
                 'title' => 'Our Values',
                 'description' => 'Integrity, service, and innovation at the heart of everything we do.',
-                'image_url' => 'imagess/agirleducation.jpg',
+                'image_url' => 'imagess/aschool.jpg',
                 'button_text' => 'Discover More',
                 'button_link' => '/values',
                 'position' => 3,
