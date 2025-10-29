@@ -55,7 +55,18 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean', 
         ];
+    }
+
+
+
+
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Check if the authenticated user has the is_admin flag set
+        return $this->is_admin;
     }
 
     /**
@@ -81,9 +92,5 @@ class User extends Authenticatable
     // }
 
 
-    public function canAccessPanel(Panel $panel): bool
-    {
-        // Only allow users with the email 'emoyocarol@gmail.com' to access the admin panel
-        return $this->email === 'emoyocarol@gmail.com';
-    }
+   
 }

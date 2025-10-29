@@ -25,9 +25,13 @@ class AdminUserSeeder extends Seeder
                 'name'              => $admin['name'],
                 'phone'             => $admin['phone'],
                 'password'          => Hash::make('password'), // ⚠️ replace with env('ADMIN_PASSWORD') in production
+                 'is_admin'          => true, // 👈 New admin flag
+       
                 'avatar'            => null,
                 'email_verified_at' => now(),
             ]
         );
+
+        
     }
 }
