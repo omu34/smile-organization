@@ -55,18 +55,22 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'is_admin' => 'boolean', 
+            'is_admin' => 'boolean',
         ];
     }
 
 
-
-
-
     public function canAccessPanel(Panel $panel): bool
     {
-        // Check if the authenticated user has the is_admin flag set
-        return $this->is_admin;
+        // This logic grants access to the 'admin' panel.
+        // You can add your own logic here, e.g., checking a role:
+        // return $this->hasRole('admin');
+
+        // Or checking for a verified email:
+        // return $this->hasVerifiedEmail();
+
+        // For now, to test, you can simply allow all logged-in users:
+        return true;
     }
 
     /**
@@ -92,5 +96,5 @@ class User extends Authenticatable
     // }
 
 
-   
+
 }
