@@ -51,6 +51,28 @@ class GalleryForm
                             ->imagePreviewHeight('150')
                             ->required(),
                     ]),
+
+                //     TextInput::make('title')
+                //     ->label('Image Title')
+                //     ->required()
+                //     ->maxLength(255),
+
+                // TextInput::make('category')
+                //     ->label('Category')
+                //     ->maxLength(255)
+                //     ->placeholder('e.g., Events, Therapies, Recreation'),
+
+                // FileUpload::make('image')
+                //     ->label('Gallery Image')
+                //     ->image()
+                //     ->directory('gallery')
+                //     ->maxSize(2048)
+                //     ->required(),
+
+                // Textarea::make('description')
+                //     ->label('Description')
+                //     ->rows(3)
+                //     ->placeholder('Short description of the image')])
             ]);
     }
 }

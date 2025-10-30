@@ -1,5 +1,5 @@
-<div class="sticky top-0 z-50 bg-white border-b" x-data="{ mobileOpen: false, openMenu: null }">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8">
+<div class="sticky top-0 z-50 bg-gray-100 mt-0.5 border-b" x-data="{ mobileOpen: false, openMenu: null }">
+    <div class="">
         <div class="flex items-center justify-between h-16">
             
             <div class="flex-shrink-0">
@@ -19,7 +19,6 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
-                
             </div>
 
             

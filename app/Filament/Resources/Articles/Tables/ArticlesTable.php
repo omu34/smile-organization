@@ -15,10 +15,19 @@ class ArticlesTable
     {
         return $table
             ->columns([
-                TextColumn::make('title')->searchable()->sortable(),
-                IconColumn::make('is_featured')->boolean()->label('Featured'),
-                TextColumn::make('reading_time_minutes')->label('Mins'),
-                TextColumn::make('created_at')->date(),
+                TextColumn::make('title')
+                    ->label('Title')
+                    ->sortable()
+                    ->searchable(),
+
+                TextColumn::make('slug')
+                    ->label('Slug')
+                    ->searchable(),
+
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->dateTime('M d, Y')
+                    ->sortable(),
             ])
             ->filters([
                 //

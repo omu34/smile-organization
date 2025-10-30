@@ -8,11 +8,15 @@ use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-
 class Gallery extends Model
 {
     use HasFactory, HasSlug;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'title',
         'slug',
@@ -22,28 +26,65 @@ class Gallery extends Model
         'is_featured',
     ];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
     protected $appends = ['full_image_path'];
-    public function getFullImageUrlAttribute(): string
-    {
-        // Check if image_path is already a full URL (e.g., http://) or starts with /storage
-        if (Str::startsWith($this->image_path, ['http', '/storage'])) {
-            return $this->image_path;
-        }
 
-        // Otherwise, assume it's a relative path from the 'public' disk
-        // and generate a URL to it using the asset helper (avoid calling Filesystem::url()).
-        return asset('storage/' . ltrim($this->image_path, '/'));
-    }
-
-    // Spatie Slug configuration
+    /**
+     * Get the options for generating the slug.
+     */
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
+
+    /**
+     * Accessor for full_image_path
+     *
+     * This automatically creates the 'full_image_path' attribute
+     * by pointing to the file in the public storage.
+     */
+    public function getFullImagePathAttribute(): ?string
+    {
+        if (empty($this->image_path)) {
+            return null;
+        }
+
+        // If it's already a full URL, return it
+        if (Str::startsWith($this->image_path, ['http', '/storage'])) {
+            return $this->image_path;
+        }
+
+        // Otherwise, generate the full URL from the public storage disk
+        return asset('storage/' . ltrim($this->image_path, '/'));
+    }
 }
 
 
 
+// app/Models/Gallery.php
+// namespace App\Models;
+
+// use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Support\Facades\Storage;
+
+// class Gallery extends Model
+// {
+//     use HasFactory;
+
+//     protected $fillable = ['title', 'category', 'image', 'description'];
+
+//     protected $appends = ['full_image_path'];
+
+//     public function getFullImagePathAttribute()
+//     {
+//         return Storage::url($this->image);
+//     }
+// }
 

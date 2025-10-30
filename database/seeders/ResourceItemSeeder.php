@@ -28,8 +28,8 @@ class ResourceItemSeeder extends Seeder
                 'slug' => 'recreational-activities',
                 'description' => 'Fun, inclusive events that foster development and connection.',
                 'extra_description' => null,
-                'image_path' => 'imagess/bomet.jpg', // <-- Add this
-                'video_path' => 'imagess/bomet.jpg',
+                'image_path' => 'imagess/party.jpg', // <-- Add this
+                'video_path' => 'imagess/resource2.mp4',
                 'alignment' => 'right',
                 'position' => 2,
                 'is_published' => true,

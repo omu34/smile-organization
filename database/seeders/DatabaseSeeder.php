@@ -37,13 +37,11 @@ class DatabaseSeeder extends Seeder
             BeneficiarySeeder::class,
             PartnerSeeder::class,
             FooterSeeder::class,
-            AboutSeeder::class,
             ArticleSeeder::class,
             FeaturedArticleSeeder::class,
             VisitUsSeeder::class,
             ContactInfoSeeder::class,
             WhyUsItemSeeder::class,
-            AboutSeeder::class,
             NavigationLogoHeaderSeeder::class,
         ]);
     }

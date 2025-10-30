@@ -2,9 +2,9 @@
 
 @section('content')
     <livewire:slider-show slug="about-page-slider" />
-    <div class="mx-auto max-w-7xl px-5">
+    <div class="mx-auto ">
         <livewire:dynamic-navbar />
-        <livewire:about-section />
+        <livewire:about-us />
         <livewire:featured-articles-section />
         <livewire:why-us-section />
         <livewire:visit-us-section />

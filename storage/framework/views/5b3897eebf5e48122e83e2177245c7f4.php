@@ -12,7 +12,7 @@
 
             </div>
 
-            <section class="w-full mx-auto py-10 bg-white rounded-xl px-6 space-y-12">
+            <section class="w-full mx-auto py-10 bg-white rounded-xl  space-y-12">
                 <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $resources; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $resource): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div
                         class="flex flex-col md:flex-row items-center gap-8

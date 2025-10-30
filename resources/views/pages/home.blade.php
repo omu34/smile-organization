@@ -11,7 +11,6 @@
         <livewire:partners-section />
         <livewire:gallery-section />
         <livewire:beneficiary-section />
-
     </div>
     <livewire:footer-section />
 @endsection
