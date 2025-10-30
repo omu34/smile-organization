@@ -12,6 +12,7 @@ class ArticleSeeder extends Seeder
     public function run(): void
     {
         Storage::makeDirectory('public/aboutus');
+        Article::truncate(); // 👈 clears table before seeding
 
         $article = Article::create([
             'title' => 'About Us',
