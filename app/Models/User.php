@@ -60,17 +60,14 @@ class User extends Authenticatable
     }
 
 
-    public function canAccessPanel(Panel $panel): bool
+/**
+     * Determines if the user can access the Filament admin panel.
+     * This is the method that resolves the 403 Forbidden error.
+     */
+    public function canAccessPanel(): bool
     {
-        // This logic grants access to the 'admin' panel.
-        // You can add your own logic here, e.g., checking a role:
-        // return $this->hasRole('admin');
-
-        // Or checking for a verified email:
-        // return $this->hasVerifiedEmail();
-
-        // For now, to test, you can simply allow all logged-in users:
-        return true;
+        // 🚀 SIMPLE ACCESS CHECK: Grant access if the user's email matches the admin email.
+        return $this->email === 'emoyocarol@gmail.com';
     }
 
     /**

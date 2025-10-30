@@ -14,24 +14,21 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         $admin = [
-            'email' => 'emoyocarol@gmail.com',
+            'email' => 'emoyocarol@gmail.com', // 🎯 This MUST match the email in the User model check
             'name'  => 'Smile',
             'phone' => '+254 715-830-347',
         ];
 
         User::updateOrCreate(
-            ['email' => $admin['email']], // lookup by email
+            ['email' => $admin['email']],
             [
                 'name'              => $admin['name'],
                 'phone'             => $admin['phone'],
-                'password'          => Hash::make('password'), // ⚠️ replace with env('ADMIN_PASSWORD') in production
-                 'is_admin'          => true, // 👈 New admin flag
-       
+                // Use a secure password (default is 'password' from the env)
+                'password'          => Hash::make(env('ADMIN_PASSWORD', 'password')),
                 'avatar'            => null,
                 'email_verified_at' => now(),
             ]
         );
-
-        
     }
 }
