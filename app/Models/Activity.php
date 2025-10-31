@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Activity extends Model
 {
@@ -20,11 +21,37 @@ class Activity extends Model
         'is_visible',
     ];
 
-    public function getImageUrlAttribute(): string
-{
-    return $this->image
-        ? asset('storage/' . $this->image)
-        : asset('images/placeholder.jpg'); // fallback
-}
+    
 
+
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['full_image'];
+
+
+    /**
+     * Accessor for full_image
+     *
+     * This automatically creates the 'full_image' attribute
+     * by pointing to the file in the public storage.
+     */
+    public function getFullImageAttribute(): ?string // Renamed to match 'full_image'
+
+    {
+        if (empty($this->image)) {
+            return null;
+        }
+
+        // If it's already a full URL, return it
+        if (Str::startsWith($this->image, ['http', '/storage'])) {
+            return $this->image;
+        }
+
+        // Otherwise, generate the full URL from the public storage disk
+        return asset('storage/' . ltrim($this->image, '/'));
+    }
 }

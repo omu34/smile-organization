@@ -15,12 +15,15 @@ class ActivityForm
         return $schema
             ->components([
                 TextInput::make('title')->required()->maxLength(150),
+                // Image upload
                 FileUpload::make('image')
+                    ->label('Activity Image')
                     ->image()
                     ->directory('activities')
-                    ->disk('public') // ✅ important
+                    ->disk('public')
                     ->visibility('public')
-                    ->imagePreviewHeight('150'),
+                    ->imagePreviewHeight('150')
+                    ->required(),
                 Textarea::make('description')->rows(4)->required(),
                 TextInput::make('button_text')->default('Detail'),
                 TextInput::make('button_link')->nullable()->label('Optional Button Link'),

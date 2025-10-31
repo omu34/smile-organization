@@ -67,24 +67,3 @@ class Gallery extends Model
 
 
 
-// app/Models/Gallery.php
-// namespace App\Models;
-
-// use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Support\Facades\Storage;
-
-// class Gallery extends Model
-// {
-//     use HasFactory;
-
-//     protected $fillable = ['title', 'category', 'image', 'description'];
-
-//     protected $appends = ['full_image_path'];
-
-//     public function getFullImagePathAttribute()
-//     {
-//         return Storage::url($this->image);
-//     }
-// }
-

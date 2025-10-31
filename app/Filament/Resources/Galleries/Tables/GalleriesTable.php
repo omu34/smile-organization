@@ -24,27 +24,7 @@ class GalleriesTable
                 TextColumn::make('created_at')->date(),
             ])
             ->reorderable('order')
-            // ImageColumn::make('image')
-            //         ->label('Image')
-            //         ->disk('public')
-            //         ->square()
-            //         ->height(80),
 
-            //     TextColumn::make('title')
-            //         ->label('Title')
-            //         ->searchable()
-            //         ->sortable(),
-
-            //     TextColumn::make('category')
-            //         ->label('Category')
-            //         ->sortable()
-            //         ->searchable(),
-
-            //     TextColumn::make('created_at')
-            //         ->label('Created')
-            //         ->dateTime('M d, Y')
-            //         ->sortable(),
-            // ])
             ->filters([
                 //
             ])

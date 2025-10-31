@@ -14,7 +14,6 @@
                     <div wire:key="beneficiary-{{ $item->id }}" class="w-full px-4 md:w-1/2 lg:w-1/3 mb-10">
                         <div class="mx-auto max-w-[370px] group hover:scale-105 transition-transform">
                             <div class="relative pb-6">
-
                                 <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->title }}"
                                     class="w-full h-64 md:h-80 object-cover rounded-xl shadow-md transition-transform transform hover:scale-105">
                             </div>

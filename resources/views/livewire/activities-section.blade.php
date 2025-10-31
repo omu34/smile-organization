@@ -9,9 +9,8 @@
                 </div>
 
                 @if ($activity->image)
-                    {{-- Use asset() if files are in public/images --}}
-                    <img src="{{ asset('storage/' . $activity->image) }}" alt="{{ $activity->title }}"
-                        class="w-full h-48 md:h-56 object-cover rounded mb-3">
+                    {{-- CORRECTED: Use the 'full_image' accessor --}}
+                    <img src="{{ $activity->full_image }}" alt="{{ $activity->title }}" class="w-full h-48 md:h-56 object-cover rounded mb-3">
                 @endif
 
                 @if ($activity->description)

@@ -10,8 +10,7 @@
 
                 <!--[if BLOCK]><![endif]--><?php if($activity->image): ?>
                     
-                    <img src="<?php echo e(asset('storage/' . $activity->image)); ?>" alt="<?php echo e($activity->title); ?>"
-                        class="w-full h-48 md:h-56 object-cover rounded mb-3">
+                    <img src="<?php echo e($activity->full_image); ?>" alt="<?php echo e($activity->title); ?>" class="w-full h-48 md:h-56 object-cover rounded mb-3">
                 <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
                 <!--[if BLOCK]><![endif]--><?php if($activity->description): ?>
