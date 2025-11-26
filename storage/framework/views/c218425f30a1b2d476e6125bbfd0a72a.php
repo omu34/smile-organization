@@ -1,8 +1,8 @@
-<div class="py-12  mx-auto">
-    <div class="">
+<div class="py-12 ">
+    <div class="m-4">
         <h2 class="text-3xl font-bold text-[#000000] mb-8 text-center">Featured <span class="">Articles</span></h2>
 
-        <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <div class="mx-auto grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $articles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $article): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="bg-white shadow rounded-lg overflow-hidden">
                     <!--[if BLOCK]><![endif]--><?php if($article->media_type === 'image'): ?>

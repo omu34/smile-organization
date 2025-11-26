@@ -1,6 +1,6 @@
 <div data-aos="fade-up" data-aos-duration="1000">
-    <section class="py-16 pb-14 " id="beneficiaries">
-        <div class="mx-auto  px-5">
+    <div class="py-16 pb-14 mx-auto" id="beneficiaries">
+        <div class="  px-5">
             <div class="max-w-6xl  mx-auto text-center">
                 <h2 class="text-3xl font-bold mb-3">Beneficiaries</h2>
                 <p class="text-md text-black leading-relaxed  max-w-md  mx-auto">
@@ -36,5 +36,5 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </div>
 </div>

@@ -5,7 +5,7 @@
         </h1>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="m-4 grid md:grid-cols-3 gap-6">
         @foreach($partners as $partner)
             <div data-aos="flip-left" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
                 <a href="{{ $partner->website_url }}" target="_blank">

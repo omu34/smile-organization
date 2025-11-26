@@ -1,6 +1,6 @@
 <div data-aos="fade-up" data-aos-duration="1000">
-    <section class="pt-20 pb-5 mx-auto " id="our-resources">
-        <div class="w-full px-4">
+    <div class="pt-20 pb-5 mx-auto " id="our-resources">
+        <div class="mx-auto px-4">
             <div class="max-w-6xl  mx-auto text-center">
                 <h2 class="text-3xl font-bold mb-6">Our Resources</h2>
                 
@@ -12,7 +12,7 @@
 
             </div>
 
-            <section class="w-full mx-auto py-10 bg-white rounded-xl  space-y-12">
+            <div class="w-full mx-auto py-10 bg-white rounded-xl  space-y-12">
                 <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $resources; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $resource): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div
                         class="flex flex-col md:flex-row items-center gap-8
@@ -38,8 +38,8 @@
                         </div>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
-            </section>
+            </div>
         </div>
-    </section>
+    </div>
 </div>
 <?php /**PATH C:\Users\Rygss\Downloads\smile-organization\resources\views/livewire/resource-section.blade.php ENDPATH**/ ?>
