@@ -4,11 +4,20 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use App\Models\Article;
 use Livewire\Volt\Volt;
+use App\Livewire\ChatBot;
+use App\Livewire\ProductSearch;
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/ai/chat', ChatBot::class)->name('ai.chat');
+    Route::get('/ai/products', ProductSearch::class)->name('ai.products');
+});
 
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('pages.home');
+Route::get('/', fn() => view('pages.home'))->name('home');
+
+// Route::get('/', function () {
+//     return view('pages.home');
+// })->name('pages.home');
 
 Route::get('/about', function () {
     return view('pages.about');

@@ -1,10 +1,10 @@
 <div>
     <footer class="mt-auto bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-10xl px-4 sm:px-6 lg:px-8">
             <!-- Main Footer Content -->
             <div class="py-16 lg:py-20">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-                    
+
                     <!-- Brand Section -->
                     <!--[if BLOCK]><![endif]--><?php if($logo): ?>
                         <div class="lg:col-span-1 space-y-6">
@@ -22,13 +22,13 @@
                             <p class="text-gray-300 text-sm leading-relaxed">
                                 Your trusted partner for high-quality supplies and exceptional service. Building lasting relationships through excellence.
                             </p>
-                            
+
                             <!-- Social Icons -->
                             <!--[if BLOCK]><![endif]--><?php if($footers->first()?->socials): ?>
                                 <div class="flex gap-3">
                                     <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $footers->first()->socials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $social): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <!--[if BLOCK]><![endif]--><?php if(!empty($social['icon']) && !empty($social['url'])): ?>
-                                            <a href="<?php echo e($social['url'] ?? '#'); ?>" 
+                                            <a href="<?php echo e($social['url'] ?? '#'); ?>"
                                                class="group flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-200 hover:scale-110">
                                                 <?php if (isset($component)) { $__componentOriginal511d4862ff04963c3c16115c05a86a9d = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal511d4862ff04963c3c16115c05a86a9d = $attributes; } ?>
@@ -113,7 +113,7 @@
                         © <?php echo e(date('Y')); ?> <?php echo e($footers->first()?->footer_text ?? 'Burner Supply. All rights reserved.'); ?>
 
                     </p>
-                    
+
                     <!-- Additional Links -->
                     <div class="flex flex-wrap justify-center sm:justify-end gap-6 text-sm">
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>

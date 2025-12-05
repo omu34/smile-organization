@@ -42,7 +42,7 @@
 <?php unset($__componentOriginal727da3cd6a7898f91152a48337ddfb9c); ?>
 <?php endif; ?>
     <!-- Menu Sections -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <!--[if BLOCK]><![endif]--><?php if($products->isEmpty() && $searchTerm): ?>
         <div class="text-center py-12">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -55,7 +55,7 @@
         </div>
     <?php else: ?>
         <!--[if BLOCK]><![endif]--><?php if($selectedCategory): ?>
-            
+
             <?php
                 $activeCategory = $categories->firstWhere('slug', $selectedCategory);
             ?>
@@ -90,7 +90,7 @@ if (isset($__slots)) unset($__slots);
                 </section>
             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
         <?php else: ?>
-            
+
             <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <?php
                     $filteredProducts = $products->filter(fn($product) => $product->category->slug === $category->slug);

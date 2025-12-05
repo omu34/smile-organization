@@ -1,4 +1,4 @@
-<div class="sticky top-0 z-50 bg-gray-100 mt-0.5 border-b" x-data="{ mobileOpen: false, openMenu: null }">
+<div class="sticky rounded-lg top-1 z-50 bg-gray-300 mt-0.5 border-b" x-data="{ mobileOpen: false, openMenu: null }">
     <div class="">
         <div class="flex items-center justify-between h-16">
             {{-- Left: Logo --}}

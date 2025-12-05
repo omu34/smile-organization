@@ -193,7 +193,7 @@ unset($__defined_vars, $__key, $__value); ?>
             <div
                 x-ref="modalContainer"
                 <?php if($closeByClickingAway): ?>
-                    
+
                     x-on:click.self="
                         document.activeElement.selectionStart === undefined &&
                             document.activeElement.selectionEnd === undefined &&
@@ -255,7 +255,7 @@ unset($__defined_vars, $__key, $__value); ?>
                                 MaxWidth::FourExtraLarge => 'max-w-4xl',
                                 MaxWidth::FiveExtraLarge => 'max-w-5xl',
                                 MaxWidth::SixExtraLarge => 'max-w-6xl',
-                                MaxWidth::SevenExtraLarge => 'max-w-7xl',
+                                MaxWidth::SevenExtraLarge => 'max-w-10xl',
                                 MaxWidth::Full => 'max-w-full',
                                 MaxWidth::MinContent => 'max-w-min',
                                 MaxWidth::MaxContent => 'max-w-max',

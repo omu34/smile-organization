@@ -1,7 +1,7 @@
 <div class="m-4">
-    <div class="max-w-7xl mx-auto  flex items-start justify-between mt-4">
+    <div class="max-w-10xl mx-auto  flex items-start justify-between mt-4">
         <div class="w-full lg:w-2/3">
-            
+
             <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
@@ -19,7 +19,7 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
 
-            
+
             <h1 class="text-2xl font-bold text-gray-900">
                 <?php echo e($header->shop_name); ?>
 
@@ -51,7 +51,7 @@ if (isset($__slots)) unset($__slots);
             </div>
         </div>
 
-        
+
         <div class="ml-6 mt-2">
             <?php
 $__split = function ($name, $params = []) {

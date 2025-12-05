@@ -7,7 +7,7 @@
 
 <?php if (isset($component)) { $__componentOriginal30dbd75eb120a380110a2b340cd88f46 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal30dbd75eb120a380110a2b340cd88f46 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament::components.grid.index','data' => ['xData' => $isRoot ? '{}' : null,'xOn:formValidationError.window' => 
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament::components.grid.index','data' => ['xData' => $isRoot ? '{}' : null,'xOn:formValidationError.window' =>
         $isRoot ? ('if ($event.detail.livewireId !== ' . Js::from($this->getId()) . ') {
                 return
             }
@@ -37,7 +37,7 @@
                     200,
                 )
         })') : null
-    ,'default' => $getColumns('default'),'sm' => $getColumns('sm'),'md' => $getColumns('md'),'lg' => $getColumns('lg'),'xl' => $getColumns('xl'),'twoXl' => $getColumns('2xl'),'attributes' => 
+    ,'default' => $getColumns('default'),'sm' => $getColumns('sm'),'md' => $getColumns('md'),'lg' => $getColumns('lg'),'xl' => $getColumns('xl'),'twoXl' => $getColumns('2xl'),'attributes' =>
         \Filament\Support\prepare_inherited_attributes($getExtraAttributeBag())
             ->class(['fi-fo-component-ctn gap-6'])
     ]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -110,7 +110,7 @@
                     MaxWidth::FourExtraLarge, '4xl' => 'max-w-4xl',
                     MaxWidth::FiveExtraLarge, '5xl' => 'max-w-5xl',
                     MaxWidth::SixExtraLarge, '6xl' => 'max-w-6xl',
-                    MaxWidth::SevenExtraLarge, '7xl' => 'max-w-7xl',
+                    MaxWidth::SevenExtraLarge, '7xl' => 'max-w-10xl',
                     default => $maxWidth,
                 },
             ])]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -132,7 +132,7 @@
                     MaxWidth::FourExtraLarge, '4xl' => 'max-w-4xl',
                     MaxWidth::FiveExtraLarge, '5xl' => 'max-w-5xl',
                     MaxWidth::SixExtraLarge, '6xl' => 'max-w-6xl',
-                    MaxWidth::SevenExtraLarge, '7xl' => 'max-w-7xl',
+                    MaxWidth::SevenExtraLarge, '7xl' => 'max-w-10xl',
                     default => $maxWidth,
                 },
             ]))]); ?>

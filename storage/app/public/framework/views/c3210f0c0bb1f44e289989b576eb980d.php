@@ -118,7 +118,7 @@ if (isset($__slots)) unset($__slots);
                         MaxWidth::FourExtraLarge, '4xl' => 'max-w-4xl',
                         MaxWidth::FiveExtraLarge, '5xl' => 'max-w-5xl',
                         MaxWidth::SixExtraLarge, '6xl' => 'max-w-6xl',
-                        MaxWidth::SevenExtraLarge, '7xl' => 'max-w-7xl',
+                        MaxWidth::SevenExtraLarge, '7xl' => 'max-w-10xl',
                         MaxWidth::Full, 'full' => 'max-w-full',
                         MaxWidth::MinContent, 'min' => 'max-w-min',
                         MaxWidth::MaxContent, 'max' => 'max-w-max',

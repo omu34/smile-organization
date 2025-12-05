@@ -10,7 +10,7 @@
         ?>
 
         <!--[if BLOCK]><![endif]--><?php if($header): ?>
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="py-4 md:py-6">
                     <div class="flex flex-col md:flex-row md:items-start md:justify-between">
 

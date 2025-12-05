@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-[#f8f9fa] font-['Outfit']" x-data="{ isCartOpen: false }">
     <!-- Header with Contact Details -->
     <header class="bg-white shadow-sm border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="py-4 md:py-6">
                 <div class="flex flex-col md:flex-row md:items-start md:justify-between">
                     <div class="flex-1 mb-4 md:mb-0">
@@ -92,7 +92,7 @@
 
     <!-- Navigation Tabs -->
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 space-y-4 sm:space-y-0">
                 <div x-data="{ activeCategory: <?php echo \Illuminate\Support\Js::from($selectedCategory)->toHtml() ?> }" class="flex space-x-4 sm:space-x-8 overflow-x-auto">
                     <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -132,7 +132,7 @@
     </nav>
 
     <!-- Menu Sections -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!--[if BLOCK]><![endif]--><?php if($products->isEmpty() && $searchTerm): ?>
             <div class="text-center py-12">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

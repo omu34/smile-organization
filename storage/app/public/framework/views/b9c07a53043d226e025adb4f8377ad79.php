@@ -1,6 +1,6 @@
 <div class="w-full bg-gray-100 shadow-md h-16 rounded-lg flex items-center">
-    <div class="max-w-7xl mx-auto flex w-full items-center justify-between px-6">
-        
+    <div class="max-w-10xl mx-auto flex w-full items-center justify-between px-6">
+
         <div class="flex items-center">
             <?php
 $__split = function ($name, $params = []) {
@@ -20,7 +20,7 @@ if (isset($__slots)) unset($__slots);
 ?>
         </div>
 
-        
+
         <div class="text-right text-black">
             <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $footers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $footer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <p class="text-sm md:text-base ">

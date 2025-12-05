@@ -8,12 +8,12 @@
 <nav class="bg-white border-b rounded-lg border-gray-200 sticky top-0 z-40"
      style="background-color: <?php echo e($background->bg_color3); ?>;">
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 space-y-4 sm:space-y-0">
 
-            
+
             <div class="flex space-x-4 sm:space-x-8 overflow-x-auto">
-                
+
                 <button
                     wire:click="setCategory(null)"
                     class="py-2 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors duration-200
@@ -21,7 +21,7 @@
                     All
                 </button>
 
-                
+
                 <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <button
                         wire:click="setCategory('<?php echo e($category->slug); ?>')"
@@ -33,7 +33,7 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
             </div>
 
-            
+
             <div class="relative sm:ml-6 flex-shrink-0">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

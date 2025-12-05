@@ -1,5 +1,5 @@
-<div class="mx-auto max-w-7xl">
-    
+<div class="mx-auto max-w-10xl">
+
     <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
@@ -43,7 +43,7 @@ if (isset($__slots)) unset($__slots);
 
                 <!-- Center: Categories (hidden on small screens, show as dropdown later if needed) -->
                 <nav class=" flex w-auto shrink sm:mr-auto max-sm:order-2">
-                    
+
                     <div class="hidden sm:block">
                         <ul class="flex flex-row items-center gap-x-8">
                             <li>
@@ -176,9 +176,9 @@ if (isset($__slots)) unset($__slots);
 
 
 
-    
-        
-    
+
+
+
 
     <!-- ✅ Existing Content -->
     <div class="container mx-auto py-12 -mt-12 px-4 sm:px-6 lg:px-8">

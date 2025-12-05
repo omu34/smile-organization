@@ -12,9 +12,9 @@
         ?>
 
         <!--[if BLOCK]><![endif]--><?php if($footer): ?>
-            <div class="max-w-7xl mx-auto flex w-full items-center justify-between px-6">
+            <div class="max-w-10xl mx-auto flex w-full items-center justify-between px-6">
 
-                
+
                 <div class="flex items-center">
                     <a href="<?php echo e($footer->link ?? url('/')); ?>">
                         <img src="<?php echo e(Storage::url($footer->logo)); ?>" alt="Logo" class="h-12 w-auto rounded-full">
@@ -22,7 +22,7 @@
                     </a>
                 </div>
 
-                
+
                 <div class="text-right text-black">
                     <p class="text-sm md:text-base">
                         © <?php echo e(date('Y')); ?> <?php echo e($footer->footer_text); ?>

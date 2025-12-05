@@ -1,5 +1,5 @@
 <footer
-    class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 border-t border-gray-200 dark:border-gray-700 shadow-sm shadow-emerald-100/50 dark:shadow-emerald-900/20">
+    class="bg-gray-300 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-100 border-t border-gray-200 dark:border-gray-700 shadow-sm shadow-emerald-100/50 dark:shadow-emerald-900/20">
 
     {{-- Main Grid --}}
     <div class="mx-auto  px-6 sm:px-10 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -8,7 +8,7 @@
         <div class="space-y-6 text-center sm:text-left">
             @if ($footerInfo)
                 <div class="flex justify-center sm:justify-start">
-                    <livewire:navigation-logo-header-component />
+                    {{-- <livewire:navigation-logo-header-component /> --}}
                 </div>
 
                 <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-300 text-[15px]">

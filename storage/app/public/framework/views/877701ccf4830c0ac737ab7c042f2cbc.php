@@ -20,7 +20,7 @@
             <div class="mx-auto max-w-12xl sm:px-6 lg:px-8">
                 <?php echo $__env->yieldContent('content'); ?>
             </div>
-            <div class=" fixed-0 bg-gray-200 mx-auto max-w-7xl sm:px-6 lg:px-8 z-50">
+            <div class=" fixed-0 bg-gray-200 mx-auto max-w-10xl sm:px-6 lg:px-8 z-50">
                 <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
@@ -42,9 +42,9 @@ if (isset($__slots)) unset($__slots);
 
 
 
-        
-        
-        
+
+
+
     </div>
 
     <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::scripts(); ?>
