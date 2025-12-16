@@ -1,44 +1,5 @@
 <?php
 
-// database/seeders/GallerySeeder.php
-// namespace Database\Seeders;
-
-// use Illuminate\Database\Seeder;
-// use Illuminate\Support\Facades\Storage;
-// use App\Models\Gallery;
-
-// class GallerySeeder extends Seeder
-// {
-//     public function run(): void
-//     {
-//         Storage::makeDirectory('public/gallery');
-
-//         // Example static images (place your own test images in storage/app/public/gallery)
-//         Gallery::truncate();
-//         Gallery::insert([
-//             [
-//                 'title' => 'Community Event',
-//                 'category' => 'Events',
-//                 'image' => 'gallery/event1.jpg',
-//                 'description' => 'Our community outreach program in full action.'
-//             ],
-//             [
-//                 'title' => 'Therapy Session',
-//                 'category' => 'Therapies',
-//                 'image' => 'gallery/therapy.jpg',
-//                 'description' => 'A warm therapy moment with caregivers and kids.'
-//             ],
-//             [
-//                 'title' => 'Play Time',
-//                 'category' => 'Recreation',
-//                 'image' => 'gallery/play.jpg',
-//                 'description' => 'Smiles and laughter during recreational activities.'
-//             ],
-//         ]);
-//     }
-// }
-
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;

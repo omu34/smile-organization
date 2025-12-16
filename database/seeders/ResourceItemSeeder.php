@@ -19,6 +19,8 @@ class ResourceItemSeeder extends Seeder
                 'image_path' => 'imagess/resource.jpg',
                 'video_path' => null, // <-- Add this
                 'alignment' => 'left',
+                'platform_name'=>'The best',
+                'url'=>'www.google.com',
                 'position' => 1,
                 'is_published' => true,
                 'published_at' => now(),
@@ -31,6 +33,8 @@ class ResourceItemSeeder extends Seeder
                 'image_path' => 'imagess/party.jpg', // <-- Add this
                 'video_path' => 'imagess/resource2.mp4',
                 'alignment' => 'right',
+                'platform_name'=>'When we did',
+                'url'=>'www.google.com',
                 'position' => 2,
                 'is_published' => true,
                 'published_at' => now(),
@@ -43,6 +47,8 @@ class ResourceItemSeeder extends Seeder
                 'image_path' => 'imagess/girls.jpg', // <-- Add this
                 'video_path' => 'imagess/girls.jpg',
                 'alignment' => 'left',
+                'platform_name'=>'The best',
+                'url'=>'www.google.com',
                 'position' => 2,
                 'is_published' => true,
                 'published_at' => now(),

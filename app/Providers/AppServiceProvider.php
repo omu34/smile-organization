@@ -6,6 +6,10 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\NavigationMenu;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\View;
+use App\Services\OpenAI\OpenAIServiceInterface;
+use App\Services\OpenAI\OpenAIService;
+
+
 use Illuminate\Support\Facades\Auth; // <-- Import the Auth facade
 
 class AppServiceProvider extends ServiceProvider
@@ -16,7 +20,10 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
 
-        $this->app->singleton(\App\Services\OpenAIService::class, fn() => new \App\Services\OpenAIService());
+        // app/Providers/AppServiceProvider.php (register method)
+
+    $this->app->bind(OpenAIServiceInterface::class, OpenAIService::class);
+
     }
 
 

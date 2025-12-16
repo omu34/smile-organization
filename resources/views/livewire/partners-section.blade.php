@@ -1,4 +1,4 @@
-<section class="py-10 mx-auto " id="partners">
+<section class="py-10 mx-auto " id="partners" data-aos="fade-up" data-aos-duration="1000">
     <div class="text-center mb-10">
         <h1 class="text-black text-3xl font-bold mb-6">
             Smile for Neuro-Diversity Partners

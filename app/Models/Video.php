@@ -81,25 +81,6 @@ class Video extends Model
         // 📁 Local video file
         return Storage::url($path);
     }
-//     public function getEmbedUrlAttribute()
-// {
-//     $path = $this->video_path;
-//     $videoId = $this->video_id;
-
-//     if (!$path) return null;
-
-//     if (Str::contains($path, ['youtube.com', 'youtu.be'])) {
-//         return $videoId ? "https://www.youtube.com/embed/{$videoId}" : null;
-//     }
-
-//     if (Str::contains($path, 'vimeo.com')) {
-//         return $videoId ? "https://player.vimeo.com/video/{$videoId}" : null;
-//     }
-
-//     // Local file: check if it's a valid storage path
-//     return Storage::exists($path) ? Storage::url($path) : asset('videos/placeholder.mp4');
-// }
-
 
     /**
      * Get a thumbnail image for the video.
@@ -122,7 +103,7 @@ class Video extends Model
         if ($this->image_path && Storage::exists($this->image_path)) {
             return Storage::url($this->image_path);
         }
-        
+
         // ⚠️ Fallback
         return asset('images/default-video-thumbnail.jpg'); // You'll need this image
     }

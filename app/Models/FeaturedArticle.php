@@ -20,7 +20,7 @@ class FeaturedArticle extends Model
         'is_featured',
     ];
 
-    protected $appends = ['full_image_url'];
+    protected $appends = ['full_media_url'];
 
     public function getYoutubeIdAttribute(): ?string
     {
@@ -38,14 +38,44 @@ class FeaturedArticle extends Model
      * This automatically creates the 'full_image_url' attribute.
      */
 
-    public function getFullImageUrlAttribute(): string
+    // public function getFullMediaAttribute(): string
+    // {
+    //     // ✅ FIX: Use $this->media_url, which exists in your database
+    //     if (Str::startsWith($this->media_url, ['http', '/storage'])) {
+    //         return $this->media_url;
+    //     }
+
+    //     // ✅ FIX: Use $this->media_url
+    //     return asset('storage/' . ltrim($this->media_url, '/'));
+    // }
+     public function getFullMediaUrlAttribute(): ?string
     {
-        // ✅ FIX: Use $this->media_url, which exists in your database
+        if (empty($this->media_url)) {
+            return null;
+        }
+
+        // If it's already a full URL, return it
         if (Str::startsWith($this->media_url, ['http', '/storage'])) {
             return $this->media_url;
         }
 
-        // ✅ FIX: Use $this->media_url
+        // Otherwise, generate the full URL from the public storage disk
         return asset('storage/' . ltrim($this->media_url, '/'));
+    }
+
+
+     public function getFullThumbnailUrlAttribute(): ?string
+    {
+        if (empty($this->thumbnail_url)) {
+            return null;
+        }
+
+        // If it's already a full URL, return it
+        if (Str::startsWith($this->thumbnail_url, ['http', '/storage'])) {
+            return $this->thumbnail_url;
+        }
+
+        // Otherwise, generate the full URL from the public storage disk
+        return asset('storage/' . ltrim($this->thumbnail_url, '/'));
     }
 }

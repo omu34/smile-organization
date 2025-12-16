@@ -8,7 +8,6 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Table;
 
 class ResourceItemsTable
@@ -29,10 +28,10 @@ class ResourceItemsTable
                     ->tooltip(fn($state) => $state),
 
 
-                ImageColumn::make('image_path')->square(),
+                // ImageColumn::make('image_path')->square(),
                 TextColumn::make('platform_name'),
                 TextColumn::make('url')->limit(30),
-                IconColumn::make('is_active')->boolean(),
+                IconColumn::make('is_published')->boolean(),
             ])
             ->defaultSort('position', 'asc')
             ->filters([

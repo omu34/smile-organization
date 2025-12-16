@@ -25,6 +25,8 @@ class ResourceItem extends Model
         'video_path',
         'alignment',
         'is_published',
+        'platform_name',
+        'url',
         'position',
         'published_at',
     ];

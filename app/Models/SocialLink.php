@@ -16,14 +16,16 @@ class SocialLink extends Model
         'order',
     ];
 
+    protected $appends = ['full_image_path'];
+
     protected static function booted(): void
     {
         static::saved(fn () => event(new FooterUpdated()));
         static::deleted(fn () => event(new FooterUpdated()));
     }
 
-    protected $appends = ['full_image_path'];
-    public function getFullImageUrlAttribute(): string
+
+    public function getFullImagePathAttribute(): string
     {
         // Check if image_url is already a full URL (e.g., http://) or starts with /storage
         if (Str::startsWith($this->image_path, ['http', '/storage'])) {

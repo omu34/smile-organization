@@ -16,14 +16,14 @@ class SocialLinksTable
     {
         return $table
             ->columns([
-            ImageColumn::make('full_image_path')
+                ImageColumn::make('full_image_path')
                     ->label('Image')
                     ->circular() // or use ->square()
                     ->size(50), // adjust thumbnail size
-            TextColumn::make('platform_name'),
-            TextColumn::make('url')->limit(30),
-            IconColumn::make('is_active')->boolean(),
-            TextColumn::make('order')->sortable(),
+                TextColumn::make('platform_name'),
+                TextColumn::make('url')->limit(30),
+                IconColumn::make('is_active')->boolean(),
+                TextColumn::make('order')->sortable(),
             ])
             ->reorderable('order')
             ->filters([

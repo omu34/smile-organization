@@ -60,13 +60,13 @@ class User extends Authenticatable
     }
 
 
-/**
+    /**
      * Determines if the user can access the Filament admin panel.
-     * This is the method that resolves the 403 Forbidden error.
+     * 2. The method signature MUST accept "Panel $panel"
      */
-    public function canAccessPanel(): bool
+    public function canAccessPanel(Panel $panel): bool
     {
-        // 🚀 SIMPLE ACCESS CHECK: Grant access if the user's email matches the admin email.
+        // 🚀 SIMPLE ACCESS CHECK
         return $this->email === 'emoyocarol@gmail.com';
     }
 
@@ -87,11 +87,14 @@ class User extends Authenticatable
      */
 
 
-    // public function canAccessPanel(Panel $panel): bool
-    // {
-    //     return true; // Allow all users (for now)
-    // }
-
-
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany<\App\Models\GeneratedAsset>
+     */
+    public function generatedAssets(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(
+            \App\Models\GeneratedAsset::class,
+            'owner'
+        );
+    }
 }

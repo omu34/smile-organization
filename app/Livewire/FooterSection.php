@@ -6,7 +6,6 @@ use Livewire\Component;
 use App\Models\FooterInfo;
 use App\Models\FooterCta;
 use App\Models\SocialLink;
-use App\Events\FooterUpdated;
 
 class FooterSection extends Component
 {

@@ -1,62 +1,10 @@
 # laravel-cloud.yml
-# build:
-#   commands:
-#     # 1. Install PHP dependencies
-#     - composer install --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader
-
-#     # 2. Ensure storage + cache directories exist
-#     - mkdir -p storage/framework/{cache,sessions,views}
-#     - mkdir -p storage/logs
-#     - mkdir -p bootstrap/cache
-#     - chmod -R 775 storage bootstrap/cache
-
-#     # 3. Discover Laravel packages (after cache dirs exist)
-#     - php artisan package:discover --ansi
-
-#     # 4. Run Laravel cleanup
-#     - php artisan storage:link
-#     - php artisan config:clear
-#     - php artisan cache:clear
-#     - php artisan route:clear
-#     - php artisan view:clear
-
-#     # 5. Rebuild caches
-#     - php artisan config:cache
-#     - php artisan route:cache
-#     - php artisan view:cache
-#     - php artisan event:cache
-
-#     # 6. Build frontend (if using Vite)
-#     - npm ci --no-audit --no-fund
-#     - npm run build
-
-# release:
-#   commands:
-#     # 1. Optional safety command (if you have it defined)
-#     - php artisan fix:cache-paths || true
-
-#     # 2. Run migrations + seed production
-#     - php artisan migrate --force
-#     - php artisan db:seed --force
-#     - php artisan storage:link
-
-
-
-
-
-# laravel-cloud.yml
 build:
   commands:
     # 1. Install PHP dependencies
     - composer install --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader
 
     # 2. Ensure storage + cache dirs exist
-
-    # - mkdir -p storage/framework/{cache,sessions,views}
-    # - mkdir -p storage/logs
-    # - mkdir -p bootstrap/cache
-    # - chmod -R 775 storage bootstrap/cache
-    # - php artisan package:discover --ansi
     - php artisan package:discover --ansi
       - php -r \"if(!is_dir('storage/framework/cache')) mkdir('storage/framework/cache', 0777, true);\""
       - php -r \"if(!is_dir('storage/framework/sessions')) mkdir('storage/framework/sessions', 0777, true);\""

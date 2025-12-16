@@ -1,4 +1,4 @@
-<section class="bg-white py-10 min-h-[250px]" id="section">
+<section class="bg-white py-10 min-h-[250px]" id="section" data-aos="fade-up" data-aos-duration="1000">
     <h2 class="text-3xl font-bold text-center mb-12">Our Activities</h2>
     <div class=" mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
 

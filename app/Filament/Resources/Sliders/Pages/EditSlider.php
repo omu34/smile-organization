@@ -19,10 +19,6 @@ class EditSlider extends EditRecord
         ];
     }
 
-
-
-
-
     protected function afterSave(): void
     {
         event(new SliderUpdated($this->record));

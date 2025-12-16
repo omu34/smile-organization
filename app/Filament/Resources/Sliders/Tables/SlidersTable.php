@@ -21,7 +21,7 @@ class SlidersTable
                     ->label('Image')
                     ->circular() // or use ->square()
                     ->size(50), // adjust thumbnail size
-                 TextColumn::make('name')->searchable(),
+                TextColumn::make('name')->searchable(),
                 ToggleColumn::make('is_active'),
                 TextColumn::make('slides_count')->counts('slides')->label('Slides'),
             ])

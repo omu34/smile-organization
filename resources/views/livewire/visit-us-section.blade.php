@@ -1,4 +1,4 @@
-<div>
+<div data-aos="fade-up" data-aos-duration="1000">
     <section class="bg-white">
         <div class=" mx-auto py-8 lg:py-20" data-aos="fade-up" data-aos-duration="1000">
             <div class="max-w-2xl lg:max-w-4xl mx-auto text-center">

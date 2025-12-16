@@ -13,12 +13,10 @@ class NavigationLogoHeadersTable
     public static function configure(Table $table): Table
     {
         return $table->columns([
-            ImageColumn::make('logo')
-                ->label('Logo')
-                ->disk('public')
-                ->circular()
-                ->height(24)
-                ->width(24),
+            ImageColumn::make('full_logo_path')
+                ->label('Image')
+                ->circular() // or use ->square()
+                ->size(50), // adjust thumbnail size
 
             TextColumn::make('link')
                 ->label('Logo URL')
@@ -29,8 +27,5 @@ class NavigationLogoHeadersTable
                 EditAction::make(),
             ])
             ->bulkActions([]); // no bulk delete
-
-
-
     }
 }

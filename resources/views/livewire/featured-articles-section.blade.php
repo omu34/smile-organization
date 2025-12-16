@@ -1,4 +1,4 @@
-<div class="py-12 ">
+<div class="py-12 " data-aos="fade-up" data-aos-duration="1000">
     <div class="m-4">
         <h2 class="text-3xl font-bold text-[#000000] mb-8 text-center">Featured <span class="">Articles</span></h2>
 

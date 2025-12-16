@@ -15,10 +15,10 @@ class FooterCtaForm
     {
         return $schema
             ->components([
-                 TextInput::make('title')->required(),
-            Textarea::make('subtitle'),
-            TextInput::make('button_text'),
-            TextInput::make('button_link'),
+                TextInput::make('title')->required(),
+                Textarea::make('subtitle'),
+                TextInput::make('button_text'),
+                TextInput::make('button_link'),
             ]);
     }
 }

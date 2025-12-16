@@ -50,6 +50,27 @@ class FooterSeeder extends Seeder
                 'is_active' => true,
                 'order' => 3,
             ],
+             [
+                'platform_name' => 'Facebook',
+                'url' => 'https://facebook.com',
+                'image_path' => 'imagess/fb.png',
+                'is_active' => true,
+                'order' => 4,
+            ],
+            [
+                'platform_name' => 'Instagram',
+                'url' => 'https://instagram.com',
+                'image_path' => 'imagess/ai1.jpg',
+                'is_active' => true,
+                'order' => 5,
+            ],
+            [
+                'platform_name' => 'Twitter',
+                'url' => 'https://twitter.com',
+                'image_path' => 'imagess/x-logo.png',
+                'is_active' => true,
+                'order' => 6,
+            ],
         ]);
     }
 }

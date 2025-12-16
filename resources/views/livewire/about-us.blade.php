@@ -1,4 +1,4 @@
-<div id="aboutus" class="bg-white">
+<div id="aboutus" class="bg-white " data-aos="fade-up" data-aos-duration="1000">
     <div class="mx-auto py-16">
         <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-4 md:px-0">
             <div class="max-w-lg">

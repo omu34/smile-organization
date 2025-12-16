@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('extra_description')->nullable();
             $table->string('image_path')->nullable();
+            $table->string('platform_name')->nullable();
+            $table->string('url')->nullable();
             $table->string('video_path')->nullable();
             $table->enum('alignment', ['left', 'right'])->default('left');
             $table->boolean('is_published')->default(true);

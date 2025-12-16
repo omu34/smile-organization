@@ -16,29 +16,47 @@ class NavigationLogoHeader extends Model
     ];
 
     protected $appends = [
-        'full_logo_url',
+        'full_logo_path',
         'full_link_url',
     ];
 
     /**
      * Accessor: Get the full logo URL.
      */
-    public function getFullLogoUrlAttribute(): ?string
-    {
-        $logo = $this->logo_path;
 
-        if (!$logo) {
+    public function getFullLogoPathAttribute(): ?string
+    {
+        if (!$this->logo_path) {
             return null;
         }
 
-        // Already a valid URL or public path
-        if (Str::startsWith($logo, ['http://', 'https://', '/storage'])) {
-            return $logo;
+        if (Str::startsWith($this->logo_path, ['http://', 'https://', '/storage'])) {
+            return $this->logo_path;
         }
 
-        // Build full URL from storage
-        return asset('storage/' . ltrim($logo, '/'));
+        return asset('storage/' . ltrim($this->logo_path, '/'));
     }
+    // public function getFullLogoPathAttribute(): ?string
+    // {
+    //     $logo = $this->logo_path;
+
+    //     if (!$logo) {
+    //         return null;
+    //     }
+
+    //     // Already a valid URL or public path
+    //     if (Str::startsWith($logo, ['http://', 'https://', '/storage'])) {
+    //         return $logo;
+    //     }
+
+    //     // Build full URL from storage
+    //     return asset('storage/' . ltrim($logo, '/'));
+    // }
+
+
+
+
+
 
     /**
      * Accessor: Get the full link URL.

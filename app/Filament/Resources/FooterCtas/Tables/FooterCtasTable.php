@@ -15,9 +15,11 @@ class FooterCtasTable
     {
         return $table
             ->columns([
-               TextColumn::make('title'),
-           TextColumn::make('button_text'),
-                
+                TextColumn::make('title'),
+                TextColumn::make('subtitle'),
+                TextColumn::make('button_text'),
+                // TextColumn::make('button_link'),
+
             ])
             ->reorderable('order')
             ->filters([

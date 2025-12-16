@@ -17,8 +17,7 @@ class FeaturedArticlesTable
     {
         return $table
             ->columns([
-
-                ImageColumn::make('full_image_path')
+                ImageColumn::make('full_media_url')
                     ->label('Image')
                     ->circular() // or use ->square()
                     ->size(50), // adjust thumbnail size

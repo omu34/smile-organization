@@ -1,4 +1,4 @@
-<footer
+<footer data-aos="fade-up" data-aos-duration="1000"
     class="bg-gray-300 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-100 border-t border-gray-200 dark:border-gray-700 shadow-sm shadow-emerald-100/50 dark:shadow-emerald-900/20">
 
     {{-- Main Grid --}}
@@ -107,7 +107,7 @@
 
     {{-- Footer Bottom --}}
     <div
-        class="border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 text-center py-6 mt-6 text-sm text-gray-600 dark:text-gray-400">
+        class=" text-center py-6 mt-6 text-sm text-gray-600 dark:text-gray-400 ">
         <p>&copy; {{ date('Y') }} {{ $footerInfo->company_name ?? 'Your Company' }} — All rights reserved.</p>
     </div>
 

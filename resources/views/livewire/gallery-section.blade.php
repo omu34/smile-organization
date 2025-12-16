@@ -1,4 +1,4 @@
-<div class="pt-20 pb-10 m-4"
+<div data-aos="fade-up" data-aos-duration="1000" class="pt-20 pb-10 m-4"
      x-data="{ open: false }"
      x-on:show-modal.window="open = true"
      x-on:close-modal.window="open = false">

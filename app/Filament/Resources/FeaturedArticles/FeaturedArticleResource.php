@@ -11,12 +11,12 @@ use App\Models\FeaturedArticle;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
 class FeaturedArticleResource extends Resource
 {
     protected static ?string $model = FeaturedArticle::class;
+    
     protected static string | \UnitEnum | null $navigationGroup = 'Media';
 
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-newspaper';
