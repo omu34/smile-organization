@@ -4,6 +4,9 @@
             <div class="swiper-wrapper">
                 @foreach ($slider->slides as $slide)
                     <div class="swiper-slide opacity-25  bg-cover bg-center relative flex items-center justify-center rounded-md" style="background-image: url('{{ $slide->full_image_url }}')">
+
+                    {{-- <img src="{{ $slide->full_image_url }}" alt="{{ $slide->title }}"
+                                 class="w-full h-64 md:h-80 object-cover rounded-xl shadow-md transition-transform transform hover:scale-105"> --}}
                         {{-- Overlay --}}
                         <div class="absolute inset-0 bg-black/40 rounded-md "></div>
 

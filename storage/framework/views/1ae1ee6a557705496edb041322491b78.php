@@ -4,6 +4,8 @@
             <div class="swiper-wrapper">
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $slider->slides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="swiper-slide opacity-25  bg-cover bg-center relative flex items-center justify-center rounded-md" style="background-image: url('<?php echo e($slide->full_image_url); ?>')">
+
+                    
                         
                         <div class="absolute inset-0 bg-black/40 rounded-md "></div>
 

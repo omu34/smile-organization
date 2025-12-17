@@ -26,32 +26,18 @@ class NavigationLogoHeader extends Model
 
     public function getFullLogoPathAttribute(): ?string
     {
-        if (!$this->logo_path) {
+        if (empty($this->logo_path)) {
             return null;
         }
 
-        if (Str::startsWith($this->logo_path, ['http://', 'https://', '/storage'])) {
+        // If it's already a full URL, return it
+        if (Str::startsWith($this->logo_path, ['http', '/storage'])) {
             return $this->logo_path;
         }
 
+        // Otherwise, generate the full URL from the public storage disk
         return asset('storage/' . ltrim($this->logo_path, '/'));
     }
-    // public function getFullLogoPathAttribute(): ?string
-    // {
-    //     $logo = $this->logo_path;
-
-    //     if (!$logo) {
-    //         return null;
-    //     }
-
-    //     // Already a valid URL or public path
-    //     if (Str::startsWith($logo, ['http://', 'https://', '/storage'])) {
-    //         return $logo;
-    //     }
-
-    //     // Build full URL from storage
-    //     return asset('storage/' . ltrim($logo, '/'));
-    // }
 
 
 

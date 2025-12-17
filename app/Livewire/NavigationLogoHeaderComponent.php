@@ -17,7 +17,7 @@ class NavigationLogoHeaderComponent extends Component
 
         // Use the accessor methods from your model
         if ($record) {
-            $this->logo = $record->full_logo_url;
+            $this->logo = $record->full_logo_path;
             $this->link = $record->full_link_url;
         }
     }
