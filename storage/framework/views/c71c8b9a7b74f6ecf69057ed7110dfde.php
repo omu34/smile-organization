@@ -10,7 +10,9 @@
                     <div class="p-4 md:w-1/4 sm:w-1/2">
                         <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
                             <div class="flex justify-center">
-                                <img src="<?php echo e($item->full_image_url); ?>" class="w-32 mb-3" alt="<?php echo e($item->title); ?>">
+                                <img src="<?php echo e($item->full_image_url); ?>"
+                                    class="rounded-full h-24 w-24 mx-auto mb-4 object-cover" alt="<?php echo e($item->title); ?>">
+                                
                             </div>
                             <h2 class="title-font font-regular text-xl text-black"><?php echo e($item->title); ?></h2>
                             <p class="mt-4 text-black text-md"><?php echo e($item->description); ?></p>

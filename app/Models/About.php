@@ -12,7 +12,7 @@ class About extends Model
         'title', 'body', 'slug', 'media_type', 'file_path', 'youtube_id',
     ];
 
-    protected $appends = ['full_image_url', 'primary_media'];
+    protected $appends = ['full_file_path', 'primary_media'];
 
     public function getPrimaryMediaAttribute()
     {
@@ -41,7 +41,7 @@ class About extends Model
      * This automatically creates the 'full_image_url' attribute.
      */
 
-    public function getFullImageUrlAttribute(): string
+    public function getFullFilePathAttribute(): string
     {
         // Check if image_url is already a full URL (e.g., http://) or starts with /storage
         if (Str::startsWith($this->file_path, ['http', '/storage'])) {

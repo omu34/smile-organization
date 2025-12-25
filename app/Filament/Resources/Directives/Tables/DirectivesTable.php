@@ -19,7 +19,7 @@ class DirectivesTable
                 TextColumn::make('icon')->label('Icon'),
                 TextColumn::make('order')->sortable(),
                 IconColumn::make('is_active')->boolean(),
-                TextColumn::make('created_at')->dateTime(),
+                // TextColumn::make('created_at')->dateTime(),
             ])
             ->reorderable('order')
             ->filters([

@@ -1,14 +1,14 @@
 <div id="aboutus" class="bg-white " data-aos="fade-up" data-aos-duration="1000">
-    <div class="mx-auto py-16">
+    <div class=". mx-auto py-16">
         <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-4 md:px-0">
-            <div class="max-w-lg">
+            <div class="max-w-xl ml-4 mr-4">
                 <h2 class="text-3xl font-bold text-black mb-6">About <span class="">Us</span></h2>
 
                 @if ($article)
                     <p class="text-black text-md">{!! \Illuminate\Support\Str::limit($article->body, 600) !!}</p>
                     <div class="mt-6">
                         <a href="{{ route('articles.show', $article->slug) }}"
-                            class="inline-block bg-black hover:bg-gray-700 text-white px-4 py-2 rounded">
+                            class="inline-block bg-black hover:bg-green-700 text-white px-4 py-2 rounded">
                             Read more
                         </a>
                     </div>

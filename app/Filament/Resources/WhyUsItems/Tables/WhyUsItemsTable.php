@@ -17,7 +17,7 @@ class WhyUsItemsTable
             ->columns([
                 TextColumn::make('title')
                     ->searchable(),
-                ImageColumn::make('full_image_path')
+                ImageColumn::make('full_image_url')
                     ->label('Image')
                     ->circular() // or use ->square()
                     ->size(50), // adjust thumbnail size
