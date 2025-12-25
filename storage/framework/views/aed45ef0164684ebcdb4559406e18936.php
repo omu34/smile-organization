@@ -5,10 +5,29 @@
     <div class="mx-auto  px-6 sm:px-10 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
 
         
-        <div class="space-y-6 text-center sm:text-left">
+        <div class="space-y- text-center sm:text-left">
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($footerInfo): ?>
-                <div class="flex justify-center sm:justify-start">
-                    
+                <div class="flex -mt-6 justify-center md:justify-self-start">
+                    <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('navigation-logo-header-component', []);
+
+$key = null;
+
+$key ??= \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::generateKey('lw-405079780-0', null);
+
+$__html = app('livewire')->mount($__name, $__params, $key);
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
                 </div>
 
                 <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-300 text-[15px]">

@@ -27,7 +27,7 @@
                                         class="absolute left-0 mt-2 w-48 bg-white border rounded-md shadow-lg z-50">
                                         <div class="py-2">
                                             @foreach ($item->children->where('is_active', true) as $child)
-                                                <a href="{{ $child->url ?? url($child->slug) }}"
+                                                <a href="{{ $child->url ?? url($child->slug) }}" target="_blank"
                                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                                                     {{ $child->title }}
                                                 </a>
@@ -35,7 +35,7 @@
                                         </div>
                                     </div>
                                 @else
-                                    <a href="{{ $item->url ?? url($item->slug) }}"
+                                    <a href="{{ $item->url ?? url($item->slug) }}" target="_blank"
                                         class="px-4 py-2 text-sm text-gray-700 hover:text-gray-900">
                                         {{ $item->title }}
                                     </a>
@@ -88,7 +88,7 @@
                                 @endforeach
                             </div>
                         @else
-                            <a href="{{ $menu->slug === 'about' ? route('about') : url($menu->slug) }}"
+                            <a href="{{ $menu->slug === 'about' ? route('about') : url($menu->slug) }}" target="_blank"
                                 class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-medium transition-colors rounded-md hover:text-neutral-900">
                                 {{ $menu->name }}
                             </a>

@@ -5,10 +5,10 @@
     <div class="mx-auto  px-6 sm:px-10 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
 
         {{-- Footer Info --}}
-        <div class="space-y-6 text-center sm:text-left">
+        <div class="space-y- text-center sm:text-left">
             @if ($footerInfo)
-                <div class="flex justify-center sm:justify-start">
-                    {{-- <livewire:navigation-logo-header-component /> --}}
+                <div class="flex -mt-6 justify-center md:justify-self-start">
+                    <livewire:navigation-logo-header-component />
                 </div>
 
                 <p class="leading-relaxed font-medium text-gray-700 dark:text-gray-300 text-[15px]">

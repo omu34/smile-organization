@@ -32,7 +32,7 @@
 
                 </h2>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gallery): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div wire:click="showModal(<?php echo e($gallery->id); ?>)"
                              class="transition-transform transform hover:scale-105 cursor-pointer relative group">

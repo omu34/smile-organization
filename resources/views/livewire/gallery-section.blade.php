@@ -30,7 +30,7 @@
                     {{ $category ?: 'Uncategorized' }}
                 </h2>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     @foreach ($images as $gallery)
                         <div wire:click="showModal({{ $gallery->id }})"
                              class="transition-transform transform hover:scale-105 cursor-pointer relative group">

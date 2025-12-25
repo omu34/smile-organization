@@ -20,10 +20,10 @@ class PartnersSection extends Component
 
 
     #[On('echo:partners,PartnerUpdated')]
-public function refreshPartners()
-{
-    $this->loadPartners();
-}
+    public function refreshPartners()
+    {
+        $this->loadPartners();
+    }
 
 
     public function mount()
