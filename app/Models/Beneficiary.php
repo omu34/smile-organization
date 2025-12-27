@@ -23,9 +23,9 @@ class Beneficiary extends Model
     ];
 
     protected $casts = [
-    'published_at' => 'datetime',
-    'is_published' => 'boolean',
-];
+        'published_at' => 'datetime',
+        'is_published' => 'boolean',
+    ];
 
     public function getSlugOptions(): SlugOptions
     {

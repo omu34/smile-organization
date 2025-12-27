@@ -5,7 +5,7 @@
                 <h2 class="text-3xl font-bold mb-6">Our Resources</h2>
                 {{-- <div> --}}
                 <p class="text-md text-black leading-relaxed  max-w-md  mx-auto">
-                    SFN resources include advocacy tools, psychosocial support for caregivers, educational materials,
+                    Smile for Neurodiversity resources include advocacy tools, psychosocial support for caregivers, educational materials,
                     recreational activities, access to affordable therapies, and community-driven initiatives.
                 </p>
                 {{-- </div> --}}
