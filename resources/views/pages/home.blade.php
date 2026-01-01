@@ -5,6 +5,7 @@
         <livewire:slider-show slug="home-page-slider" />
         <livewire:dynamic-navbar />
         <livewire:directives-section />
+        <livewire:area-of-practice/>
         <livewire:activities-section />
         <livewire:featured-articles-section />
         <livewire:resource-section />

@@ -2,10 +2,22 @@
     <section class="bg-white">
         <div class=" mx-auto py-8 lg:py-20" data-aos="fade-up" data-aos-duration="1000">
             <div class="max-w-2xl lg:max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-extrabold text-[#000000]" id="contactUs">
-                    Visit Our <span class="">Location</span>
+              {{-- @if ($areaTitle) --}}
+        <div class="flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
+                <h2
+                    class="font-bold text-xl md:text-3xl leading-tight mb-2 text-[#d13642]  rounded-md border-b-2 border-red-800 text-center md:text-left">
+                    {{-- {{$areaTitle->title}} --}}Visit Our Location
+                    {{-- <span class="text-indigo-900">Experience</span> --}}
                 </h2>
-                <p class="mt-3 text-md text-gray-700">Let us serve for Better</p>
+                <h4
+                    class="sm:text-lg md:text-xl  text-lg  font-medium text-gray-800 mt-4 tracking-wide  mx-auto max-w-lg ml-4 mr-4 md:ml-0 md:mr-0 text-center">
+                    {{-- {{$areaTitle->description}} --}}Let us serve for the better
+                    
+                </h4>
+            </div>
+            {{-- @else --}}
+                {{-- <p class="text-gray-500 dark:text-gray-400">Footer info not available.</p> --}}
+            {{-- @endif --}}
             </div>
 
             <div class="mt-8 lg:mt-20">

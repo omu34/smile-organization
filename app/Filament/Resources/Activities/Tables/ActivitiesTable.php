@@ -21,6 +21,8 @@ class ActivitiesTable
                     ->circular() // or use ->square()
                     ->size(50), // adjust thumbnail size
                 TextColumn::make('title')->sortable()->searchable(),
+                TextColumn::make('description'),
+                TextColumn::make('extra_description'),
                 IconColumn::make('is_visible')->boolean(),
                 TextColumn::make('order')->sortable(),
                 TextColumn::make('created_at')->dateTime('M d, Y'),

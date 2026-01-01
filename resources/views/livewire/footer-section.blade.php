@@ -3,7 +3,6 @@
 
     {{-- Main Grid --}}
     <div class="mx-auto  px-6 sm:px-10 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-
         {{-- Footer Info --}}
         <div class="space-y- text-center sm:text-left">
             @if ($footerInfo)

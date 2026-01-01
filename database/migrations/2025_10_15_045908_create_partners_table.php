@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
             $table->string('name');
             $table->string('slug')->nullable();
             $table->string('logo_path')->nullable();

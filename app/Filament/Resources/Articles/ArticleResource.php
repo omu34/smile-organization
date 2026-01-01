@@ -19,7 +19,7 @@ class ArticleResource extends Resource
     protected static ?string $model = Article::class;
     protected static string | \UnitEnum | null $navigationGroup = 'Media';
 
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-newspaper';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-hand-raised';
 
     protected static ?string $recordTitleAttribute = 'Articles';
 

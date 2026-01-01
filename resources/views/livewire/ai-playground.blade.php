@@ -1,6 +1,21 @@
 
 <div class="mx-auto py-5 mb-5 px-4">
-    <h1 class="text-2xl font-bold py-5 text-center">AI Playground</h1>
+    {{-- @if ($areaTitle) --}}
+        <div class="flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
+                <h2
+                    class="font-bold text-xl md:text-3xl leading-tight mb-2 text-[#d13642]  rounded-md border-b-2 border-red-800 text-center md:text-left">
+                    {{-- {{$areaTitle->title}} --}}AI Play Ground
+                    {{-- <span class="text-indigo-900">Experience</span> --}}
+                </h2>
+                <h4
+                    class="sm:text-lg md:text-xl  text-lg  font-medium text-gray-800 mt-4 tracking-wide  mx-auto max-w-lg ml-4 mr-4 md:ml-0 md:mr-0 text-center">
+                    {{-- {{$areaTitle->description}} --}} Quick Access
+                    
+                </h4>
+            </div>
+            {{-- @else --}}
+                {{-- <p class="text-gray-500 dark:text-gray-400">Footer info not available.</p> --}}
+            {{-- @endif --}}
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 

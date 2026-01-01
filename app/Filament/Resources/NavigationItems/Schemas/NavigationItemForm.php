@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
 namespace App\Filament\Resources\NavigationItems\Schemas;
 
 use App\Models\NavigationItem;
@@ -39,26 +35,7 @@ class NavigationItemForm
                 ->nullable()
                 ->hint('Optional: nest this under another item.'),
 
-            // Menu relationship
-            Select::make('navigation_menu_id')
-                ->label('Menu')
-                ->relationship('menu', 'name')
-                ->required()
-                ->hint('Choose which menu this link belongs to.'),
-
-            // Optional parent item
-            Select::make('parent_id')
-                ->label('Parent Item')
-                ->options(
-                    fn(callable $get) =>
-                    NavigationItem::where('navigation_menu_id', $get('navigation_menu_id'))
-                        ->pluck('label', 'id')
-                        ->toArray()
-                )
-                ->searchable()
-                ->nullable()
-                ->hint('Optional: nest this under another item.'),
-
+            
             // Label input (auto slug generator)
             TextInput::make('label')
                 ->label('Link Name')

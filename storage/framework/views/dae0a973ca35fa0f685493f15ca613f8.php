@@ -1,6 +1,21 @@
 <section class="py-10" id="directives" data-aos="fade-up" data-aos-duration="1000">
     <div class=" mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12"> Our Directives</h2>
+    
+        <div class="flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
+                <h2
+                    class="font-bold text-xl md:text-3xl leading-tight mb-2 text-[#d13642]  rounded-md border-b-2 border-red-800 text-center md:text-left">
+                    Directives
+                    
+                </h2>
+                <h4
+                    class="sm:text-lg md:text-xl  text-lg  font-medium text-gray-800 mt-4 tracking-wide  mx-auto max-w-lg ml-4 mr-4 md:ml-0 md:mr-0 text-center">
+                     Welcome
+                    
+                </h4>
+            </div>
+            
+                
+            
         <div class="grid md:grid-cols-3 gap-8">
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $directives; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $directive): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition">

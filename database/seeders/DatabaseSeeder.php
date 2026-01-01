@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             GallerySeeder::class,
             PartnerSeeder::class,
             DirectiveSeeder::class,
+            AreaOfPracticeSeeder::class,
             ResourceItemSeeder::class,
             ActivitySeeder::class,
             BeneficiarySeeder::class,

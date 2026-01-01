@@ -90,7 +90,52 @@
             });
         });
     </script>
-    
+
+{{-- AREA OF PRACTICE --}}
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            keyframes: {
+                rotate360: {
+                    '0%': { transform: 'rotateY(0deg)' },
+                    '100%': { transform: 'rotateY(360deg)' },
+                }
+            },
+            animation: {
+                rotate360: 'rotate360 120s linear infinite',
+            }
+        }
+    }
+}
+</script>
+
+    {{-- <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    keyframes: {
+                        rotate: {
+                            '0%': {
+                                transform: 'perspective(1000px) rotateY(0deg)'
+                            },
+                            '100%': {
+                                transform: 'perspective(1000px) rotateY(360deg)'
+                            }
+                        }
+                    },
+                    animation: {
+                        rotate: 'rotate 180s linear infinite',
+                    }
+                }
+            }
+        }
+    </script> --}}
+
+    {{-- AREA OF PRACTICE --}}
+
 </body>
 
 </html>

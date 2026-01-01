@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('featured_articles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
             $table->string('slug')->nullable()->unique();
             $table->text('excerpt')->nullable();
             $table->longText('content')->nullable();
