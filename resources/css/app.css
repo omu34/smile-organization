@@ -113,3 +113,77 @@ select:focus[data-flux-control] {
 [data-flux-error] {
     @apply mt-1 text-sm text-red-600;
 }
+
+
+/* AREA OF PRACTICE */
+
+.area-carousel-wrapper {
+    perspective: 1200px;
+    /* depth */
+    overflow: visible;
+}
+
+.area-carousel {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotate360 120s linear infinite;
+    /* one-direction rotation */
+    position: relative;
+}
+
+.area-carousel-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: rotateY(var(--rotateY)) translateZ(350px) translateX(-50%) translateY(-50%);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.area-carousel-item>div {
+    transform-style: preserve-3d;
+}
+
+
+/* Hover pop 3D */
+
+.area-carousel-item:hover {
+    z-index: 10;
+    /* bring forward */
+}
+
+.area-carousel-item:hover>div {
+    transform: translateZ(40px);
+    /* pop forward on hover */
+}
+
+
+/* Keyframes for rotation */
+
+@keyframes rotate360 {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+
+/* Responsive: smaller circle radius */
+
+@media (max-width: 1024px) {
+    .area-carousel-item {
+        transform: rotateY(var(--rotateY)) translateZ(250px) translateX(-50%) translateY(-50%);
+    }
+}
+
+@media (max-width: 640px) {
+    .area-carousel-item {
+        transform: rotateY(var(--rotateY)) translateZ(180px) translateX(-50%) translateY(-50%);
+    }
+}
+
+
+/* AREA OF PRACTICE */

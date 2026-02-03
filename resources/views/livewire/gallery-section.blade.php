@@ -3,8 +3,10 @@
 
     {{-- Gallery Content --}}
     <div class="mx-auto px-5">
-        <div class="max-w-6xl mx-auto text-center mb-6">
-            <h2 class="text-3xl font-bold mb-4">{{ $title ?? 'Our Gallery' }}</h2>
+        <div class="max-w-6xl mx-auto text-center mb-6 flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
+            <h2 class="text-3xl font-bold mb-4
+             text-[#d13642] leading-tight   rounded-md border-b-2 border-red-800 "
+            ">{{ $title ?? 'Our Gallery' }}</h2>
             <p class="text-md text-black leading-relaxed max-w-md mx-auto">
                 {{ $description ?? 'Smile resources include advocacy tools, psychosocial support for caregivers, educational materials, recreational activities, access to affordable therapies, and community-driven initiatives.' }}
             </p>

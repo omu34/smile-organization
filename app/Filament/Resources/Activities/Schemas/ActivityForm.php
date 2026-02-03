@@ -25,6 +25,7 @@ class ActivityForm
                     ->imagePreviewHeight('150')
                     ->required(),
                 Textarea::make('description')->rows(4)->required(),
+                Textarea::make('extra_description')->rows(4)->required(),
                 TextInput::make('button_text')->default('Detail'),
                 TextInput::make('button_link')->nullable()->label('Optional Button Link'),
                 Toggle::make('is_visible')->default(true)->label('Visible'),

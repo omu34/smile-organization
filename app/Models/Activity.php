@@ -14,7 +14,9 @@ class Activity extends Model
     protected $fillable = [
         'title',
         'image',
+        'subtitle',
         'description',
+        'extra_description',
         'button_text',
         'button_link',
         'order',

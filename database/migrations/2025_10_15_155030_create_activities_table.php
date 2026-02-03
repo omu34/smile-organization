@@ -14,8 +14,10 @@ return new class extends Migration
          Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('subtitle')->nullable();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
+            $table->text('extra_description')->nullable();
             $table->string('button_text')->default('Detail');
             $table->string('button_link')->nullable();
             $table->integer('order')->default(0);

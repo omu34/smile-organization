@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('visit_us', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
             $table->string('location')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();

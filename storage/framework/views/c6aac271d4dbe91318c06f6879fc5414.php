@@ -1,8 +1,21 @@
 <section class="py-10 mx-auto " id="partners" data-aos="fade-up" data-aos-duration="1000">
     <div class="text-center mb-10">
-        <h1 class="text-black text-3xl font-bold mb-6">
-            Smile for Neuro-Diversity Partners
-        </h1>
+        
+        <div class="flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
+                <h2
+                    class="font-bold text-xl md:text-3xl leading-tight mb-2 text-[#d13642]  rounded-md border-b-2 border-red-800 text-center md:text-left">
+                    Our Partners
+                    
+                </h2>
+                <h4
+                    class="sm:text-lg md:text-xl  text-lg  font-medium text-gray-800 mt-4 tracking-wide  mx-auto max-w-lg ml-4 mr-4 md:ml-0 md:mr-0 text-center">
+                     Welcome
+                    
+                </h4>
+            </div>
+            
+                
+            
     </div>
 
     <div class="m-4 grid md:grid-cols-3 gap-6">

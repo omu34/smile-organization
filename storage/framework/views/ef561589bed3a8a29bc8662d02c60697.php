@@ -64,7 +64,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('activities-section', []);
+[$__name, $__params] = $__split('area-of-practice', []);
 
 $key = null;
 
@@ -84,7 +84,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('featured-articles-section', []);
+[$__name, $__params] = $__split('activities-section', []);
 
 $key = null;
 
@@ -104,7 +104,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('resource-section', []);
+[$__name, $__params] = $__split('featured-articles-section', []);
 
 $key = null;
 
@@ -124,7 +124,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('partners-section', []);
+[$__name, $__params] = $__split('resource-section', []);
 
 $key = null;
 
@@ -144,7 +144,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('gallery-section', []);
+[$__name, $__params] = $__split('partners-section', []);
 
 $key = null;
 
@@ -164,7 +164,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('beneficiary-section', []);
+[$__name, $__params] = $__split('gallery-section', []);
 
 $key = null;
 
@@ -184,7 +184,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('ai-playground', []);
+[$__name, $__params] = $__split('beneficiary-section', []);
 
 $key = null;
 
@@ -204,11 +204,31 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('footer-section', []);
+[$__name, $__params] = $__split('ai-playground', []);
 
 $key = null;
 
 $key ??= \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::generateKey('lw-3711234986-10', null);
+
+$__html = app('livewire')->mount($__name, $__params, $key);
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+        <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('footer-section', []);
+
+$key = null;
+
+$key ??= \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::generateKey('lw-3711234986-11', null);
 
 $__html = app('livewire')->mount($__name, $__params, $key);
 

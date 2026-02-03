@@ -1,13 +1,22 @@
 <div data-aos="fade-up" data-aos-duration="1000">
     <div class="py-16 pb-14 mx-auto" id="beneficiaries">
         <div class="  px-5">
-            <div class="max-w-6xl  mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-3">Beneficiaries</h2>
-                <p class="text-md text-black leading-relaxed  max-w-md  mx-auto">
-                    Those whose lives have been transformed by SFN's support,
-                    and individuals who have benefited from our programs and services.
-                </p>
+            {{-- @if ($areaTitle) --}}
+        <div class="flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
+                <h2
+                    class="font-bold text-xl md:text-3xl leading-tight mb-2 text-[#d13642]  rounded-md border-b-2 border-red-800 text-center md:text-left">
+                    {{-- {{$areaTitle->title}} --}}Beneficiaries
+                    {{-- <span class="text-indigo-900">Experience</span> --}}
+                </h2>
+                <h4
+                    class="sm:text-lg md:text-xl  text-lg  font-medium text-gray-800 mt-4 tracking-wide  mx-auto max-w-lg ml-4 mr-4 md:ml-0 md:mr-0 text-center">
+                    {{-- {{$areaTitle->description}} --}} Welcome
+                    
+                </h4>
             </div>
+            {{-- @else --}}
+                {{-- <p class="text-gray-500 dark:text-gray-400">Footer info not available.</p> --}}
+            {{-- @endif --}}
 
             <div class="flex flex-wrap -mx-4 mt-10">
                 @foreach ($beneficiaries as $item)
