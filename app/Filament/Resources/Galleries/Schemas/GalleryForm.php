@@ -14,7 +14,7 @@ class GalleryForm
     {
         return $schema
             ->components([
-               Section::make('Gallery Details')
+                Section::make('Gallery Details')
                     ->schema([
                         TextInput::make('title')
                             ->required()

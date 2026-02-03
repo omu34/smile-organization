@@ -68,6 +68,7 @@ class GallerySection extends Component
             ->orderBy('created_at', 'desc');
 
         $galleries = $query->get();
+        
         $this->galleryIds = $galleries->pluck('id')->toArray();
 
         $groupedGalleries = $galleries->groupBy('category');

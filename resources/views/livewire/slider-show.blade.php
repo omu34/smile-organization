@@ -3,13 +3,13 @@
         <div class="swiper mySwiper  rounded-md overflow-hidden h-auto md:h-[500px]">
             <div class="swiper-wrapper">
                 @foreach ($slider->slides as $slide)
-                    <div class="swiper-slide opacity-25 bg-cover bottom-2 bg-no-repeat bg-center relative flex items-center justify-center rounded-md" style="background-image: url('{{ $slide->full_image_url }}')">
-                <div class="absolute inset-0 bg-black/40 rounded-md"></div>
-                                            {{-- Content Card --}}
-                <div
+                    <div class="swiper-slide opacity-25 bg-cover bottom-2 bg-no-repeat bg-center relative flex items-center justify-center rounded-md"
+                        style="background-image: url('{{ $slide->full_image_url }}')">
+                        <div class="absolute inset-0 bg-black/40 rounded-md"></div>
+                        {{-- Content Card --}}
+                        <div
                             class="relative justify-content-center items-center z-10  md:mt-30  p-4 md:p-6 rounded-md text-center text-white max-w-lg mx-auto shadow-xl">
                             <h2 class="text-xl md:text-2xl font-semibold mb-2 ">
-
                                 {{-- leading-tight drop-shadow-lg   backdrop-blur-sm bg-transparent --}}
                                 {{ $slide->title }}
                             </h2>

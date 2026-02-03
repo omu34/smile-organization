@@ -2,15 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use App\Models\NavigationMenu;
-use Filament\Facades\Filament;
-use Illuminate\Support\Facades\View;
-use App\Services\OpenAI\OpenAIServiceInterface;
 use App\Services\OpenAI\OpenAIService;
-
-
-use Illuminate\Support\Facades\Auth; // <-- Import the Auth facade
+use App\Services\OpenAI\OpenAIServiceInterface;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
+// <-- Import the Auth facade
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,19 +16,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
         // app/Providers/AppServiceProvider.php (register method)
-
-    $this->app->bind(OpenAIServiceInterface::class, OpenAIService::class);
-
+        $this->app->bind(OpenAIServiceInterface::class, OpenAIService::class);
     }
-
-
-
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void // <-- Combine all logic into one boot method
+    public function boot(): void// <-- Combine all logic into one boot method
     {
         // Share navigation menus with all views
         View::composer('*', function ($view) {

@@ -16,9 +16,6 @@ class DynamicNavbar extends Component
         'echo:menus,MenuUpdated' => 'refreshMenusFromBroadcast',
     ];
 
-
-
-
     #[On('menuUpdated')]
     public function mount()
     {

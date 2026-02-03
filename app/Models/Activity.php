@@ -21,17 +21,12 @@ class Activity extends Model
         'is_visible',
     ];
 
-    
-
-
-
     /**
      * The accessors to append to the model's array form.
      *
      * @var array
      */
     protected $appends = ['full_image'];
-
 
     /**
      * Accessor for full_image
