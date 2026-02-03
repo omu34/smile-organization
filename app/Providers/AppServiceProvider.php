@@ -7,6 +7,8 @@ use App\Services\OpenAI\OpenAIService;
 use App\Services\OpenAI\OpenAIServiceInterface;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+ use Illuminate\Support\Facades\Gate;
+use App\Models\User; // Make sure to import your User model
 // <-- Import the Auth facade
 
 class AppServiceProvider extends ServiceProvider
@@ -16,8 +18,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // app/Providers/AppServiceProvider.php (register method)
+
+        if (class_exists(\Laravel\Telescope\TelescopeServiceProvider::class)) {
+        $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+        // $this->app->register(TelescopeServiceProvider::class);
         $this->app->bind(OpenAIServiceInterface::class, OpenAIService::class);
+    }
+        // app/Providers/AppServiceProvider.php (register method)
+        
     }
     /**
      * Bootstrap any application services.
@@ -39,4 +47,23 @@ class AppServiceProvider extends ServiceProvider
         //     }
         // });
     }
+    
+        
+       
+
+/**
+ * Register the Telescope gate.
+ *
+ * This gate determines who can access Telescope in non-local environments.
+ */
+protected function gate(): void
+{
+    Gate::define('viewTelescope', function (User $user) {
+        return in_array($user->email, [
+            'admin@example.com',
+            'anotheradmin@example.com',
+        ]);
+    });
+}
+
 }

@@ -63,7 +63,11 @@ unset($__defined_vars, $__key, $__value); ?>
         ?>
 
         <title>
-            <?php echo e(filled($title) ? "{$title} - " : null); ?> <?php echo e($brandName); ?>
+            <?php echo e(filled($title) ? $title : null); ?>
+
+            <?php echo e(filled($brandName) && filled($title) ? ' - ' : null); ?>
+
+            <?php echo e(filled($brandName) ? $brandName : null); ?>
 
         </title>
 
