@@ -83,7 +83,7 @@
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
                 
-                <?php if(array_search($this->selectedGalleryId, $this->galleryIds) < count($this->galleryIds) - 1): ?>
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(array_search($this->selectedGalleryId, $this->galleryIds) < count($this->galleryIds) - 1): ?>
                     <div class="absolute inset-y-0 right-0 flex items-center">
                         <button wire:click="nextImage"
                             class="bg-black bg-opacity-40 text-white text-2xl px-3 py-2 rounded-l-lg hover:bg-opacity-70">›</button>

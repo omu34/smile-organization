@@ -5,6 +5,12 @@ build:
     - composer install --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader
 
     # 2. Ensure storage + cache dirs exist
+
+    # - mkdir -p storage/framework/{cache,sessions,views}
+    # - mkdir -p storage/logs
+    # - mkdir -p bootstrap/cache
+    # - chmod -R 775 storage bootstrap/cache
+    # - php artisan package:discover --ansi
     - php artisan package:discover --ansi
       - php -r \"if(!is_dir('storage/framework/cache')) mkdir('storage/framework/cache', 0777, true);\""
       - php -r \"if(!is_dir('storage/framework/sessions')) mkdir('storage/framework/sessions', 0777, true);\""
@@ -33,5 +39,3 @@ release:
     # Run migrations (safe mode)
     - php artisan fix:cache-paths
     - php artisan migrate --force
-    - php artisan db:seed --force
-    - php artisan storage:link
