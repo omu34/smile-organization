@@ -6,42 +6,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-
+    
+    {{-- ✅ Performance & SEO --}}
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#d13642" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    
     {{-- ✅ SEO & Social --}}
     <title>{{ $title ?? config('app.name') }}</title>
     <meta name="description" content="{{ $description ?? 'Welcome to ' . config('app.name') }}" />
-    <meta name="keywords" content="{{ $keywords ?? config('app.name') . ', ecommerce, shop' }}" />
+    <meta name="keywords" content="{{ $keywords ?? config('app.name') . ', legal services, law firm, attorneys, legal advice' }}" />
     <meta name="author" content="{{ $author ?? config('app.name') }}" />
+    <meta name="language" content="en" />
+    <meta name="generator" content="Laravel" />
 
     {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ $title ?? config('app.name') }}" />
     <meta property="og:description" content="{{ $description ?? 'Welcome to ' . config('app.name') }}" />
     <meta property="og:image" content="{{ $ogImage ?? asset('images/og-default.jpg') }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="{{ $title ?? config('app.name') }}" />
     <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ config('app.name') }}" />
+    <meta property="og:locale" content="en_US" />
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ $title ?? config('app.name') }}" />
     <meta name="twitter:description" content="{{ $description ?? 'Welcome to ' . config('app.name') }}" />
     <meta name="twitter:image" content="{{ $ogImage ?? asset('images/og-default.jpg') }}" />
+    <meta name="twitter:image:alt" content="{{ $title ?? config('app.name') }}" />
+    
+    {{-- Schema.org JSON-LD --}}
+    @if(isset($schema))
+        {!! $schema !!}
+    @else
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "{{ config('app.name') }}",
+        "url": "{{ url('/') }}",
+        "description": "{{ $description ?? 'Professional legal services' }}",
+        "@id": "{{ url('/') }}#organization"
+    }
+    </script>
+    @endif
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     {{-- ✅ Styles --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
 
-<body class="min-h-screen flex flex-col antialiased  ">
-    <div class="flex-grow ">
-        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-6  ">
-            {{-- shadow-md shadow-emerald-200 hover:shadow-lg --}}
+<body class="min-h-screen flex flex-col antialiased">
+    <div class="flex-grow">
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
             @yield('content')
         </main>
     </div>
+    
     {{-- ✅ Scripts --}}
     @livewireScripts
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script>
         window.Echo.channel('videos')
             .listen('.VideoUpdated', (e) => {
@@ -60,12 +93,38 @@
         Slider updated in real-time!
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"></noscript>
     <script>
         document.addEventListener('livewire:navigated', () => {
             AOS.init();
+        });
+    </script>
+
+    {{-- Lazy Loading for Background Images --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if ('IntersectionObserver' in window) {
+                let lazyBgObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let element = entry.target;
+                            let bg = element.dataset.bg;
+                            if (bg) {
+                                element.style.backgroundImage = 'url(' + bg + ')';
+                                element.classList.remove('lazy-bg');
+                                lazyBgObserver.unobserve(element);
+                            }
+                        }
+                    });
+                });
+
+                let lazyBgElements = document.querySelectorAll('.lazy-bg');
+                lazyBgElements.forEach(function(element) {
+                    lazyBgObserver.observe(element);
+                });
+            }
         });
     </script>
 
@@ -91,50 +150,24 @@
         });
     </script>
 
-{{-- AREA OF PRACTICE --}}
-
-<script>
-tailwind.config = {
-    theme: {
-        extend: {
-            keyframes: {
-                rotate360: {
-                    '0%': { transform: 'rotateY(0deg)' },
-                    '100%': { transform: 'rotateY(360deg)' },
+    {{-- AREA OF PRACTICE --}}
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                keyframes: {
+                    rotate360: {
+                        '0%': { transform: 'rotateY(0deg)' },
+                        '100%': { transform: 'rotateY(360deg)' },
+                    }
+                },
+                animation: {
+                    rotate360: 'rotate360 120s linear infinite',
                 }
-            },
-            animation: {
-                rotate360: 'rotate360 120s linear infinite',
             }
         }
     }
-}
-</script>
-
-    {{-- <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    keyframes: {
-                        rotate: {
-                            '0%': {
-                                transform: 'perspective(1000px) rotateY(0deg)'
-                            },
-                            '100%': {
-                                transform: 'perspective(1000px) rotateY(360deg)'
-                            }
-                        }
-                    },
-                    animation: {
-                        rotate: 'rotate 180s linear infinite',
-                    }
-                }
-            }
-        }
-    </script> --}}
-
-    {{-- AREA OF PRACTICE --}}
+    </script>
 
 </body>
 

@@ -3,8 +3,9 @@
         <div class="swiper mySwiper  rounded-md overflow-hidden h-[300px] sm:h-auto md:h-[500px]">
             <div class="swiper-wrapper">
                 @foreach ($slider->slides as $slide)
-                    <div class="swiper-slide opacity-25 bg-cover bottom-2 bg-no-repeat bg-center relative flex items-center justify-center rounded-md"
-                        style="background-image: url('{{ $slide->full_image_url }}')">
+                    <div class="swiper-slide opacity-25 bg-cover bg-no-repeat bg-center relative flex items-center justify-center rounded-md lazy-bg"
+                        data-bg="{{ $slide->full_image_url }}"
+                        style="background-color: #f3f4f6;">
                         <div class="absolute inset-0 bg-black/40 rounded-md"></div>
                         {{-- Content Card --}}
                         <div
