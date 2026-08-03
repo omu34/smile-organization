@@ -185,5 +185,19 @@ select:focus[data-flux-control] {
     }
 }
 
+@theme {
+    /* 1. Define the custom animation class utility */
+    --animate-rotate360: rotate360 120s linear infinite;
+    /* 2. Define the keyframes */
+    @keyframes rotate360 {
+        0% {
+            transform: rotateY(0deg);
+        }
+        100% {
+            transform: rotateY(360deg);
+        }
+    }
+}
+
 
 /* AREA OF PRACTICE */

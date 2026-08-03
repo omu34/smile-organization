@@ -1,13 +1,11 @@
 @extends('components.layouts.pages-layout')
 
 @section('content')
-    <livewire:slider-show slug="about-page-slider" />
+    <livewire:slider-show slug="development-page-slider" />
     <div class="mx-auto ">
         <livewire:dynamic-navbar />
-        <livewire:about-us />
         <livewire:featured-articles-section />
         <livewire:why-us-section />
-        <livewire:visit-us-section />
     </div>
     <livewire:footer-section />
 @endsection

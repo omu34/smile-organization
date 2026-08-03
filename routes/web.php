@@ -52,6 +52,14 @@ Route::get('/contact', function () {
     return view('pages.contact');
 })->name('pages.contact');
 
+Route::get('/services/development', function () {
+    return view('pages.development');
+})->name('pages.development');
+
+Route::get('/services/consulting', function () {
+    return view('pages.consulting');
+})->name('pages.consulting');
+
 Route::get('/articles/{slug}', function ($slug) {
     $article = Article::where('slug', $slug)->with('media')->firstOrFail();
     return view('articles.show', compact('article'));
