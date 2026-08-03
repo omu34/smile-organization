@@ -43,12 +43,12 @@ unset($__name);
 unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
-?>        
+?>  
         <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('featured-articles-section', []);
+[$__name, $__params] = $__split('visit-us-section', []);
 
 $__key = null;
 
@@ -64,12 +64,12 @@ unset($__name);
 unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
-?>       
+?>      
         <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('visit-us-section', []);
+[$__name, $__params] = $__split('featured-articles-section', []);
 
 $__key = null;
 
@@ -85,7 +85,7 @@ unset($__name);
 unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
-?>
+?>        
     </div>
     <?php
 $__split = function ($name, $params = []) {
