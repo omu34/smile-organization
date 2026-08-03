@@ -1,49 +1,63 @@
-<div data-aos="fade-up" data-aos-duration="1000">
-    <div class="py-16 pb-14 mx-auto" id="beneficiaries">
-        <div class="  px-5">
-            {{-- @if ($areaTitle) --}}
-        <div class="flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
-                <h2
-                    class="font-bold text-xl md:text-3xl leading-tight mb-2 text-[#d13642]  rounded-md border-b-2 border-red-800 text-center md:text-left">
-                    {{-- {{$areaTitle->title}} --}}Beneficiaries
-                    {{-- <span class="text-indigo-900">Experience</span> --}}
-                </h2>
-                <h4
-                    class="sm:text-lg md:text-xl  text-lg  font-medium text-gray-800 mt-4 tracking-wide  mx-auto max-w-lg ml-4 mr-4 md:ml-0 md:mr-0 text-center">
-                    {{-- {{$areaTitle->description}} --}} Welcome
-                    
-                </h4>
-            </div>
-            {{-- @else --}}
-                {{-- <p class="text-gray-500 dark:text-gray-400">Footer info not available.</p> --}}
-            {{-- @endif --}}
-
-            <div class="flex flex-wrap -mx-4 mt-10">
-                @foreach ($beneficiaries as $item)
-                    <div wire:key="beneficiary-{{ $item->id }}" class="w-full px-4 md:w-1/2 lg:w-1/3 mb-10">
-                        <div class="mx-auto max-w-[370px] group hover:scale-105 transition-transform">
-                            <div class="relative pb-6">
-                                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->title }}"
-                                    class="w-full h-64 md:h-80 object-cover rounded-xl shadow-md transition-transform transform hover:scale-105">
-                            </div>
-                            <div>
-                                <span class=" mb-5 inline-block rounded py-1 px-4 text-xs font-semibold text-black">
-                                    {{ $item->published_at?->format('M d, Y') }}
-                                </span>
-                                <h3>
-                                    <a href="javascript:void(0)"
-                                        class="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold">
-                                        {{ $item->title }}
-                                    </a>
-                                </h3>
-                                <p class="text-base text-black">
-                                    {{ $item->description }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+<div class="bg-white py-16 lg:py-24" data-aos="fade-up" data-aos-duration="1000">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="beneficiaries">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col items-center md:items-start text-center md:text-left mb-12">
+            <!-- Red Accent Line -->
+            <div class="hidden md:block h-1 w-16 bg-red-600 mb-4"></div>
+            
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 uppercase">
+                Beneficiaries
+            </h2>
+            
+            <h4 class="text-lg md:text-xl text-gray-600 max-w-2xl font-medium">
+                Welcome
+            </h4>
         </div>
+
+        <!-- Beneficiaries Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach ($beneficiaries as $item)
+                <article wire:key="beneficiary-{{ $item->id }}" class="bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden flex flex-col group transition-all duration-300">
+                    
+                    <!-- Card Image -->
+                    @if ($item->image_path)
+                        <div class="relative w-full aspect-video overflow-hidden bg-gray-200">
+                            <img src="{{ asset('storage/' . $item->image_path) }}" 
+                                 alt="{{ $item->title }}"
+                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        </div>
+                    @endif
+
+                    <!-- Card Body -->
+                    <div class="p-6 flex flex-col flex-grow">
+                        <!-- Date Meta Tag -->
+                        @if ($item->published_at)
+                            <div class="mb-3">
+                                <span class="text-xs font-bold uppercase tracking-wider text-red-600">
+                                    {{ $item->published_at->format('M d, Y') }}
+                                </span>
+                            </div>
+                        @endif
+
+                        <!-- Title -->
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-red-600 transition-colors">
+                            <a href="javascript:void(0)" class="focus:outline-none">
+                                {{ $item->title }}
+                            </a>
+                        </h3>
+
+                        <!-- Description -->
+                        @if ($item->description)
+                            <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow line-clamp-3">
+                                {{ $item->description }}
+                            </p>
+                        @endif
+                    </div>
+
+                </article>
+            @endforeach
+        </div>
+
     </div>
 </div>

@@ -16,3 +16,11 @@ use App\Models\Order;
 Broadcast::channel('footer', function () {
     return true; // public channel, no auth needed
 });
+
+Broadcast::channel('gallery', function () {
+    return true; // public channel for gallery updates
+});
+
+Broadcast::channel('gallery.{id}', function ($user, $id) {
+    return true; // public channel for gallery updates
+});

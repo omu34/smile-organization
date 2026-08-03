@@ -13,8 +13,9 @@ class GallerySection extends Component
     public $selectedGalleryId = null;
     public $galleryIds = [];
 
-    #[On('echo:gallery,GalleryUpdated')]  // listens to Reverb event
-    public function refreshGallery()
+    #[On('echo:gallery,MediaUpdated')]
+    #[On('echo:gallery,GalleryUpdated')]
+    public function refreshGallery($event)
     {
         $this->dispatch('$refresh');
     }
@@ -75,7 +76,7 @@ class GallerySection extends Component
         $categories = Gallery::select('category')->distinct()->pluck('category');
 
         $selectedGallery = $this->selectedGalleryId
-            ? Gallery::find($this->selectedGalleryId)
+            ? Gallery::with('media')->find($this->selectedGalleryId)
             : null;
 
         return view('livewire.gallery-section', [

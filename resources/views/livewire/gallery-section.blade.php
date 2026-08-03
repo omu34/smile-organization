@@ -1,92 +1,147 @@
-<div data-aos="fade-up" data-aos-duration="1000" class="pt-20 pb-10 m-4" x-data="{ open: false }"
+<div data-aos="fade-up" data-aos-duration="1000" class="bg-white py-16 lg:py-24" x-data="{ open: false }"
     x-on:show-modal.window="open = true" x-on:close-modal.window="open = false">
 
     {{-- Gallery Content --}}
-    <div class="mx-auto px-5">
-        <div class="max-w-6xl mx-auto text-center mb-6 flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
-            <h2 class="text-3xl font-bold mb-4
-             text-[#d13642] leading-tight   rounded-md border-b-2 border-red-800 "
-            ">{{ $title ?? 'Our Gallery' }}</h2>
-            <p class="text-md text-black leading-relaxed max-w-md mx-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col items-center md:items-start text-center md:text-left mb-12">
+            <!-- Red Accent Line -->
+            <div class="hidden md:block h-1 w-16 bg-red-600 mb-4"></div>
+            
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 uppercase">
+                {{ $title ?? 'Our Gallery' }}
+            </h2>
+            
+            <p class="text-lg text-gray-600 max-w-2xl font-medium leading-relaxed">
                 {{ $description ?? 'Smile resources include advocacy tools, psychosocial support for caregivers, educational materials, recreational activities, access to affordable therapies, and community-driven initiatives.' }}
             </p>
         </div>
 
-        <div class="flex justify-between items-center mb-6">
-            <input wire:model.live.debounce.500ms="search" placeholder="Search gallery..."
-                class="border rounded-md p-2 w-1/3">
+        <!-- Search & Filter Controls -->
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-10 bg-gray-50 p-4 rounded-xl border border-gray-100 shadow-sm">
+            <div class="w-full sm:w-1/2">
+                <input wire:model.live.debounce.500ms="search" type="text" placeholder="Search gallery..."
+                    class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-red-600 transition-colors">
+            </div>
 
-            <select wire:model.live="categoryFilter" class="border rounded-md p-2">
-                <option value="">All Categories</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category }}">{{ $category ?: 'Uncategorized' }}</option>
-                @endforeach
-            </select>
+            <div class="w-full sm:w-auto">
+                <select wire:model.live="categoryFilter" 
+                    class="w-full sm:w-auto bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm font-bold uppercase tracking-wider text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-red-600 transition-colors">
+                    <option value="">All Categories</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category }}">{{ $category ?: 'Uncategorized' }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         <div key="{{ $categoryFilter }}">
             @forelse ($groupedGalleries as $category => $images)
-                <h2 class="text-xl text-black font-bold mb-3 mt-6 border-b pb-1">
-                    {{ $category ?: 'Uncategorized' }}
-                </h2>
+                <div class="mb-12 last:mb-0">
+                    <!-- Category Header -->
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="h-6 w-1 bg-red-600 rounded-full"></div>
+                        <h3 class="text-2xl font-extrabold uppercase tracking-tight text-gray-900">
+                            {{ $category ?: 'Uncategorized' }}
+                        </h3>
+                    </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    @foreach ($images as $gallery)
-                        <div wire:click="showModal({{ $gallery->id }})"
-                            class="transition-transform transform hover:scale-105 cursor-pointer relative group">
-                            <img src="{{ $gallery->full_image_path }}" alt="{{ $gallery->title }}"
-                                class="w-full h-64 md:h-80 object-cover rounded-xl shadow-md transition-transform transform hover:scale-105">
-                            <div
-                                class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 flex justify-center items-center text-white text-lg font-semibold transition">
-                                View
+                    <!-- Images Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        @foreach ($images as $gallery)
+                            <div wire:click="showModal({{ $gallery->id }})"
+                                class="bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden flex flex-col group cursor-pointer transition-all duration-300">
+                                
+                                <!-- Media Wrapper -->
+                                <div class="relative w-full aspect-video overflow-hidden bg-gray-100">
+                                    <img src="{{ $gallery->getFirstMediaUrl('gallery_images') ?? $gallery->full_image_path }}" alt="{{ $gallery->title }}"
+                                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                    
+                                    <!-- Hover Overlay -->
+                                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex justify-center items-center text-white text-xs font-bold uppercase tracking-wider transition-opacity duration-300">
+                                        <span class="border-2 border-white px-4 py-2 rounded-lg shadow-md">View Image</span>
+                                    </div>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <div class="text-xs font-bold uppercase tracking-wider text-red-600 mb-2">
+                                        {{ $gallery->category ?: 'Uncategorized' }}
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 leading-tight group-hover:text-red-600 transition-colors">
+                                        {{ $gallery->title }}
+                                    </h4>
+                                </div>
                             </div>
-                            <h3 class="mt-2 text-gray-900 font-semibold">{{ $gallery->title }}</h3>
-                            <p class="text-black text-sm">{{ $gallery->category }}</p>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             @empty
-                <p class="text-black text-center">No gallery images found.</p>
+                <div class="text-center py-16 bg-gray-50 rounded-xl border border-gray-100">
+                    <p class="text-gray-500 font-medium">No gallery images found.</p>
+                </div>
             @endforelse
         </div>
     </div>
 
     {{-- Modal --}}
-    <div x-show="open" x-cloak class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    <div x-show="open" x-cloak class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
         x-transition.opacity @keydown.escape.window="$wire.closeModal()">
 
         @if ($selectedGallery)
-            <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-2xl max-w-4xl w-full mx-5 relative"
+            <div class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-2xl max-w-4xl w-full relative border border-gray-200 dark:border-gray-800"
                 x-transition.scale @click.outside="$wire.closeModal()">
 
                 <button @click="$wire.closeModal()"
-                    class="absolute top-3 right-3 z-10 bg-gray-800 text-white rounded-full p-2 hover:bg-gray-700">
-                    ✕
+                    class="absolute top-4 right-4 z-20 bg-gray-900/80 text-white rounded-full p-3 hover:bg-red-600 transition-colors shadow-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
                 </button>
 
-                <img src="{{ $selectedGallery->full_image_path }}" alt="{{ $selectedGallery->title }}"
-                    class="w-full object-contain max-h-[80vh]">
+                <div class="relative bg-black flex items-center justify-center max-h-[70vh] overflow-hidden">
+                    <img src="{{ $selectedGallery->getFirstMediaUrl('gallery_images') ?? $selectedGallery->full_image_path }}" alt="{{ $selectedGallery->title }}"
+                        class="w-full max-h-[70vh] object-contain">
 
-                <div class="p-4 text-center">
-                    <h2 class="text-xl font-bold text-black">{{ $selectedGallery->title }}</h2>
-                    <p class="text-black">{{ $selectedGallery->description }}</p>
+                    {{-- Previous Button --}}
+                    @if (array_search($this->selectedGalleryId, $this->galleryIds) > 0)
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                            <button wire:click="prevImage"
+                                class="bg-black/60 hover:bg-red-600 text-white p-3 rounded-full transition-colors shadow-lg focus:outline-none">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    @endif
+
+                    {{-- Next Button --}}
+                    @if (array_search($this->selectedGalleryId, $this->galleryIds) < count($this->galleryIds) - 1)
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                            <button wire:click="nextImage"
+                                class="bg-black/60 hover:bg-red-600 text-white p-3 rounded-full transition-colors shadow-lg focus:outline-none">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    @endif
                 </div>
 
-                {{-- Previous Button --}}
-                @if (array_search($this->selectedGalleryId, $this->galleryIds) > 0)
-                    <div class="absolute inset-y-0 left-0 flex items-center">
-                        <button wire:click="prevImage"
-                            class="bg-black bg-opacity-40 text-white text-2xl px-3 py-2 rounded-r-lg hover:bg-opacity-70">‹</button>
+                <div class="p-8 text-left bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+                    <div class="text-xs font-bold uppercase tracking-wider text-red-600 mb-2">
+                        {{ $selectedGallery->category ?: 'Uncategorized' }}
                     </div>
-                @endif
-
-                {{-- Next Button --}}
-                @if (array_search($this->selectedGalleryId, $this->galleryIds) < count($this->galleryIds) - 1)
-                    <div class="absolute inset-y-0 right-0 flex items-center">
-                        <button wire:click="nextImage"
-                            class="bg-black bg-opacity-40 text-white text-2xl px-3 py-2 rounded-l-lg hover:bg-opacity-70">›</button>
-                    </div>
-                @endif
+                    <h3 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-3">
+                        {{ $selectedGallery->title }}
+                    </h3>
+                    @if($selectedGallery->description)
+                        <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+                            {{ $selectedGallery->description }}
+                        </p>
+                    @endif
+                </div>
             </div>
         @endif
     </div>

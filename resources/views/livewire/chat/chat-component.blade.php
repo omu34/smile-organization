@@ -1,21 +1,44 @@
-<div class="p-4 bg-white rounded shadow">
-    <div class="space-y-2">
-        <div id="chat-log" class="space-y-3 max-h-72 overflow-auto p-2 bg-gray-50 rounded">
+<div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 relative overflow-hidden">
+    <!-- Top Accent Line -->
+    <div class="absolute top-0 left-0 w-full h-1 bg-red-600"></div>
+
+    <div class="space-y-4">
+        <!-- Chat Log -->
+        <div id="chat-log" class="space-y-4 max-h-[380px] overflow-y-auto p-4 bg-gray-50/70 rounded-xl border border-gray-100 scroll-smooth">
             @foreach($messages as $m)
-                <div class="p-2 {{ $m['role'] === 'user' ? 'text-right' : 'text-left' }}">
-                    <div class="inline-block px-3 py-2 rounded {{ $m['role'] === 'user' ? 'bg-blue-100' : 'bg-gray-100' }}">
+                <div class="flex {{ $m['role'] === 'user' ? 'justify-end' : 'justify-start' }}">
+                    <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-sm {{ $m['role'] === 'user' ? 'bg-red-600 text-white rounded-tr-xs' : 'bg-white text-gray-900 border border-gray-200 rounded-tl-xs' }}">
                         {!! nl2br(e($m['content'])) !!}
                     </div>
                 </div>
             @endforeach
         </div>
 
-        <textarea wire:model.defer="message" rows="3" class="w-full border rounded p-2" placeholder="Say something..."></textarea>
-        @error('message') <p class="text-sm text-red-600">{{ $message }}</p> @enderror
+        <!-- Input Form Area -->
+        <div class="space-y-3">
+            <textarea wire:model.defer="message" rows="3" 
+                class="w-full rounded-xl border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 p-3.5 text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 resize-none" 
+                placeholder="Type your message..."></textarea>
+            
+            @error('message') 
+                <p class="text-xs font-semibold text-red-600">{{ $message }}</p> 
+            @enderror
 
-        <div class="flex items-center gap-3">
-            <button wire:click="send" class="px-4 py-2 bg-indigo-600 text-white rounded" type="button">Send</button>
-            <div id="streaming-indicator" class="text-sm text-gray-500 hidden">Streaming...</div>
+            <div class="flex items-center justify-between pt-1">
+                <button wire:click="send" 
+                    class="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-wider text-xs px-6 py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-red-900/30 focus:outline-none focus:ring-2 focus:ring-red-500" 
+                    type="button">
+                    Send Message
+                    <svg class="w-3.5 h-3.5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
+                    </svg>
+                </button>
+                
+                <div id="streaming-indicator" class="text-xs font-bold text-red-600 animate-pulse hidden uppercase tracking-wider flex items-center space-x-1.5">
+                    <span class="w-2 h-2 rounded-full bg-red-600 inline-block animate-ping"></span>
+                    <span>AI is typing...</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -27,20 +50,20 @@
             const indicator = document.getElementById('streaming-indicator');
             indicator.classList.remove('hidden');
 
-            let assistantHtml = '<div class="p-2 text-left"><div class="inline-block px-3 py-2 rounded bg-gray-100" id="assistant-stream"></div></div>';
+            let assistantHtml = '<div class="flex justify-start"><div class="max-w-[85%] px-4 py-3 rounded-2xl rounded-tl-xs text-sm leading-relaxed bg-white text-gray-900 border border-gray-200 shadow-sm" id="assistant-stream"></div></div>';
             chatLog.insertAdjacentHTML('beforeend', assistantHtml);
             const assistantElem = document.getElementById('assistant-stream');
+            
             es.onmessage = function(event) {
-                // OpenAI streaming sends "data: {json}" lines; some servers send "data: [DONE]"
-                if (! event.data) return;
+                if (!event.data) return;
                 if (event.data.trim() === '[DONE]') {
                     es.close();
                     indicator.classList.add('hidden');
+                    if (assistantElem) assistantElem.removeAttribute('id');
                     return;
                 }
 
                 try {
-                    // Many servers send each chunk as a JSON object, or raw text.
                     let parsed;
                     try { parsed = JSON.parse(event.data); } catch (err) { parsed = { chunk: event.data }; }
                     if (parsed.choices && parsed.choices.length) {
@@ -61,6 +84,7 @@
                 console.error('SSE error', err);
                 es.close();
                 indicator.classList.add('hidden');
+                if (assistantElem) assistantElem.removeAttribute('id');
             };
         });
     </script>

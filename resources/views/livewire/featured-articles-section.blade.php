@@ -1,42 +1,58 @@
-<div class="py-12 " data-aos="fade-up" data-aos-duration="1000">
-    <div class="m-4">
-        {{-- @if ($areaTitle) --}}
-        <div class="flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
-                <h2
-                    class="font-bold text-xl md:text-3xl leading-tight mb-2 text-[#d13642]  rounded-md border-b-2 border-red-800 text-center md:text-left">
-                    {{-- {{$areaTitle->title}} --}}Featured Articles
-                    {{-- <span class="text-indigo-900">Experience</span> --}}
-                </h2>
-                <h4
-                    class="sm:text-lg md:text-xl  text-lg  font-medium text-gray-800 mt-4 tracking-wide  mx-auto max-w-lg ml-4 mr-4 md:ml-0 md:mr-0 text-center">
-                    {{-- {{$areaTitle->description}} --}} Welcome
-                    
-                </h4>
-            </div>
-            {{-- @else --}}
-                {{-- <p class="text-gray-500 dark:text-gray-400">Footer info not available.</p> --}}
-            {{-- @endif --}}
+<div class="bg-white py-16 lg:py-24" data-aos="fade-up" data-aos-duration="1000">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col items-center md:items-start text-center md:text-left mb-12">
+            <!-- Red Accent Line -->
+            <div class="hidden md:block h-1 w-16 bg-red-600 mb-4"></div>
+            
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 uppercase">
+                Featured Articles
+            </h2>
+            
+            <h4 class="text-lg md:text-xl text-gray-600 max-w-2xl font-medium">
+                Welcome
+            </h4>
+        </div>
 
-        <div class="mx-auto grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <!-- Articles Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach ($articles as $article)
-                <div class="bg-white shadow rounded-lg overflow-hidden">
-                    @if ($article->media_type === 'image')
-                        <img src="{{ asset('storage/' . $article->media_url) }}" class="w-full h-56 object-cover">
-                    @elseif ($article->media_type === 'video')
-                        <video controls class="w-full h-56 object-cover">
-                            <source src="{{ asset('storage/' . $article->media_url) }}" type="video/mp4">
-                        </video>
-                    @elseif ($article->media_type === 'youtube')
-                        <iframe class="w-full h-56" src="https://www.youtube.com/embed/{{ $article->youtube_id }}" allowfullscreen></iframe>
-                    @endif
-
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg text-gray-800">{{ $article->title }}</h3>
-                        <p class="text-gray-600 text-sm mt-2">{{ Str::limit($article->excerpt, 120) }}</p>
+                <article class="bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden flex flex-col group transition-all duration-300">
+                    
+                    <!-- Media Wrapper -->
+                    <div class="relative w-full h-56 overflow-hidden bg-gray-100">
+                        @if ($article->media_type === 'image')
+                            <img src="{{ asset('storage/' . $article->media_url) }}" 
+                                 alt="{{ $article->title }}" 
+                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        @elseif ($article->media_type === 'video')
+                            <video controls class="w-full h-full object-cover">
+                                <source src="{{ asset('storage/' . $article->media_url) }}" type="video/mp4">
+                            </video>
+                        @elseif ($article->media_type === 'youtube')
+                            <iframe class="w-full h-full border-0" 
+                                    src="https://www.youtube.com/embed/{{ $article->youtube_id }}" 
+                                    allowfullscreen></iframe>
+                        @endif
                     </div>
-                </div>
+
+                    <!-- Card Body -->
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-red-600 transition-colors">
+                            {{ $article->title }}
+                        </h3>
+                        
+                        @if ($article->excerpt)
+                            <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow line-clamp-3">
+                                {{ Str::limit($article->excerpt, 120) }}
+                            </p>
+                        @endif
+                    </div>
+
+                </article>
             @endforeach
         </div>
+
     </div>
 </div>
-

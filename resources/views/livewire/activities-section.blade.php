@@ -1,48 +1,73 @@
-<section class="bg-white py-10 min-h-[250px]" id="section" data-aos="fade-up" data-aos-duration="1000">
-    {{-- @if ($areaTitle) --}}
-        <div class="flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
-                <h2
-                    class="font-bold text-xl md:text-3xl leading-tight mb-2 text-[#d13642]  rounded-md border-b-2 border-red-800 text-center md:text-left">
-                    {{-- {{$areaTitle->title}} --}}Our Activities
-                    {{-- <span class="text-indigo-900">Experience</span> --}}
-                </h2>
-                <h4
-                    class="sm:text-lg md:text-xl  text-lg  font-medium text-gray-800 mt-4 tracking-wide  mx-auto max-w-lg ml-4 mr-4 md:ml-0 md:mr-0 text-center">
-                    {{-- {{$areaTitle->description}} --}} We do and humanitarian Job
+<section class="bg-gray-50 py-16 lg:py-24" id="section" data-aos="fade-up" data-aos-duration="1000">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col items-center md:items-start text-center md:text-left mb-12">
+            <!-- Accent Line -->
+            <div class="hidden md:block h-1 w-16 bg-red-600 mb-4"></div>
+            
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 uppercase">
+                {{-- {{ $areaTitle->title ?? 'Our Activities' }} --}}
+                Our Activities
+            </h2>
+            
+            <h4 class="text-lg md:text-xl text-gray-600 max-w-2xl font-medium">
+                {{-- {{ $areaTitle->description ?? 'We do humanitarian jobs' }} --}} 
+                We do humanitarian work and create lasting community impact.
+            </h4>
+        </div>
+
+        <!-- Activities Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach ($activities as $activity)
+                <!-- News/Sports Style Card -->
+                <article class="bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden flex flex-col group transition-all duration-300">
                     
-                </h4>
-            </div>
-            {{-- @else
-                <p class="text-gray-500 dark:text-gray-400">Footer info not available.</p>
-            @endif --}}
-    <div class=" mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Full-Bleed Card Image -->
+                    @if ($activity->image)
+                        <div class="relative w-full aspect-video overflow-hidden bg-gray-200">
+                            <img src="{{ $activity->full_image }}" 
+                                 alt="{{ $activity->title }}" 
+                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        </div>
+                    @endif
 
-        @foreach ($activities as $activity)
-            <div class="backdrop bg-white bg-opacity-10 rounded-lg p-4 text-black border border-gray-300 shadow-lg">
-                <div class="w-full mb-3 pb-3 border-b border-white">
-                    <h3 class="text-xl font-semibold text-shadow">{{ $activity->subtitle }}</h3>
-                </div>
+                    <!-- Card Body -->
+                    <div class="p-6 flex flex-col flex-grow">
+                        <!-- Red Accent Tag (Optional stylistic addition) -->
+                        <div class="mb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider text-red-600">
+                                Activity
+                            </span>
+                        </div>
 
-                @if ($activity->image)
-                    {{-- CORRECTED: Use the 'full_image' accessor --}}
-                    <img src="{{ $activity->full_image }}" alt="{{ $activity->title }}" class="w-full h-48 md:h-56 object-cover rounded mb-3">
-                @endif
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-red-600 transition-colors">
+                            {{ $activity->subtitle }}
+                        </h3>
 
-                @if ($activity->extra_description)
-                    <p class="tracking-wide text-base text-shadow">
-                        {{ $activity->extra_description }}
-                    </p>
-                @endif
+                        @if ($activity->extra_description)
+                            <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow line-clamp-3">
+                                {{ $activity->extra_description }}
+                            </p>
+                        @endif
 
-                @if ($activity->button_text)
-                    <a href="{{ $activity->button_link ?? '#' }}">
-                        <button
-                            class="mt-3 w-full bg-gray-100 bg-opacity-0 border border-white px-3 py-2 rounded focus:ring-2 focus:ring-white hover:bg-opacity-10 text-lg">
-                            {{ $activity->button_text }}
-                        </button>
-                    </a>
-                @endif
-            </div>
-        @endforeach
+                        <!-- Action Link -->
+                        @if ($activity->button_text)
+                            <div class="mt-auto pt-4 border-t border-gray-100">
+                                <!-- Replaced invalid nested <button> inside <a> with a properly styled <a> tag -->
+                                <a href="{{ $activity->button_link ?? '#' }}" 
+                                   class="inline-flex items-center text-sm font-bold uppercase tracking-wide text-gray-900 hover:text-red-600 transition-colors group/link">
+                                    {{ $activity->button_text }}
+                                    <svg class="w-4 h-4 ml-2 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        @endif
+                    </div>
+                </article>
+            @endforeach
+        </div>
+
     </div>
 </section>

@@ -38,15 +38,33 @@ class GalleryForm
                             ])
                             ->required(),
 
-                        // Image upload
-                        FileUpload::make('image_path')
+                        // Media upload using Spatie Media Library
+                        FileUpload::make('gallery_images')
                             ->label('Gallery Image')
                             ->image()
                             ->directory('galleries')
                             ->disk('public')
                             ->visibility('public')
                             ->imagePreviewHeight('150')
-                            ->required(),
+                            ->required()
+                            ->afterStateUpdated(function ($state, $record) {
+                                if ($record) {
+                                    $record->clearMediaCollection('gallery_images');
+                                    if ($state) {
+                                        $record->addMediaFromDisk($state, 'public')
+                                            ->toMediaCollection('gallery_images');
+                                    }
+                                }
+                            })
+                            ->dehydrateStateUsing(function ($state, $record) {
+                                if ($record && $state) {
+                                    $record->clearMediaCollection('gallery_images');
+                                    $record->addMediaFromDisk($state, 'public')
+                                        ->toMediaCollection('gallery_images');
+                                }
+                                return null; // Don't store in database field
+                            })
+                            ->getUploadedFileNameForStorageUsing(fn () => uniqid() . '.jpg'),
                     ]),
 
 

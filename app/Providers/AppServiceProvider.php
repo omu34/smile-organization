@@ -2,14 +2,15 @@
 
 namespace App\Providers;
 
+use App\Models\Gallery;
 use App\Models\NavigationMenu;
+use App\Observers\GalleryObserver;
 use App\Services\OpenAI\OpenAIService;
 use App\Services\OpenAI\OpenAIServiceInterface;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
- use Illuminate\Support\Facades\Gate;
-use App\Models\User; // Make sure to import your User model
-// <-- Import the Auth facade
+use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,19 +19,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
         if (class_exists(\Laravel\Telescope\TelescopeServiceProvider::class)) {
-        $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
-        // $this->app->register(TelescopeServiceProvider::class);
-        $this->app->bind(OpenAIServiceInterface::class, OpenAIService::class);
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            // $this->app->register(TelescopeServiceProvider::class);
+            $this->app->bind(OpenAIServiceInterface::class, OpenAIService::class);
+        }
     }
-        // app/Providers/AppServiceProvider.php (register method)
-        
-    }
+
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void// <-- Combine all logic into one boot method
+    public function boot(): void
     {
         // Share navigation menus with all views
         View::composer('*', function ($view) {
@@ -39,13 +38,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with('menus', $menus);
         });
 
-        // Set custom Filament authentication check
-        // Filament::serving(function () {
-        //     // Ensure user is authenticated and has admin role
-        //     if (!Auth::check() || !Auth::user()->hasRole('admin')) {
-        //         return false;
-        //     }
-        // });
+        // Register Gallery observer for real-time media updates
+        Gallery::observe(GalleryObserver::class);
     }
     
         

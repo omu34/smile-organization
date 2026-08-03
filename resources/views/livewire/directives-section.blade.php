@@ -1,37 +1,45 @@
-<section class="py-10" id="directives" data-aos="fade-up" data-aos-duration="1000">
-    <div class=" mx-auto px-4">
-    {{-- @if ($areaTitle) --}}
-        <div class="flex justify-start item-1 md:justify-center items-center flex-col md:py-4">
-                <h2
-                    class="font-bold text-xl md:text-3xl leading-tight mb-2 text-[#d13642]  rounded-md border-b-2 border-red-800 text-center md:text-left">
-                    {{-- {{$areaTitle->title}} --}}Directives
-                    {{-- <span class="text-indigo-900">Experience</span> --}}
-                </h2>
-                <h4
-                    class="sm:text-lg md:text-xl  text-lg  font-medium text-gray-800 mt-4 tracking-wide  mx-auto max-w-lg ml-4 mr-4 md:ml-0 md:mr-0 text-center">
-                    {{-- {{$areaTitle->description}} --}} Welcome
-                    
-                </h4>
-            </div>
-            {{-- @else --}}
-                {{-- <p class="text-gray-500 dark:text-gray-400">Footer info not available.</p> --}}
-            {{-- @endif --}}
-        <div class="grid md:grid-cols-3 gap-8">
+<section class="bg-white py-16 lg:py-24" id="directives" data-aos="fade-up" data-aos-duration="1000">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col items-center md:items-start text-center md:text-left mb-12">
+            <!-- Red Accent Line -->
+            <div class="hidden md:block h-1 w-16 bg-red-600 mb-4"></div>
+            
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 uppercase">
+                Directives
+            </h2>
+            
+            <h4 class="text-lg md:text-xl text-gray-600 max-w-2xl font-medium">
+                Welcome
+            </h4>
+        </div>
+
+        <!-- Directives Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($directives as $directive)
-                <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition">
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-100 p-8 flex flex-col group transition-all duration-300 relative overflow-hidden">
+                    <!-- Top Accent Line per Card (Shifts from black to Arsenal red on hover) -->
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gray-900 group-hover:bg-red-600 transition-colors duration-300"></div>
+
                     @if($directive->icon)
-                        <x-dynamic-component :component="$directive->icon"
-                            class="h-10 w-10 mx-auto mb-3"
-                            style="color: {{ $directive->color }}"/>
+                        <div class="mb-6 inline-flex p-3 rounded-lg bg-gray-50 border border-gray-100 w-fit group-hover:bg-red-50 transition-colors">
+                            <x-dynamic-component :component="$directive->icon"
+                                class="h-8 w-8"
+                                style="color: {{ $directive->color }}"/>
+                        </div>
                     @endif
-                    <h3 class="font-semibold text-xl mb-2 text-gray-800">
+
+                    <h3 class="font-bold text-xl mb-3 text-gray-900 group-hover:text-red-600 transition-colors">
                         {{ $directive->title }}
                     </h3>
-                    <p class="text-gray-600">
+
+                    <p class="text-gray-600 text-base leading-relaxed">
                         {{ $directive->description }}
                     </p>
                 </div>
             @endforeach
         </div>
+        
     </div>
 </section>
