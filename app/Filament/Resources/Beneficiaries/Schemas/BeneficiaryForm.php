@@ -22,12 +22,28 @@ class BeneficiaryForm
                     ->required()
                     ->maxLength(255),
                 TextInput::make('slug')->required(),
-                FileUpload::make('image_path')
+                FileUpload::make('beneficiary_images')
                     ->image()
                     ->directory('beneficiaries')
-                    ->disk('public') // ✅ important
+                    ->disk('public')
                     ->visibility('public')
-                    ->imagePreviewHeight('150'),
+                    ->imagePreviewHeight('150')
+                    ->afterStateUpdated(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('beneficiary_images');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('beneficiary_images');
+                        }
+                    })
+                    ->dehydrateStateUsing(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('beneficiary_images');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('beneficiary_images');
+                        }
+
+                        return null;
+                    }),
                 Textarea::make('description')->rows(4)->required(),
                 DatePicker::make('published_at')->default(now()),
                 Toggle::make('is_published')->label('Published')->default(true),

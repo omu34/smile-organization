@@ -23,8 +23,9 @@
                     <div class="absolute top-0 left-0 w-full h-1 bg-gray-900 group-hover:bg-red-600 transition-colors duration-300"></div>
 
                     <!-- Image Wrapper -->
+                    @php($whyUsImage = $item->getFirstMediaUrl('why_us_images') ?? $item->full_image_url)
                     <div class="relative p-1 rounded-full border-2 border-gray-200 group-hover:border-red-600 transition-colors duration-300 mb-6">
-                        <img src="{{ $item->full_image_url }}"
+                        <img src="{{ $whyUsImage }}"
                              class="rounded-full h-24 w-24 object-cover shadow-sm" alt="{{ $item->title }}">
                     </div>
 

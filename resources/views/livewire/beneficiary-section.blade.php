@@ -21,9 +21,10 @@
                 <article wire:key="beneficiary-{{ $item->id }}" class="bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden flex flex-col group transition-all duration-300">
                     
                     <!-- Card Image -->
-                    @if ($item->image_path)
+                    @php($beneficiaryImage = $item->getFirstMediaUrl('beneficiary_images') ?? $item->full_image_path)
+                    @if ($beneficiaryImage)
                         <div class="relative w-full aspect-video overflow-hidden bg-gray-200">
-                            <img src="{{ asset('storage/' . $item->image_path) }}" 
+                            <img src="{{ $beneficiaryImage }}" 
                                  alt="{{ $item->title }}"
                                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         </div>

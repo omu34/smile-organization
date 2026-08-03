@@ -2,15 +2,25 @@
 
 namespace App\Models;
 
+use App\Events\PartnerUpdated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Partner extends Model
+class Partner extends Model implements HasMedia
 {
-    use HasFactory, HasSlug;
+    use HasFactory, HasSlug, InteractsWithMedia;
+
+    protected static function booted(): void
+    {
+        static::saved(fn () => broadcast(new PartnerUpdated())->toOthers());
+        static::deleted(fn () => broadcast(new PartnerUpdated())->toOthers());
+    }
     protected $fillable = [
         'name',
         'slug',
@@ -34,22 +44,41 @@ class Partner extends Model
      */
     public function getFullLogoAttribute(): ?string
     {
-        $logo = $this->logo_path; // ✅ adjust if your column name differs
+        return $this->getFirstMediaUrl('partner_logo')
+            ?? $this->getLegacyLogoUrl();
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('partner_logo')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumbnail')
+            ->width(300)
+            ->height(300)
+            ->sharpen(10);
+    }
+
+    protected function getLegacyLogoUrl(): ?string
+    {
+        $logo = $this->logo_path;
 
         if (!$logo) {
             return null;
         }
 
-        // If already a full URL or /storage path, return as-is
         if (Str::startsWith($logo, ['http', '/storage'])) {
             return $logo;
         }
 
-        // Otherwise, generate full public URL
         return asset('storage/' . ltrim($logo, '/'));
     }
 
-    protected  function getSlugOptions(): SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')

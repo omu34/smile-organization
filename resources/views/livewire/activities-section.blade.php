@@ -24,9 +24,10 @@
                 <article class="bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden flex flex-col group transition-all duration-300">
                     
                     <!-- Full-Bleed Card Image -->
-                    @if ($activity->image)
+                    @php($activityImage = $activity->getFirstMediaUrl('activity_images') ?? $activity->full_image)
+                    @if ($activityImage)
                         <div class="relative w-full aspect-video overflow-hidden bg-gray-200">
-                            <img src="{{ $activity->full_image }}" 
+                            <img src="{{ $activityImage }}" 
                                  alt="{{ $activity->title }}" 
                                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         </div>

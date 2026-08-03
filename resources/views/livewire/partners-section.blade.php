@@ -23,8 +23,9 @@
                     <div class="absolute top-0 left-0 w-full h-1 bg-gray-900 group-hover:bg-red-600 transition-colors duration-300"></div>
 
                     <a href="{{ $partner->website_url }}" target="_blank" class="flex flex-col items-center focus:outline-none">
+                        @php($partnerLogo = $partner->getFirstMediaUrl('partner_logo') ?? $partner->full_logo)
                         <div class="relative p-1 rounded-full border-2 border-gray-200 group-hover:border-red-600 transition-colors duration-300 mb-4">
-                            <img src="{{ $partner->full_logo }}"
+                            <img src="{{ $partnerLogo }}"
                                  class="rounded-full h-24 w-24 object-cover shadow-sm" alt="{{ $partner->name }}">
                         </div>
                         <h3 class="text-center text-gray-900 font-bold text-xl mb-3 group-hover:text-red-600 transition-colors">

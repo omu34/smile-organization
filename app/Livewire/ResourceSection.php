@@ -2,9 +2,9 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\On;
 use Livewire\Component;
 use App\Models\ResourceItem;
-use App\Models\PageSection;
 
 class ResourceSection extends Component
 {
@@ -12,14 +12,22 @@ class ResourceSection extends Component
     public $mainTitle;
     public $mainDescription;
 
-    protected $listeners = ['resourceUpdated' => '$refresh'];
+    #[On('echo:resource_items,ResourcesUpdated')]
+    public function refreshResources(): void
+    {
+        $this->loadResources();
+        $this->dispatch('$refresh');
+    }
 
     public function mount()
     {
-        // $section = PageSection::where('section', 'resources')->first();
+        $this->loadResources();
+    }
 
-        $this->mainTitle = $section->title ?? 'Our Resources';
-        $this->mainDescription = $section->description ?? 'Default description here...';
+    protected function loadResources(): void
+    {
+        $this->mainTitle = 'Our Resources';
+        $this->mainDescription = 'Default description here...';
 
         $this->resources = ResourceItem::where('is_published', true)
             ->orderBy('position')

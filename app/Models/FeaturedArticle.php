@@ -2,13 +2,24 @@
 
 namespace App\Models;
 
+use App\Events\FeaturedArticleUpdated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class FeaturedArticle extends Model
+class FeaturedArticle extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
+
+    protected static function booted(): void
+    {
+        static::saved(function () {
+            broadcast(new FeaturedArticleUpdated())->toOthers();
+        });
+    }
 
     protected $fillable = [
         'title',
@@ -21,6 +32,26 @@ class FeaturedArticle extends Model
     ];
 
     protected $appends = ['full_media_url'];
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('featured_media')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'video/mp4', 'video/webm']);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumbnail')
+            ->width(300)
+            ->height(300)
+            ->sharpen(10);
+
+        $this->addMediaConversion('medium')
+            ->width(800)
+            ->height(600)
+            ->sharpen(10);
+    }
 
     public function getYoutubeIdAttribute(): ?string
     {

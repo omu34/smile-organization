@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\ArticleUpdated;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Storage;
@@ -29,6 +30,10 @@ class Article extends Model
             if (empty($article->slug)) {
                 $article->slug = Str::slug($article->title);
             }
+        });
+
+        static::saved(function ($article) {
+            broadcast(new ArticleUpdated($article))->toOthers();
         });
     }
 }

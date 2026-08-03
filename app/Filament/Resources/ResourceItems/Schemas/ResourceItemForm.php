@@ -24,18 +24,49 @@ class ResourceItemForm
                     ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state)))
                     ->required(),
                 TextInput::make('slug')->required(),
-                FileUpload::make('image_path')
+                FileUpload::make('resource_images')
                     ->image()
                     ->directory('resources')
-                    ->disk('public') // ✅ important
+                    ->disk('public')
                     ->visibility('public')
-                    ->imagePreviewHeight('150'),
-                FileUpload::make('video_path')
-                    ->image()
+                    ->imagePreviewHeight('150')
+                    ->afterStateUpdated(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('resource_images');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('resource_images');
+                        }
+                    })
+                    ->dehydrateStateUsing(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('resource_images');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('resource_images');
+                        }
+
+                        return null;
+                    }),
+                FileUpload::make('resource_videos')
                     ->directory('resources')
-                    ->disk('public') // ✅ important
+                    ->disk('public')
                     ->visibility('public')
-                    ->imagePreviewHeight('150'),
+                    ->imagePreviewHeight('150')
+                    ->afterStateUpdated(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('resource_videos');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('resource_videos');
+                        }
+                    })
+                    ->dehydrateStateUsing(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('resource_videos');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('resource_videos');
+                        }
+
+                        return null;
+                    }),
                 Textarea::make('description')->rows(3)->required(),
                 Textarea::make('extra_description')->rows(4),
                 Select::make('alignment')

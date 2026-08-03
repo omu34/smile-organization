@@ -44,27 +44,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ai/conversations/{conversation}', [ConversationController::class, 'show'])->name('ai.conversation.show');
 });
 
-
-
-/** AI frontend page */
-// Route::middleware(['auth'])->group(function () {
-//     Route::view('/ai', 'ai.index')->name('ai.index');
-
-//     // SSE stream for GPT streaming responses
-//     Route::get('/ai/stream', [AiSseController::class, 'stream'])->name('ai.sse.stream');
-
-//     // conversation routes
-//     Route::post('/ai/conversations', [ConversationController::class, 'create'])->name('ai.conversation.create');
-//     Route::post('/ai/conversations/{conversation}/message', [ConversationController::class, 'postMessage'])->name('ai.conversation.message');
-//     Route::get('/ai/conversations/{conversation}', [ConversationController::class, 'show'])->name('ai.conversation.show');
-
-//     // For convenience you can mount Livewire directly in blade; not necessary to route components
-// });
-
-
 Route::get('/about', function () {
     return view('pages.about');
 })->name('pages.about');
+
+Route::get('/contact', function () {
+    return view('pages.contact');
+})->name('pages.contact');
 
 Route::get('/articles/{slug}', function ($slug) {
     $article = Article::where('slug', $slug)->with('media')->firstOrFail();

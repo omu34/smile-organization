@@ -91,8 +91,9 @@
                        title="{{ $link->platform_name }}"
                        class="transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-500 rounded-lg">
 
-                        @if ($link->image_path)
-                            <img src="{{ asset('storage/' . $link->image_path) }}"
+                        @php($socialImage = $link->getFirstMediaUrl('social_images') ?? $link->full_image_path)
+                        @if ($socialImage)
+                            <img src="{{ $socialImage }}"
                                  alt="{{ $link->platform_name }}"
                                  class="w-10 h-10 object-contain rounded-lg bg-gray-800 border border-gray-700 p-1 shadow-sm transition-all duration-300">
                         @else

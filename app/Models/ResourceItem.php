@@ -5,13 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use App\Events\ResourceUpdated;
 
-class ResourceItem extends Model
+class ResourceItem extends Model implements HasMedia
 {
-    use HasFactory, HasSlug;
+    use HasFactory, HasSlug, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -69,6 +72,31 @@ class ResourceItem extends Model
      * Accessor for the full image URL.
      */
     public function getFullImagePathAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('resource_images')
+            ?? $this->getLegacyImagePath();
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('resource_images')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+
+        $this->addMediaCollection('resource_videos')
+            ->singleFile()
+            ->acceptsMimeTypes(['video/mp4', 'video/webm', 'video/quicktime']);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumbnail')
+            ->width(640)
+            ->height(480)
+            ->sharpen(10);
+    }
+
+    protected function getLegacyImagePath(): ?string
     {
         if (!$this->image_path) {
             return null;

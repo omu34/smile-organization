@@ -15,12 +15,28 @@ class PartnerForm
         return $schema
             ->components([
                 TextInput::make('name')->required()->maxLength(255),
-                FileUpload::make('logo_path')
+                FileUpload::make('partner_logo')
                     ->image()
                     ->directory('partner-logos')
-                    ->disk('public') // ✅ important
+                    ->disk('public')
                     ->visibility('public')
-                    ->imagePreviewHeight('150'),
+                    ->imagePreviewHeight('150')
+                    ->afterStateUpdated(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('partner_logo');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('partner_logo');
+                        }
+                    })
+                    ->dehydrateStateUsing(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('partner_logo');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('partner_logo');
+                        }
+
+                        return null;
+                    }),
                 Textarea::make('testimonial')->rows(3),
                 TextInput::make('rating')->numeric()->default(5)->minValue(1)->maxValue(5),
                 TextInput::make('reviews_count')->numeric()->default(0),

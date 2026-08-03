@@ -2,16 +2,25 @@
 
 namespace App\Models;
 
+use App\Events\BeneficiaryUpdated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Illuminate\Testing\Fluent\Concerns\Has;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Beneficiary extends Model
+class Beneficiary extends Model implements HasMedia
 {
-    use HasFactory, HasSlug;
+    use HasFactory, HasSlug, InteractsWithMedia;
+
+    protected static function booted(): void
+    {
+        static::saved(fn () => broadcast(new BeneficiaryUpdated())->toOthers());
+        static::deleted(fn () => broadcast(new BeneficiaryUpdated())->toOthers());
+    }
 
     protected $fillable = [
         'title',
@@ -45,18 +54,37 @@ class Beneficiary extends Model
      */
     public function getFullImagePathAttribute(): ?string
     {
-        $imagePath = $this->image_path; // ✅ your actual column name
+        return $this->getFirstMediaUrl('beneficiary_images')
+            ?? $this->getLegacyImagePath();
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('beneficiary_images')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumbnail')
+            ->width(300)
+            ->height(300)
+            ->sharpen(10);
+    }
+
+    protected function getLegacyImagePath(): ?string
+    {
+        $imagePath = $this->image_path;
 
         if (!$imagePath) {
             return null;
         }
 
-        // If already a full URL or starts with storage, return as-is
         if (Str::startsWith($imagePath, ['http', '/storage'])) {
             return $imagePath;
         }
 
-        // Otherwise, build full asset path
         return asset('storage/' . ltrim($imagePath, '/'));
     }
 }

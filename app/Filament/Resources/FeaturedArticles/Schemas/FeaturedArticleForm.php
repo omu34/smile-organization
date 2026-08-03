@@ -28,14 +28,30 @@ class FeaturedArticleForm
                     ->reactive()
                     ->required(),
 
-                FileUpload::make('media_url')
+                FileUpload::make('featured_media')
                     ->label('Upload Media')
                     ->visible(fn($get) => in_array($get('media_type'), ['image', 'video']))
                     ->directory('featured-media')
                     ->disk('public')
                     ->visibility('public')
                     ->imagePreviewHeight('150')
-                    ->preserveFilenames(),
+                    ->preserveFilenames()
+                    ->afterStateUpdated(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('featured_media');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('featured_media');
+                        }
+                    })
+                    ->dehydrateStateUsing(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('featured_media');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('featured_media');
+                        }
+
+                        return null;
+                    }),
 
                 TextInput::make('media_url')
                     ->label('YouTube URL')

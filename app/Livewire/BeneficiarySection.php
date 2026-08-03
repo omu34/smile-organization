@@ -2,16 +2,27 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\Beneficiary;
+use Livewire\Attributes\On;
+use Livewire\Component;
 
 class BeneficiarySection extends Component
 {
     public $beneficiaries;
 
-    protected $listeners = ['beneficiaryUpdated' => '$refresh'];
+    #[On('echo:beneficiaries,BeneficiaryUpdated')]
+    public function refreshBeneficiaries(): void
+    {
+        $this->loadBeneficiaries();
+        $this->dispatch('$refresh');
+    }
 
     public function mount()
+    {
+        $this->loadBeneficiaries();
+    }
+
+    protected function loadBeneficiaries(): void
     {
         $this->beneficiaries = Beneficiary::where('is_published', true)
             ->latest('published_at')

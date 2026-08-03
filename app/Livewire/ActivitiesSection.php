@@ -2,16 +2,38 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\Activity;
+use Livewire\Attributes\On;
+use Livewire\Component;
 
 class ActivitiesSection extends Component
 {
-    protected $listeners = ['activityUpdated' => '$refresh'];
+    public array $activities = [];
+
+    #[On('echo:activities,ActivityUpdated')]
+    public function refreshActivities(): void
+    {
+        $this->loadActivities();
+        $this->dispatch('$refresh');
+    }
+
+    public function mount(): void
+    {
+        $this->loadActivities();
+    }
+
+    public function loadActivities(): void
+    {
+        $this->activities = Activity::where('is_visible', true)
+            ->orderBy('order')
+            ->get()
+            ->all();
+    }
 
     public function render()
     {
-        $activities = Activity::where('is_visible', true)->orderBy('order')->get();
-        return view('livewire.activities-section', compact('activities'));
+        return view('livewire.activities-section', [
+            'activities' => $this->activities,
+        ]);
     }
 }

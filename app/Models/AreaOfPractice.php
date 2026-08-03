@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
-use App\Events\AreaOfPractice as  AreaOfPracticeUpdated;
+use App\Events\AreaOfPractice as AreaOfPracticeUpdated;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class AreaOfPractice extends Model
+class AreaOfPractice extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+
     protected $fillable = [        
         'subtitle',
         'button_name',
@@ -26,15 +31,37 @@ class AreaOfPractice extends Model
     }
 
 
-    public function getFullImagePathAttribute(): string
+    public function getFullImagePathAttribute(): ?string
     {
-        // Check if image_url is already a full URL (e.g., http://) or starts with /storage
+        return $this->getFirstMediaUrl('area_images')
+            ?? $this->getLegacyImagePath();
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('area_images')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumbnail')
+            ->width(320)
+            ->height(240)
+            ->sharpen(10);
+    }
+
+    protected function getLegacyImagePath(): ?string
+    {
+        if (empty($this->image_path)) {
+            return null;
+        }
+
         if (Str::startsWith($this->image_path, ['http', '/storage'])) {
             return $this->image_path;
         }
 
-        // Otherwise, assume it's a relative path from the 'public' disk
-        // and generate a URL to it using the asset helper (avoid calling Filesystem::url()).
         return asset('storage/' . ltrim($this->image_path, '/'));
     }
 }

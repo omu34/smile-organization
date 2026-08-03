@@ -23,12 +23,12 @@
                     <!-- Media Wrapper -->
                     <div class="relative w-full h-56 overflow-hidden bg-gray-100">
                         @if ($article->media_type === 'image')
-                            <img src="{{ asset('storage/' . $article->media_url) }}" 
+                            <img src="{{ $article->getFirstMediaUrl('featured_media') ?? $article->full_media_url }}" 
                                  alt="{{ $article->title }}" 
                                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         @elseif ($article->media_type === 'video')
                             <video controls class="w-full h-full object-cover">
-                                <source src="{{ asset('storage/' . $article->media_url) }}" type="video/mp4">
+                                <source src="{{ $article->getFirstMediaUrl('featured_media') ?? $article->full_media_url }}" type="video/mp4">
                             </video>
                         @elseif ($article->media_type === 'youtube')
                             <iframe class="w-full h-full border-0" 

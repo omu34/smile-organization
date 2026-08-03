@@ -25,15 +25,20 @@ use Spatie\MediaLibrary\Support\FileNamer\DefaultFileNamer;
 use Spatie\MediaLibrary\Support\FileRemover\DefaultFileRemover;
 use Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator;
 use Spatie\MediaLibrary\Support\UrlGenerator\DefaultUrlGenerator;
-use Spatie\MediaLibraryPro\Models\TemporaryUpload;
 
 return [
+
+    /*
+ * The disk on which to store added files and derived images by default. Choose
+ * one or more of the disks you've configured in config/filesystems.php.
+ */
+    'disk_name' => env('MEDIA_DISK', 'r2'),
 
     /*
      * The disk on which to store added files and derived images by default. Choose
      * one or more of the disks you've configured in config/filesystems.php.
      */
-    'disk_name' => env('MEDIA_DISK', 'public'),
+    // 'disk_name' => env('FILESYSTEM_DISK', 'r2'),
 
     /*
      * The disk on which to store conversions (thumbnails, etc.) and responsive images
@@ -50,7 +55,7 @@ return [
      * The maximum file size of an item in bytes.
      * Adding a larger file will result in an exception.
      */
-    'max_file_size' => 1024 * 1024 * 10, // 10MB
+    'max_file_size' => 1024 * 1024 * 100, // 100MB
 
     /*
      * Uploads whose file name contains any of these extensions will be rejected.
@@ -89,12 +94,12 @@ return [
     /*
      * By default all conversions will be performed on a queue.
      */
-    'queue_conversions_by_default' => env('QUEUE_CONVERSIONS_BY_DEFAULT', true),
+    'queue_conversions_by_default' => env('QUEUE_CONVERSIONS_BY_DEFAULT', false),
 
     /*
      * Should database transactions be run after database commits?
      */
-    'queue_conversions_after_database_commit' => env('QUEUE_CONVERSIONS_AFTER_DB_COMMIT', true),
+    'queue_conversions_after_database_commit' => env('QUEUE_CONVERSIONS_AFTER_DB_COMMIT', false),
 
     /*
      * The fully qualified class name of the media model.
@@ -119,7 +124,9 @@ return [
      *
      * This model is only used in Media Library Pro (https://medialibrary.pro)
      */
-    'temporary_upload_model' => TemporaryUpload::class,
+    'temporary_upload_model' => null,
+
+
 
     /*
      * When enabled, Media Library Pro will only process temporary uploads that were uploaded
@@ -236,7 +243,7 @@ return [
      * The path where to store temporary files while performing image conversions.
      * If set to null, storage_path('media-library/temp') will be used.
      */
-    'temporary_directory_path' => null,
+    'temporary_directory_path' => '/tmp/media-library', // 👈 Change this from null to '/tmp'
 
     /*
      * The engine that should perform the image conversions.
@@ -353,7 +360,7 @@ return [
      * You can specify a prefix for that is used for storing all media.
      * If you set this to `/my-subdir`, all your media will be stored in a `/my-subdir` directory.
      */
-    'prefix' => env('MEDIA_PREFIX', ''),
+    'prefix' => env('MEDIA_PREFIX', 'smile-organization'),
 
     /*
      * When forcing lazy loading, media will be loaded even if you don't eager load media and you have

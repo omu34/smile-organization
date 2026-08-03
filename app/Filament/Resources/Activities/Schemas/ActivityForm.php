@@ -16,14 +16,30 @@ class ActivityForm
             ->components([
                 TextInput::make('title')->required()->maxLength(150),
                 // Image upload
-                FileUpload::make('image')
+                FileUpload::make('activity_images')
                     ->label('Activity Image')
                     ->image()
                     ->directory('activities')
                     ->disk('public')
                     ->visibility('public')
                     ->imagePreviewHeight('150')
-                    ->required(),
+                    ->required()
+                    ->afterStateUpdated(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('activity_images');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('activity_images');
+                        }
+                    })
+                    ->dehydrateStateUsing(function ($state, $record) {
+                        if ($record && $state) {
+                            $record->clearMediaCollection('activity_images');
+                            $record->addMediaFromDisk($state, 'public')
+                                ->toMediaCollection('activity_images');
+                        }
+
+                        return null;
+                    }),
                 Textarea::make('description')->rows(4)->required(),
                 Textarea::make('extra_description')->rows(4)->required(),
                 TextInput::make('button_text')->default('Detail'),
